@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+     
+      <title>Medium Article Manager</title>
+      
+      <link rel="stylesheet" href="{% static 'tiny/prism.css'%}">
+        <script src="{% static 'tiny/tinymce.min.js' %}"  referrerpolicy="origin"></script>
+ 
+    
+      
+      <script type="text/javascript">
+        tinymce.init({
+            height: 500,
+            custom_undo_redo_levels: 20,
+            cleanup_on_startup: true,
+            selector: "textarea",  // change this value according to your HTML
+            plugins: "textcolor,save,link,image,media,preview,codesample,contextmenu,table,code,lists,fullscreen,insertdatetime,nonbreaking,contextmenu,directionality,searchreplace,wordcount,visualblocks,visualchars,code,fullscreen,autolink,lists,charmap,print,hr,anchor,pagebreak",
+            toolbar1: " fullscreen preview bold italic underline | fontselect, fontsizeselect  | forecolor backcolor | alignleft alignright | aligncenter alignjustify | indent outdent | bullist numlist table | | link image media | codesample |",
+            toolbar2: " visualblocks visualchars | charmap hr pagebreak nonbreaking anchor |  code |",
+            
+          });
+    
+</script>
+   </head>
+   <style>
+      .btn-wrap-text {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      }
+      @media (min-width: 5000px) {
+      .modal-xlg {
+      width: 100%; 
+      }
+      }    
+      .center {
+      margin: auto;
+      width: 50%;
+      }
+
+      .toptext {
+  display: flex;
+  align-items: safe  center;
+}
+.responsive {
+  width: 20%;
+  height: auto;
+}
+
+.responsive2 {
+    width: 90%;
+    height: auto;
+  }
+   </style>
+   <body>
+
+        {{article.richtext | safe}}
+                
+                    
+               
+               
+   </body>
+</html>
+<script src="{% static 'tiny/prism.js' %}"></script>
+

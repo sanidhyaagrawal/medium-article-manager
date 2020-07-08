@@ -1,0 +1,239 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <title>Sanidhya's Article Manager</title>
+
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+   .center {
+      margin: auto;
+      width: 50%;
+      }
+    .toptext {
+  display: flex;
+  align-items: baseline;
+
+}
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+    </style>
+</head>
+
+<body>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+    <!-- ============================================================== -->
+    <!-- login page  -->
+    <!-- ============================================================== -->
+    <div class="splash-container">
+   <a class="navbar-brand" href="/"><span>
+   <div class="toptext">
+   <img src="{% static 'images/medium.png'%}  " alt="Medium" class="responsive" width="600" height="400">  
+   <div style="font-size:15px; color:black;">
+   Advanced Article Manager
+   </div>
+   </div>
+   
+   </span></a>
+
+        <div class="card ">
+              <div id="myNav" class="overlay"> 
+                  <div class="overlay-content">
+                  <h3 style="color:#FFFF">Procesing...</h3>
+                  </div>
+                </div>
+
+            <div class="card-header text-center"><h3>Input password to proceed.</h3>By- Sanidhya Agrawal</div>
+            <div class="card-body">
+               <form method="POST" role="form" class="form" name="login" id='login'> 
+                {% csrf_token %}
+              
+                   <div class="form-group" style="text-align: left;">
+                                
+                                                <label for="gender">Choose Series </label>
+                                                <select class="form-control" value="Male" type="text" name="email" id="email" required>
+                                                <option value="" disabled selected hidden>Choose a series</option>
+                                                   {% for i in ser%}
+                                                 
+                                 <option>{{i}}</option>
+                             
+
+                                                {% endfor%}
+                                                </select>
+                                                
+                                                 
+
+                                    </label>
+                                                
+                                  </div>
+
+                    
+                    
+                    
+                    <div id='errors'>
+
+                     </div>   
+                    <button type="submit" id='submit_button' name='submit_button'class="btn btn-outline-dark btn-lg btn-block active">Proceed</button>
+                </form>
+                
+            </div>
+          
+            </div>
+        </div>
+    </div>
+  
+    <!-- ============================================================== -->
+    <!-- end login page  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+     <script src="{% static 'js/jquery-2.2.4.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>        
+
+<script>
+
+     
+       
+         $("#submit_button").click(function(e){
+           openNav()
+             e.preventDefault()
+            $.ajax({
+                type:'POST',
+                url: "{% url 'seriesselect' %}",
+                data:{
+                    email:$('#email').val(),
+                    password:$('#password').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    action: 'post'
+                },
+                success:function(json){
+                     
+                     if(json.access_granted == false)
+                      { closeNav()   
+                        $("#errors").empty();
+                         
+                        $.each(json.errors, function( index, error ) {
+                          //alert( error );
+                          $("#errors").append('<div class="text-danger">'+error+'</div>');
+                         
+                    });
+                    }
+                     else if(json.access_granted == true)
+                     {  
+                         window.location = '/newarticle-step2/'+json.key;
+                     }
+
+                   
+
+
+                },
+                error : function(xhr,errmsg,err) {
+                $('#sigunuperror').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+            });
+        });
+
+
+
+
+
+
+
+     
+    </script>    
+
+ 
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js'%}"></script>
+</body>
+ 
+</html>

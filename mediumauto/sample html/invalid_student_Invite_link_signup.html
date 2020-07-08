@@ -1,0 +1,101 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Edversity Invite Students</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+      <link href="{% static '/assets/vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static '/assets/libs/css/style.css'%}">
+      <link rel="stylesheet" href="{% static '/assets/vendor/fonts/fontawesome/css/fontawesome-all.css'%}">
+      <link rel="stylesheet" href="{% static 'intlTelInput/intlTelInput.css'%}">
+   </head>
+   <style>
+      .feedback {
+      background-color : #31B0D5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border-color: #46b8da;
+      }
+      #mybutton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      }
+      .carousel-inner {
+      background-color: #EFEFF6 !important;
+      }
+      .carousel-indicators-numbers {
+      li {
+      text-indent: 0;
+      margin: 0 2px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 100%;
+      line-height: 30px;
+      color: #fff;
+      background-color: #999;
+      transition: all 0.25s ease;
+      &.active, &:hover {
+      margin: 0 2px;
+      width: 30px;
+      height: 30px;
+      background-color: #337ab7;        
+      }
+      }
+      }
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+      /* Firefox */
+      input[type=number] {
+      -moz-appearance: textfield;
+      }
+   </style>
+   <style>
+      .iti__flag {background-image: url("{% static 'intlTelInput/flags.png'%}");}
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .iti__flag {background-image: url("{% static 'intlTelInput/flags@2x.png'%}");}
+      }
+   </style>
+   <script src="{% static '/assets/vendor/jquery/jquery-3.3.1.min.js'%}"></script>
+   <body onresize="myFunction()">
+      <!-- ============================================================== -->
+      <!-- main wrapper -->
+      <!-- ============================================================== -->
+    
+         <div class="container-fluid px-0">
+            <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+               <div class="carousel-inner bg-info" role="listbox">
+                  
+                  <div class="carousel-item active">
+                     <div class="d-flex flex-column align-items-center justify-content-center min-vh-100">
+                        <a class="navbar-brand" href="index.html">EDVERSITY</a>
+                        <div class="p-2">
+                           <h3>Link tampering detected.</h3>
+                        </div>
+                      
+                   
+                        
+                           
+                     </div>
+                  </div>
+                 
+        
+      <!-- ============================================================== -->
+      <!-- end main wrapper -->
+      <!-- ============================================================== -->
+      <!-- Optional JavaScript -->
+      <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.js'%}"></script>
+      <script src="{% static '/assets/vendor/slimscroll/jquery.slimscroll.js'%}"></script>
+      <script src="{% static '/assets/libs/js/main-js.js'%}"></script>
+   </body>
+</html>

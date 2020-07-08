@@ -1,0 +1,207 @@
+{% load static %}
+<!doctype html>
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="{% static 'images/DB_16х16.png'%}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eversity</title>
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+    <meta name="msapplication-TileImage" content="{% static 'images/touch/ms-touch-icon-144x144-precomposed.png'%}">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{% static 'css/lib/getmdl-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/nv.d3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/application.min.css' %}">
+    <!-- endinject -->
+<style>
+@media screen and (max-width: 1225px) and (min-width: 1045px) {
+    .priority-6{
+    display:none;
+    }
+        .priority-5{
+            display:none;
+        }
+    
+
+        
+    
+    }
+    
+    @media screen and (max-width: 1045px) and (min-width: 835px) {
+
+    .priority-6{
+    display:none;
+    }
+
+
+        .priority-5{
+            display:none;
+        }
+        .priority-4{
+            display:none;
+        }
+    }
+    
+    @media screen and (max-width: 565px) and (min-width: 300px) {
+    .priority-6{
+    display:none;
+    }
+
+
+
+.priority-5{
+            display:none;
+        }
+        .priority-4{
+            display:none;
+        }
+        
+        .priority-2{
+        display:none;
+        }
+    
+            }
+    
+    @media screen and (max-width: 300px) {
+    
+        .priority-6{
+    display:none;
+    }
+        .priority-5{
+            display:none;
+        }
+        .priority-4{
+            display:none;
+        }
+        .priority-3{
+            display:none;
+        }
+        .priority-2{
+        display:none;
+        }
+    
+        
+    
+    }
+    
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+   
+</style>
+
+
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header is-small-screen">
+    <header class="mdl-layout__header">
+       
+            
+           <h4 style="color:white; text-align:center;">EVERSITY</h4>
+
+         
+
+    </header>
+
+    
+
+   <main class="mdl-layout__content ">
+ <div class="center">
+ <li class="mdl-card__title-text"><h6>&emsp;Existing Institutes with similar name, Either choose onr from them or </h6></li>
+</div>
+<div class="center">
+<button onclick="location.href='/Institutesignup'"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-teal" type="button">Create New Institute</button></div>
+       
+        <div class="mdl-grid ui-tables">
+
+
+             <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--4-col-phone">
+            
+ 
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h1 class="mdl-card__title-text">Existing Institutes with similar name-</h1>
+                    </div>
+                    <div class="mdl-card__supporting-text no-padding">
+                        <table class="mdl-data-table mdl-js-data-table">
+                            <thead>
+                            <tr>
+                                <th style="text-align:center" class="priority-6" width="5%">Ranking</th>
+                                <th style="text-align:center" class="priority-1" width="10%">Details</th>
+                            
+                               
+                              
+                                <th style="text-align:center" class="priority-3" width="10%">Select</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                              
+                        
+                       {%for i in institutes%}
+                            <tr> 
+                           <td  style="text-align:center" class="priority-6" >{{ forloop.counter }} </td>
+                           
+                           <td  style="text-align:center" class="priority-1">{{i.name}} <br> Students- {{i.students}} <br>Username- @{{i.username}} <br> Created by- @{{i.created_by}} <br> {{i.created_by.email}} </td>
+                           
+                           <td  style="text-align:center" class="priority-1">
+                            <a href="/Instructor-signup/@{{i.username}}">
+                            <button onclick="/Instructor-signup/@{{i.username}}" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-teal">Select</button></a></td>
+                           </tr>
+                        {%endfor%}
+                            
+                            
+                                      
+                              
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </main>
+
+</div>
+<!-- inject:js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static 'js/d3.min.js' %}"></script>
+<script src="{% static 'js/getmdl-select.min.js' %}"></script>
+<script src="{% static 'js/material.min.js' %}"></script>
+<script src="{% static 'js/nv.d3.min.js' %}"></script>
+<script src="{% static 'js/layout/layout.min.js' %}"></script>
+<script src="{% static 'js/scroll/scroll.min.js' %}"></script>
+<script src="{% static 'js/widgets/charts/discreteBarChart.min.js' %}"></script>
+<script src="{% static 'js/widgets/charts/linePlusBarChart.min.js' %}"></script>
+<script src="{% static 'js/widgets/charts/stackedBarChart.min.js' %}"></script>
+<script src="{% static 'js/widgets/employer-form/employer-form.min.js' %}"></script>
+<script src="{% static 'js/widgets/line-chart/line-charts-nvd3.min.js' %}"></script>
+<script src="{% static 'js/widgets/map/maps.min.js' %}"></script>
+<script src="{% static 'js/widgets/pie-chart/pie-charts-nvd3.min.js' %}"></script>
+<script src="{% static 'js/widgets/table/table.min.js' %}"></script>
+<script src="{% static 'js/widgets/todo/todo.min.js' %}"></script>
+<!-- endinject -->
+</body>
+</html>

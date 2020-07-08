@@ -1,0 +1,409 @@
+{%load static%}
+<!doctype html>
+<!--
+
+
+
+
+
+  
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="images/DB_16х16.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Material Dashboard Lite</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+  <!-- inject:css -->
+     <link rel="stylesheet" href="{% static 'css/lib/getmdl-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/nv.d3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/application.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px Arial;  
+}
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #444747;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #333434; 
+  border-bottom: 1px solid #444747; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #444747; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #444747 !important; 
+  color: #ffffff; 
+}
+</style>
+    <!-- endinject -->
+
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+          
+                <!-- Search-->
+               <h5 align="center" style="color:white">EVERSITY</h5>
+                <!-- Messages dropdown-->
+                
+
+        </header>
+
+
+
+<script>
+$(document).ready(function(){
+  $("#close").click(function(){
+    $('.mdl-layout__drawer-button').trigger('click');
+  });
+
+});
+</script>
+
+<button id='close' type="submit">Close</button>
+
+
+
+        <div class="mdl-layout__drawer">
+            <header>EVERSITY</header>
+            
+            <div class="scroll__wrapper" id="scroll__wrapper">
+                <div class="scroller" id="scroller">
+                    <p align="center" style="font-size:12px; color:white">Please click <strong>join</strong> if your Institution is alredy registered  &nbsp;&nbsp;  &nbsp;</p>
+                      <li align="center" style="font-size:11px; color:white">List of pre-existing Institutions with similar name&nbsp;&nbsp;&nbsp;</li>
+                     <li align="center" style="font-size:11px; color:white"><strong>Note-</strong> Check the admin email and make shure  &nbsp;  &nbsp; <br> its not a fake account</li>
+                    <div class="scroll__container" id="scroll__container">
+                        <nav class="mdl-navigation">
+        
+                            
+                               <a class="mdl-navigation__link">
+                               <ul>
+                               <li>&emsp;&emsp; Poornima University</h6>
+                               <ul>
+                               <li align="left" style="font-size:11px; color:white">&emsp;&emsp; @pujaipur</h6>
+                               <li  align="left" style="font-size:11px; color:white">&emsp;&emsp; Students- 700</li>
+                               <li  align="left"style="font-size:11px; color:white">&emsp;&emsp; sumitpokhriyal@poornima.edu.in</li>
+                               </ul>
+                               </ul> 
+                               </a>
+                                
+
+
+
+
+                          
+                        </nav>
+                    </div>
+                </div>
+                <div class='scroller__bar' id="scroller__bar"></div>
+            </div>
+        </div>
+
+        <main class="mdl-layout__content mdl-color--grey-100">
+           
+               
+                <div class="mdl-card__supporting-text">
+                    <form id= 'crucial' action="crucial" method="POST"  class="form">
+                      {% csrf_token %}
+                        <div class="form__article">
+                            <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone">
+<span class="mdl-card__title-text text-color--smooth-gray">EVERSITY</span>
+                </div>
+                            <div class="form__article">
+                           
+                            <p>These Details is very crucial and <strong>CAN NOT</strong> be edited afterwards. Make sure these are right.</p>
+                            <h3>Institute Details</h3>
+                            
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                      <div class="autocomplete" style="width:427px;">
+    <input autocomplete="off" class="mdl-textfield__input" id="institute_name" type="text"  >
+                             </div>
+                                    <label class="mdl-textfield__label" for="institute_name">Institute Name</label>
+                                </div>
+
+                                 <div class="mdl-cell mdl-cell--1-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    OR
+                                </div>
+
+                                 <div class="mdl-cell mdl-cell--5-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="institute_username" required />
+
+                                    <label class="mdl-textfield__label" for="institute_username">Institute Username</label>
+                                </div>
+                            </div>
+                         
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+                         <h3>Sign-Up Details</h3>
+                           </div> 
+
+                            <div class="mdl-grid">
+                                
+                                 <div class="mdl-cell mdl-cell--12-col 
+                                 mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="teacher_email" placeholder="example@YourInstituteName.edu"/>
+                                    <label class="mdl-textfield__label" for="firstName">Your Institute domain email</div>
+
+
+                              </div>  
+                            <div class="mdl-grid">          
+                                <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="teacher_username" value=""/>
+                                    <label class="mdl-textfield__label" for="secondName">Create Username</label>
+                                </div>
+                            </div> 
+
+
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="birthday" value=""/>
+                                    <label class="mdl-textfield__label" for="password1"><strong>Password</strong></label>
+                                </div>
+                                <div class="mdl-cell mdl-cell--6-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="password2" value=""/>
+                                    <label class="mdl-textfield__label" for="birthday"><strong>Re-Password</strong></label>
+                                </div>
+
+                               <span class=""><strong>Important-</strong> By proceeding beyond this page I accept that I am officially associated with the Institution I am creating this account for, If not then I am liable for any legal action taken againt me by the Institution.</span>
+                </div>
+                <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-phone submit-cell">
+                    <div class="mdl-layout-spacer"></div>
+                    <a href="index.html">
+                        <buttons class="mdl-button mdl-js-button mdl-button--raised color--light-blue">
+                            SIGN UP
+                        </buttons>
+                    </a>
+                </div>
+             </div>
+           </form>  
+
+
+
+ 
+
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+<script src="{% static 'js/d3.min.js' %}"></script>
+<script src="{% static 'js/getmdl-select.min.js' %}"></script>
+<script src="{% static 'js/material.min.js' %}"></script>
+<script src="{% static 'js/nv.d3.min.js' %}"></script>
+<script src="{% static 'js/layout/layout.min.js' %}"></script>
+<script src="{% static 'js/scroll/scroll.min.js' %}"></script>
+<script src="{% static 'js/widgets/charts/discreteBarChart.min.js' %}"></script>
+<script src="{% static 'js/widgets/charts/linePlusBarChart.min.js' %}"></script>
+<script src="{% static 'js/widgets/charts/stackedBarChart.min.js' %}"></script>
+<script src="{% static 'js/widgets/employer-form/employer-form.min.js' %}"></script>
+<script src="{% static 'js/widgets/line-chart/line-charts-nvd3.min.js' %}"></script>
+<script src="{% static 'js/widgets/map/maps.min.js' %}"></script>
+<script src="{% static 'js/widgets/pie-chart/pie-charts-nvd3.min.js' %}"></script>
+<script src="{% static 'js/widgets/table/table.min.js' %}"></script>
+<script src="{% static 'js/widgets/todo/todo.min.js' %}"></script>
+<script src="{% static 'js/jquery.autocomplete.min.js' %}"></script>
+<!-- endinject -->
+
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var countries = [
+{% autoescape off %}
+{{names}}
+{% endautoescape %}
+ ];
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("institute_name"), countries);
+</script>
+</body>
+</html>

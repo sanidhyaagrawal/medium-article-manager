@@ -1,0 +1,404 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <title>Edversity</title>
+   <style>
+   html,
+  
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+  <form id='ok' name='ok' class="form">
+ <div id='signupfrm'>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+   
+       <a class="navbar-brand" href="index.html">EDVERSITY</a>
+       <div class="bg-light text-center" >
+            <div class="container"> 
+            
+<form id='ok' name='ok'>
+
+                <div id="myNav" class="overlay"> 
+                  <div class="overlay-content">
+                  <h3>Verifying Credentials...</h3>
+                  </div>
+                </div>
+
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
+</script>
+     
+   
+           
+              <div class="card">
+               <h5 class="card-header">Createing new account under existing Institute </h5>
+    <form method="POST" role="form" class="form" id='signupfrm'>
+                        {% csrf_token %}
+                        <div class="card-body">
+                          <div class="mdl-grid">
+                              <input class="form-control form-control-lg" type="text" id="iname" name="iname" value="{{iusername}}" hidden />
+
+
+                                <div class="form-group" style="text-align: left;">
+                                    <label class="mdl-textfield__label" for="iname1">Institution Username</label>
+                                     <input class="form-control form-control-lg" type="text" id="iname1" value="{{iusername}}" disabled />
+                                   
+                                </div>
+                            </div>
+                            
+     
+                       
+
+                            <h3>Personal data</h3>
+                            <p>Username & email <strong>CAN NOT</strong> be edited afterwards.</p>
+                           
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="firstName" id="firstName" placeholder="First name"/>
+                                
+                                </div>
+
+                                 <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="secondName" id="secondName" placeholder="Second name"/>
+                                 
+                                </div>
+                           
+
+                            
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="username" id="username"  placeholder="Create Username" required/>
+                                 
+                                </div>
+
+                                  <div class="form-group" style="text-align: left;">
+                                
+                                                <label for="gender">Gender </label>
+                                                <select class="form-control" value="Male" type="text" name="gender" id="gender" required>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                                 <label for="gender">
+                                    
+                                    </label>
+                                                
+                                  </div>
+
+
+                               
+                        
+                            
+                      
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="password" name="password1" id="password1" placeholder="Password" required/>
+                                  
+                                </div>
+
+                                <div class="form-group">
+                                     <input class="form-control form-control-lg" type="password" name="password2" id="password2" placeholder="Re-Passowrd" required/>
+                                    
+                                </div>
+                            
+                         
+                           <h3>Professional Details</h3>
+
+                        
+                                
+                                    <div class="form-group">
+                                       
+                                        <input class="form-control form-control-lg email-inputmask" type="text" name="email" id="email"  placeholder="Institute Email" required/>
+                                        <span class=""><strong>Note-</strong> Gmail or any other public email provider's domain won't be accepted. You need to use and verify you own <strong>Institution's domain email</strong> to craete an account. 
+                          </span>
+                                   
+                            
+                                </div>
+                          
+                                 <div class="form-group" style="text-align: left;">
+                                
+                                                <label for="qualification">Position </label>
+                                                <select class="form-control" placeholder='Position' name="qualification"  id="qualification" tabIndex="-1" required>
+                                                    <option>Faculty</option>
+                                                    <option>Head of department</option>
+                                                    <option>Other</option>
+                                                </select>
+                                                 <label for="qualification">
+                                    
+                                    </label>
+                                                
+                                  </div>
+                                 
+                                  
+                       
+
+                      
+                             
+
+                            <div id='errors'>
+
+                            </div>   
+                         
+                        <div class="form__action">
+                            <label class="mdl-checkbox mdl-js-ripple-effect" for="isInfoReliable">
+                                <input type="checkbox" id="isInfoReliable" class="mdl-checkbox__input" required/>
+                                <span class=""><strong>Important-</strong> By proceeding beyond this page I accept that I am officially associated with the Institution I am creating this account for, If not then I am liable for any legal action taken againt me by the Institution. <br> &nbsp;</span>
+                            </label>
+                            <button id="submit_button" name="submit_button" class="btn btn-primary" type='submit'>
+                                Create New Account
+                            </button>
+                        </div>
+                    </form>
+
+
+
+
+
+
+                   
+              
+            </div>
+        </main>
+    </div>
+</form>
+  <script src="{% static 'js/jquery-2.2.4.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>        
+
+
+
+    <script>
+
+        var iname,username,firstName,secondName,gender,password1,password2,email,qualification,csrfmiddlewaretoken,otp;
+         $("#submit_button").click(function(e){
+            openNav()
+            e.preventDefault()
+            iname = document.getElementById("iname").value;
+            username = document.getElementById("username").value;
+            firstName = document.getElementById("firstName").value;
+            secondName = document.getElementById("secondName").value;
+            gender = document.getElementById("gender").value;
+            password1 = document.getElementById("password1").value;
+            password2 = document.getElementById("password2").value;
+            email = document.getElementById("email").value;
+            qualification = document.getElementById("qualification").value;
+            csrfmiddlewaretoken = $('input[name=csrfmiddlewaretoken]').val();
+            
+            $.ajax({
+                type:'POST',
+                url: "{% url 'common:register' %}",
+                data:{
+                    iname:$('#iname').val(),
+                    firstName:$('#firstName').val(),
+                    secondName:$('#secondName').val(),
+                    username:$('#username').val(),
+                    gender:$('#gender').val(),
+                    password1:$('#password1').val(),
+                    password2:$('#password2').val(),
+                    email:$('#email').val(),
+                    qualification:$('#qualification').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                    action: 'post'
+                },
+                success:function(json){
+                     closeNav()   
+                    if (json.otp == false)
+                    {   
+                        $("#errors").empty();
+                          $("#errors").append('<br><div class="text-danger">Errors-</div>');    
+                        $.each(json.errors, function( index, error ) {
+                          //alert( error );
+                          $("#errors").append('<li class="text-danger">'+error+'</li>');
+                         
+                    });
+                        $("#signupbtn").replaceWith( '<button type="submit"  id = "signupbtn" class="signupbtn"> Create User </button>' )
+                    }
+
+                    else if (json.otp == true)
+                    {
+                         $("#signupfrm").empty();
+                        $("#signupfrm").replaceWith("<div class='mdl-layout mdl-js-layout is-small-screen not-found'> <main class='mdl-layout__content'> <div class='mdl-card mdl-card__login mdl-shadow--2dp'> <div class='mdl-card__supporting-text color--dark-gray'> <div class='mdl-grid'> <div class='mdl-cell mdl-cell--12-col mdl-cell--4-col-phone'> <span class='mdl-card__title-text text-color--smooth-gray'>Edversity</span> </div> <div class='mdl-cell mdl-cell--12-col mdl-cell--4-col-phone'> <span> We've send an OTP to "+email+"</span> <br> <span>Please Verify-</span> </div> <div class='mdl-grid'> <div class='mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield '> <input class='form-control form-control-lg' type='number' id='otp' name='otp' placeholder='Enter OTP' />  </div> </div> <!--<a href='index.html'>--> <div class='mdl-cell mdl-cell--12-col mdl-cell--4-col-phone'> <button type='submit' id='verify' class='mdl-button mdl-js-button color-text--light-blue pull-right'> Verify </button> </div> <!--</a>alignment--bottom-right--> </div> </div> </div> </main> </div>")
+                   
+
+                    }
+        
+                   
+
+
+                },
+                error : function(xhr,errmsg,err) {
+                $('#sigunuperror').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+            });
+        });
+
+
+
+
+  $("#ok").on("submit",function(e){
+            e.preventDefault()
+            otp =  document.getElementById("otp").value;;
+            $.ajax({
+                type:'POST',
+                url: "{% url 'common:otpverification' %}",
+                data:{
+                    iname:iname,
+                    firstName:firstName,
+                    secondName:secondName,
+                    username:username,
+                    gender:gender,
+                    password1:password1,
+                    password2:password2,
+                    email:email,
+                    qualification:qualification,
+                    csrfmiddlewaretoken:csrfmiddlewaretoken,
+                    otp:otp,
+                    action: 'post',
+                },
+                success:function(json){
+                  
+                    if(json.otp == true)
+                    {
+                        window.location = '/Dashboard';
+                    }
+                   else
+                   {
+                     alert( otp +' '+ json.otp);
+                   }
+                   
+
+
+                },
+                error : function(xhr,errmsg,err) {
+                $('#sigunuperror').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+            });
+        });
+
+
+
+
+
+     
+    </script>    
+
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script>
+    <script src="{% static 'assets/vendor/inputmask/js/jquery.inputmask.bundle.js' %}"></script>
+    <script>
+    $(function(e) {
+        "use strict";
+        $(".date-inputmask").inputmask("dd/mm/yyyy"),
+            $(".phone-inputmask").inputmask("(999) 999-9999"),
+            $(".international-inputmask").inputmask("+9(999)999-9999"),
+            $(".xphone-inputmask").inputmask("(999) 999-9999 / x999999"),
+            $(".purchase-inputmask").inputmask("aaaa 9999-****"),
+            $(".cc-inputmask").inputmask("9999 9999 9999 9999"),
+            $(".ssn-inputmask").inputmask("999-99-9999"),
+            $(".isbn-inputmask").inputmask("999-99-999-9999-9"),
+            $(".currency-inputmask").inputmask("$9999"),
+            $(".percentage-inputmask").inputmask("99%"),
+            $(".decimal-inputmask").inputmask({
+                alias: "decimal",
+                radixPoint: "."
+            }),
+
+            $(".email-inputmask").inputmask({
+                mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[*{2,6}][*{1,2}].*{1,}[.*{2,6}][.*{1,2}]",
+                greedy: !1,
+                onBeforePaste: function(n, a) {
+                    return (e = e.toLowerCase()).replace("mailto:", "")
+                },
+                definitions: {
+                    "*": {
+                        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~/-]",
+                        cardinality: 1,
+                        casing: "lower"
+                    }
+                }
+            })
+    });
+    </script>
+</body>
+ 
+</html>

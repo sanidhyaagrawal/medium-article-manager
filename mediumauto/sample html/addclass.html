@@ -1,0 +1,1161 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Edversity Add-Class</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+      <link href="{% static 'assets/vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'assets/libs/css/style.css'%}">
+      <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css'%}">
+   </head>
+   <style>
+      .btn-wrap-text {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      }
+      @media (min-width: 5000px) {
+      .modal-xlg {
+      width: 100%; 
+      }
+      }    
+      .center {
+      margin: auto;
+      width: 50%;
+      }
+           .toptext {
+  display: flex;
+  align-items: baseline;
+}
+   </style>
+   <body>
+      <!-- ============================================================== -->
+      <!-- main wrapper -->
+      <!-- ============================================================== -->
+      <div class="dashboard-main-wrapper">
+      <!-- ============================================================== -->
+      <!-- navbar -->
+      <!-- ============================================================== -->
+      <div class="dashboard-header">
+         <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="../index.html"><span><div class="toptext">Edversity <div style="font-size:11px"> Instructor</div></div></span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav ml-auto navbar-right-top">
+                  <li class="nav-item">
+                     <div id="custom-search" class="top-search-bar">
+                        <input class="form-control" type="text" placeholder="Search..">
+                     </div>
+                  </li>
+                  <li class="nav-item dropdown notification">
+                     <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                     <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                        <li>
+                           <div class="notification-title"> Notification</div>
+                           <div class="notification-list">
+                              <div class="list-group">
+                                 <a href="#" class="list-group-item list-group-item-action active">
+                                    <div class="notification-info">
+                                       <div class="notification-list-user-img"><img src="../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                       <div class="notification-list-user-block">
+                                          <span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                          <div class="notification-date">2 min ago</div>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="notification-info">
+                                       <div class="notification-list-user-img"><img src="../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                       <div class="notification-list-user-block">
+                                          <span class="notification-list-user-name">
+                                          John Abraham</span>is now following you
+                                          <div class="notification-date">2 days ago</div>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="notification-info">
+                                       <div class="notification-list-user-img"><img src="../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                       <div class="notification-list-user-block">
+                                          <span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                          <div class="notification-date">2 min ago</div>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="notification-info">
+                                       <div class="notification-list-user-img"><img src="../assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                       <div class="notification-list-user-block">
+                                          <span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                          <div class="notification-date">2 min ago</div>
+                                       </div>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="list-footer"> <a href="#">View all notifications</a></div>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown connection">
+                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-fw fa-th"></i> </a>
+                     <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                        <li class="connection-list">
+                           <div class="row">
+                              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                 <a href="#" class="connection-item"><img src="../assets/images/github.png" alt="" > <span>Github</span></a>
+                              </div>
+                              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                 <a href="#" class="connection-item"><img src="../assets/images/dribbble.png" alt="" > <span>Dribbble</span></a>
+                              </div>
+                              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                 <a href="#" class="connection-item"><img src="../assets/images/dropbox.png" alt="" > <span>Dropbox</span></a>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                 <a href="#" class="connection-item"><img src="../assets/images/bitbucket.png" alt=""> <span>Bitbucket</span></a>
+                              </div>
+                              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                 <a href="#" class="connection-item"><img src="../assets/images/mail_chimp.png" alt="" ><span>Mail chimp</span></a>
+                              </div>
+                              <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                 <a href="#" class="connection-item"><img src="../assets/images/slack.png" alt="" > <span>Slack</span></a>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="conntection-footer"><a href="#">More</a></div>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="nav-item dropdown nav-user">
+                     <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                     <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                        <div class="nav-user-info">
+                           <h5 class="mb-0 text-white nav-user-name">
+                              John Abraham
+                           </h5>
+                           <span class="status"></span><span class="ml-2">Available</span>
+                        </div>
+                        <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+      </div>
+      <!-- ============================================================== -->
+      <!-- end navbar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- left sidebar -->
+      <!-- ============================================================== -->
+      <div class="nav-left-sidebar sidebar-dark">
+         <div class="menu-list">
+            <nav class="navbar navbar-expand-lg navbar-light">
+               <a class="d-xl-none d-lg-none" href="#">Click This Button To Navigate </a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav flex-column">
+                     <li class="nav-divider">
+                        Menu
+                     </li>
+                     <li class="nav-item ">
+                        <a class="nav-link " href="#"  aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Assingments</a>
+                        <div id="submenu-2" class="collapse submenu" style="">
+                           <ul class="nav flex-column">
+                              <li class="nav-item">
+                                 <a class="nav-link" href="cards.html">Create New Assingment<span class="badge badge-secondary">New</span></a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="carousel.html">Check Submissions</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Resources</a>
+                        <div id="submenu-3" class="collapse submenu" style="">
+                           <ul class="nav flex-column">
+                              <li class="nav-item">
+                                 <a class="nav-link" href="chart-c3.html">Post New Resource</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="chart-chartist.html">Manage Existing Resource</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="nav-item ">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Notices</a>
+                        <div id="submenu-4" class="collapse submenu" style="">
+                           <ul class="nav flex-column">
+                              <li class="nav-item">
+                                 <a class="nav-link" href="form-elements.html">Post New Notice</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="form-validation.html">View Your Created Notices</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="multiselect.html">View Recived Notices</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Calendar</a>
+                        <div id="submenu-5" class="collapse submenu" style="">
+                           <ul class="nav flex-column">
+                              <li class="nav-item">
+                                 <a class="nav-link" href="general-table.html">Create New Event</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="data-tables.html">View You Calendar</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li class="nav-divider">
+                        Features
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link active" href="/addclass"  aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i>Add a New Class You Teach</a>                      
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/Create-Invite-Link"  aria-expanded="false" data-target="#submenu-7" aria-controls="submenu-7"><i class="fas fa-fw fa-inbox"></i>Invite Students to a Class</a>  
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-fw fa-columns"></i>Invite Teaches to Join</a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+         </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- end left sidebar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- wrapper  -->
+      <!-- ============================================================== -->
+      <div class="dashboard-wrapper">
+      <div class="container-fluid dashboard-content">
+         <!-- ============================================================== -->
+         <!-- pageheader -->
+         <!-- ============================================================== -->
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="page-header">
+                  <h2 class="pageheader-title">Classes</h2>
+                  <div class="page-breadcrumb">
+                     <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Edversity</a></li>
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Your Classes</a></li>
+                           
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- ============================================================== -->
+         <!-- end pageheader -->
+         <!-- ============================================================== -->
+         <!-- ============================================================== -->
+         <!-- accrodions -->
+         <!-- ============================================================== -->
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="section-block">
+                  <h5 class="section-title">Classes You Teach</h5>
+               </div>
+               <div class="accrodion-regular">
+                  <div id="accordion3">
+
+                  {% for i in allclasses%}
+                     <div class="card">
+                        <div class="card-header" id="{{forloop.counter )}">
+                           <h5 class="mb-0">
+                              <button class="btn btn-link btn-wrap-text" data-toggle="collapse" data-target="#{{forloop.counter }}" aria-expanded="true" aria-controls="{{forloop.counter }}">
+                              <span class="fas fa-angle-down mr-3"></span>{{i.degree}} > {{i.batch}} > SEM-{{i.semister}} > {{i.room}} > {{i.subdivisions}} > {{i.subject}} </button> 
+                           </h5>
+                        </div>
+                        <div id="{{forloop.counter }}" class="collapse" aria-labelledby="{{forloop.counter }}" data-parent="#accordion3">
+                           <div class="card-body">
+                              <a href="#" class="btn btn-rounded btn-success">Add Students</a>
+                              <a href="#" class="btn btn-rounded btn-warning">Class Details</a>
+                              <a href="#" class="btn btn-rounded btn-danger">Delete</a>
+                           </div>
+                        </div>
+                     </div>
+                      {% endfor%}
+                    
+                     
+                  </div>
+               </div>
+               <a href="#myModal" class="btn btn-rounded btn-primary" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#myModal">Add New Class</a>
+               <!-- The Modal -->
+               <div class="modal" id="myModal">
+                  <div class="modal-xlg">
+                     <div class="modal-content">
+                        <!-- Modal Header -->
+    <form name = "form" id='form' action = "addclass" method = "POST" >
+                           {% csrf_token %}
+                        <div class="modal-header">
+                           <h4 class="modal-title">Add New Class</h4>
+                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                           <div id='options' name='options'>
+                              <select class="form-control" id="DegreeType" name='DegreeType' placeholder='Choose Degree Type' required>
+                                 <option value="" disabled selected hidden>Choose Degree Type</option>
+                                 <option>Bachlors</option>
+                                 <option>Masters</option>
+                                 <option>PhD</option>
+                              </select>
+                           </div>
+                           <br>
+                           <div id='options' name='options'>
+                              <select class="form-control" id="Degree" name='Degree' placeholder='Choose Degree Type' disabled required>
+                                 <option value="" disabled selected hidden>Choose Degree</option>
+                                 
+                              </select>
+                           </div>
+                           <br>
+                           <div id='options' name='options'>
+                              <select class="form-control" id="Course" name='Course' placeholder='Choose Course' disabled required>
+                                 <option value="" disabled selected hidden>Choose Course</option>
+                                 
+                              </select>
+                           </div>
+                           <br>
+                           <div id='options' name='options'>
+                              <select class="form-control" id="Semsiter" name='Semsiter' placeholder='Choose Semsiter' disabled required>
+                                 <option value="" disabled selected hidden>Choose Semsiter</option>
+                               
+                              </select>
+                           </div>
+                            <br>
+                           <div id='options' name='options'>
+                              <select class="form-control" id="RoomName" name='RoomName' placeholder='Choose Room Name' disabled required>
+                                 <option value="" disabled selected hidden>Room Name</option>
+                                
+                              </select>
+                           </div>
+                           <br>
+                           <div class="input-group" id='clonestuff'>
+                              
+                              <span class="input-group-addon"></span>
+                              <select class="form-control" id="Subdivision" name='Subdivision' placeholder='Choose Subdivision' disabled required>
+                                 <option value="" disabled selected hidden>Choose Subdivision</option>
+                                 <option>All Students</option>
+                                
+                              </select>
+                              <span class="input-group-addon"></span>
+                              <select class="form-control" id="Subject" name='Subject' placeholder='Choose Subject'disabled required>
+                                 <option value="" disabled selected hidden>Choose Subject</option>
+                               
+                              </select>
+                              <br><br>
+                           </div>
+                           <div id='clones'></div>
+                           <div class="center">
+                              <br>
+                                   &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-rounded btn-outline-dark" id='clonebttn'>Add Subdivision <strong>+1</strong></button>
+                               
+                           <button type="button" class="btn btn-rounded btn-outline-danger" id='removebttn'>Remove Subdivision <strong>-1</strong> <br> <p style="font-size:11px">Doubble Click</p> </button>
+                          </div>
+                            </div>
+                        <!-- Modal footer -->
+                        <div id='footerr' class="modal-footer">
+
+                         
+                     </form>
+                          <button  id='submitit'class="btn btn-rounded btn-success" disabled>Save</button>
+                        <button  id='rest'class="btn btn-rounded btn-danger" >Reset Changes</button>
+                        </div>
+                           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                           <script>
+                              $("#clonebttn").click(function(e){
+                                $("#clonestuff").clone().appendTo($("#clones"));
+                                });
+                              var touchtime = 0;
+                              $("#removebttn").on("click", function() {
+                                if (((new Date().getTime()) - touchtime) < 500) {
+                                  $("#clones").children().last().remove();
+                                }
+                                touchtime = new Date().getTime();
+                              });
+                           </script>
+                           <script>
+                               $('#rest').click(function(e) {
+                                  e.preventDefault();
+                                  location.reload();
+                                   $("#myModal").modal("show"); 
+                                       });
+
+                               $('#submitit').click(function(e) {
+                                   e.preventDefault();
+                                   document.getElementById("DegreeType").disabled = false;
+                                   document.getElementById("Degree").disabled = false;
+                                   document.getElementById("Course").disabled = false;
+                                   document.getElementById("Semsiter").disabled = false;
+                                   document.getElementById("RoomName").disabled = false;
+                                   document.getElementById("Subdivision").disabled = false;
+                                   document.getElementById("Subject").disabled = false;
+                                   $('#form').submit();
+                                       });
+                           </script>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalCenter" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="LongTitle"></h5>
+
+        <button type="button" class="close" id='nvmc2' aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+      <input class="form-control form-control-lg" name="newvalin" id="newvalin" type="text" placeholder="" autocomplete="off">
+      </div>
+      <p class="text-danger"> <strong>Warning!</strong> Do not Input wrong values in here</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="nvmc">Close</button>
+        <button type="button" class="btn btn-success" id="nvmsave">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+                            <script>
+                              String.prototype.capitalize = function() {
+                                  return this.charAt(0).toUpperCase() + this.slice(1);
+                              }
+
+                              String.prototype.titleize = function() {
+                                  var string_array = this.split(' ');
+                                  string_array = string_array.map(function(str) {
+                                     return str.capitalize(); 
+                                  });
+                                  
+                                  return string_array.join(' ');
+                              }
+
+                               $("#nvmc").click(function(){
+                                    $('#ModalCenter').modal('hide');
+                                   });
+                                  $("#nvmc2").click(function(){
+                                    $('#ModalCenter').modal('hide');
+                                   });
+                              var DegreeType = 'None',Degree='None',Course='None',Semsiter='None',Room_Name='None',Subdivision='None',subject='None';
+                              var coursechange = false, semchange = false, roomchange = false, subdivchange=false,subjectchange=false;
+                              </script>
+                              <script>
+                              $('#DegreeType').change(function(event) {
+
+                                 if ((event.originalEvent.isTrusted === true && event.originalEvent.isPrimary === undefined) || event.originalEvent.isPrimary === true) {
+                                  DegreeType=document.getElementById("DegreeType").value;
+
+                                  console.log(DegreeType);
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                           DegreeType:DegreeType,
+                                           Degree:'None',
+                                           Course:'None',
+                                           Semsiter:'None',
+                                           Room_Name:'None',
+                                           Subdivision:'None',
+                                           subject:'None',
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                                  document.getElementById("Degree").disabled = false;
+                                  $("#Degree").empty(); 
+                                  $("#Degree").append("<option value='' disabled selected hidden>Choose Degree</option>");
+                                   for(var optionsxx in json.options)
+                                   {
+                                   $("#Degree").append("<option>"+json.options[optionsxx]+"</option>"); 
+                                   }
+                                   $("#Degree").append("<option style='font-weight: bold;'>Create New</option>"); 
+                                   //resetign all other
+                                   $("#Course").append("<option value='' disabled selected hidden>Choose Course</option>");
+                                   document.getElementById("Course").disabled = true;
+
+                                   $("#Semsiter").append("<option value='' disabled selected hidden>Choose Semsiter</option>");
+                                   document.getElementById("Semsiter").disabled = true;
+
+                                   $("#RoomName").append("<option value='' disabled selected hidden>Room Name</option>");
+                                   document.getElementById("RoomName").disabled = true;
+
+                                
+                                   $("#Subdivision").append("<option value='' disabled selected hidden>Choose Subdivision</option>");
+                                   document.getElementById("Subdivision").disabled = true;
+
+                                   $("#Subject").append("<option value='' disabled selected hidden>Choose Subject</option>");
+                                   document.getElementById("Subject").disabled = true;
+                                   $("#clones").empty(); 
+                                    
+                                 },
+                                 });
+                                } });
+                              </script>
+                              <script>
+
+                              $('#Degree').change(function(event) {
+                                 if ((event.originalEvent.isTrusted === true && event.originalEvent.isPrimary === undefined) || event.originalEvent.isPrimary === true)  {
+                                  Degree=document.getElementById("Degree").value;
+                                 //alert('This must not be '+Degree)
+                                 if(Degree == 'Create New')
+                                  {
+                                    //alert('This must not be here '+Degree)
+                                    document.getElementById("LongTitle").innerHTML = 'Creating New Degree';
+                                    $("#newvalin").attr("placeholder", "Input New Degree Name");
+                                    $('#ModalCenter').modal('show');
+                                    
+                                   $("#nvmsave").click(function(){
+                                    var newin =  document.getElementById("newvalin").value.titleize();
+                                    newin = newin.titleize();
+                                    var exists = false;
+                                       $('#Degree option').each(function(){
+                                           if (this.value == newin) {
+                                               exists = true;
+                                              
+                                           }
+                                       });
+                                       //alert(exists)
+                                   
+                                    
+                                    //$("#Degree").val(newin);
+                                     //alert('Degree value in degree '+document.getElementById("Degree").value)
+                          
+                                // alert('coursechange ' + coursechange)
+                                  if (coursechange == false) 
+                                  {  
+
+                                    $("#Degree").val(newin);
+                                    document.getElementById("Degree").disabled = true;
+                                   
+                                     $("#clonebttn").remove(); 
+                                     $("#removebttn").empty(); 
+                                     $("#removebttn").append('+1 <strong>Disabled</strong> in Create New Mode <br><p style="font-size:11px">For Data Security Reasons</p>'); 
+                                     
+                                    document.getElementById("DegreeType").disabled = true;
+                                    if(exists == false)
+                                    {
+                                      $("#Degree").prepend("<option>"+newin+"</option>"); 
+                                    }  
+                                  //  alert("Degree Overwrote")
+                                    Degree = newin;
+                                    $('#ModalCenter').modal('hide');
+                                   Degreef();
+                                  }
+                                  
+                                   });
+                                  }
+
+                                  else{Degreef();}
+                                 
+                                  
+                                    function Degreef()
+                                  {  
+                                  console.log(Degree);
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                              DegreeType:DegreeType,
+                                              Degree:Degree,
+                                              Course:'None',
+                                              Semsiter:'None',
+                                              Room_Name:'None',
+                                              Subdivision:'None',
+                                              subject:'None',
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                                  document.getElementById("Course").disabled = false;
+                                  $("#Course").empty(); 
+                                  $("#Course").append("<option value='' disabled selected hidden>Choose Course</option>");
+                                   for(var optionsxx in json.options)
+                                   {
+                                   $("#Course").append("<option>"+json.options[optionsxx]+"</option>");
+                                   }
+                                   $("#Course").append("<option style='font-weight: bold;'>Create New</option>"); 
+                                 
+                                   //resetign all other
+                               
+                                   $("#Semsiter").append("<option value='' disabled selected hidden>Choose Semsiter</option>");
+                                   document.getElementById("Semsiter").disabled = true;
+
+                                   $("#RoomName").append("<option value='' disabled selected hidden>Room Name</option>");
+                                   document.getElementById("RoomName").disabled = true;
+
+                                
+                                   $("#Subdivision").append("<option value='' disabled selected hidden>Choose Subdivision</option>");
+                                   document.getElementById("Subdivision").disabled = true;
+
+                                   $("#Subject").append("<option value='' disabled selected hidden>Choose Subject</option>");
+                                   document.getElementById("Subject").disabled = true;
+                                   $("#clones").empty(); 
+                                 },
+                                 });}
+                                 }  });
+
+                                 </script> 
+                                 <script>
+
+                            $('#Course').change(function() {
+                                Course=document.getElementById("Course").value;
+                                 //alert('This must not be '+Course)
+                                 if(Course == 'Create New')
+                                  { 
+                                    coursechange = true;
+                                   // alert('This must not be here '+Course)
+                                    document.getElementById("LongTitle").innerHTML = 'Creating New Course';
+                                    $("#newvalin").attr("placeholder", "Input New Course Name");
+                                    $('#ModalCenter').modal('show');
+                                    
+                                   $("#nvmsave").click(function(){
+                                    var newin =  document.getElementById("newvalin").value.titleize();
+                                    newin = newin.titleize();
+                                    var exists = false;
+                                       $('#Course option').each(function(){
+                                           if (this.value == newin) {
+                                               exists = true;
+                                              
+                                           }
+                                       });
+                                       //alert(exists)
+                                   
+                                    
+                                    //$("#Course").val(newin);
+                                     //alert('Course value in Course '+document.getElementById("Course").value)
+                          
+                                 //alert('semchange ' + semchange)
+                                  if (semchange == false) 
+                                  {  
+
+                                    $("#Course").val(newin);
+                                    document.getElementById("Course").disabled = true;
+                                    document.getElementById("Degree").disabled = true;
+                                    document.getElementById("DegreeType").disabled = true;
+                                   
+                                     $("#clonebttn").remove(); 
+                                     $("#removebttn").empty(); 
+                                     $("#removebttn").append('+1 <strong>Disabled</strong> in Create New Mode <br><p style="font-size:11px">For Data Security Reasons</p>'); 
+
+                                    if(exists == false)
+                                    {
+                                      $("#Course").prepend("<option>"+newin+"</option>"); 
+                                    }  
+                                   // alert("Course Overwrote")
+                                    Course = newin;
+                                    $('#ModalCenter').modal('hide');
+                                   Coursef();
+                                  }
+                                  
+                                   });
+                                  }
+
+                                  else{Coursef();}
+                                 
+                                  
+                                    function Coursef()
+                                  {  
+                                  console.log(Course);
+                                //   alert('Degree value in Course ajax '+document.getElementById("Degree").value)
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                              DegreeType:DegreeType,
+                                              Degree:Degree,
+                                              Course:Course,
+                                              Semsiter:'None',
+                                              Room_Name:'None',
+                                              Subdivision:'None',
+                                              subject:'None',
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                                  document.getElementById("Semsiter").disabled = false;
+                                  $("#Semsiter").empty(); 
+                                  $("#Semsiter").append("<option value='' disabled selected hidden>Choose Semsiter</option>");
+                                   for(var optionsxx in json.options)
+                                   {
+                                   $("#Semsiter").append("<option>"+json.options[optionsxx]+"</option>");
+                                   }
+                                   $("#Semsiter").append("<option style='font-weight: bold;'>Create New</option>");  
+                                   //resetign all other
+                                  
+
+                                   $("#RoomName").append("<option value='' disabled selected hidden>Room Name</option>");
+                                   document.getElementById("RoomName").disabled = true;
+
+                                
+                                   $("#Subdivision").append("<option value='' disabled selected hidden>Choose Subdivision</option>");
+                                   document.getElementById("Subdivision").disabled = true;
+
+                                   $("#Subject").append("<option value='' disabled selected hidden>Choose Subject</option>");
+                                   document.getElementById("Subject").disabled = true;
+                                   $("#clones").empty(); 
+                                 },
+                                 });}
+                                 });
+                                 </script>
+                                 <script>
+
+                               $('#Semsiter').change(function() {
+                                  Semsiter=document.getElementById("Semsiter").value;
+                                   if(Semsiter == 'Create New')
+                                  { 
+                                    semchange = true;
+                                  //  alert('This must not be here '+Semsiter)
+                                    document.getElementById("LongTitle").innerHTML = 'Creating New Semsiter';
+                                    $("#newvalin").attr("placeholder", "Input New Semsiter Name");
+                                    $("#newvalin").attr("type", "number");
+                                    $('#ModalCenter').modal('show');
+                                    
+                                   $("#nvmsave").click(function(){
+
+                                    var newin =  document.getElementById("newvalin").value.titleize();
+                                    newin = newin.titleize();
+                                    $("#newvalin").attr("type", "text");
+                                    var exists = false;
+                                       $('#Semsiter option').each(function(){
+                                           if (this.value == newin) {
+                                               exists = true;
+                                              
+                                           }
+                                       });
+                                    
+                                  if (roomchange == false) 
+                                  {  
+
+                                    $("#Semsiter").val(newin);
+                                    document.getElementById("Semsiter").disabled = true;
+                                    document.getElementById("Course").disabled = true;
+                                    document.getElementById("Degree").disabled = true;
+                                    document.getElementById("DegreeType").disabled = true;
+                                   
+                                     $("#clonebttn").remove(); 
+                                     $("#removebttn").empty(); 
+                                     $("#removebttn").append('+1 <strong>Disabled</strong> in Create New Mode <br><p style="font-size:11px">For Data Security Reasons</p>'); 
+
+                                    if(exists == false)
+                                    {
+                                      $("#Semsiter").prepend("<option>"+newin+"</option>"); 
+                                    }  
+                                   // alert("Semsiter Overwrote")
+                                    Semsiter = newin;
+                                    $('#ModalCenter').modal('hide');
+                                   Semsiterf();
+                                  }
+                                  
+                                   });
+                                  }
+                                    else{Semsiterf();}
+                                 
+                                  
+                                    function Semsiterf()
+                                  {  
+                                  console.log(Semsiter);
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                              DegreeType:DegreeType,
+                                              Degree:Degree,
+                                              Course:Course,
+                                              Semsiter:Semsiter,
+                                              Room_Name:'None',
+                                              Subdivision:'None',
+                                              subject:'None',
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                                    $("[name='RoomName']").each(function(){
+                                    this.disabled = false;
+                                     $(this).empty(); 
+                                 $(this).append("<option value='' disabled selected hidden>Room Name</option>");
+                                   for(var optionsxx in json.options)
+                                   {this.disabled = false;
+                                   $(this).append("<option>"+json.options[optionsxx]+"</option>");
+                                   }
+                                    $(this).append("<option style='font-weight: bold;'>Create New</option>"); 
+                                     $("#clones").empty(); 
+                                   });
+                                 
+                                   //resetign all other
+                                 
+                                   $("#Subdivision").append("<option value='' disabled selected hidden>Choose Subdivision</option>");
+                                   document.getElementById("Subdivision").disabled = true;
+
+                                   $("#Subject").append("<option value='' disabled selected hidden>Choose Subject</option>");
+                                   document.getElementById("Subject").disabled = true;
+                                 },
+                                 });}
+                                 });
+
+                              
+                            $(document).on('change',"[name='RoomName']" ,function()
+                                   {
+
+                                  RoomName=document.getElementById("RoomName").value;
+                                  if(RoomName == 'Create New')
+                                  { 
+                                    roomchange = true;
+                                   // alert('This must not be here '+RoomName)
+                                    document.getElementById("LongTitle").innerHTML = 'Creating New RoomName';
+                                    $("#newvalin").attr("placeholder", "Input New RoomName Name");
+                                    $('#ModalCenter').modal('show');
+                                    
+                                   $("#nvmsave").click(function(){
+                                    var newin =  document.getElementById("newvalin").value.titleize();
+                                    newin = newin.titleize();
+                                    var exists = false;
+                                       $('#RoomName option').each(function(){
+                                           if (this.value == newin) {
+                                               exists = true;
+                                              
+                                           }
+                                       });
+                                       //alert(exists)
+                                   
+                                    
+                                    //$("#RoomName").val(newin);
+                                     //alert('RoomName value in RoomName '+document.getElementById("RoomName").value)
+                          
+                                 //alert('semchange ' + semchange)
+                                  if (subdivchange == false) 
+                                  {  
+
+                                    $("#RoomName").val(newin);
+                                    document.getElementById("RoomName").disabled = true;
+                                    document.getElementById("Semsiter").disabled = true;
+                                    document.getElementById("Course").disabled = true;
+                                    document.getElementById("Degree").disabled = true;
+                                    document.getElementById("DegreeType").disabled = true;
+                                    
+                                     $("#clonebttn").remove(); 
+                                     $("#removebttn").empty(); 
+                                     $("#removebttn").append('+1 <strong>Disabled</strong> in Create New Mode <br><p style="font-size:11px">For Data Security Reasons</p>'); 
+
+
+                                    if(exists == false)
+                                    {
+                                      $("#RoomName").prepend("<option>"+newin+"</option>"); 
+                                    }  
+                                   // alert("RoomName Overwrote")
+                                    RoomName = newin;
+                                    $('#ModalCenter').modal('hide');
+                                   RoomNamef();
+                                  }
+                                  
+                                   });
+                                  }
+
+                                  else{RoomNamef();}
+                                 
+                                  
+                                    function RoomNamef()
+                                  {  
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                              DegreeType:DegreeType,
+                                              Degree:Degree,
+                                              Course:Course,
+                                              Semsiter:Semsiter,
+                                              Room_Name:RoomName,
+                                              Subdivision:'None',
+                                              subject:'None',
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                                 $("[name='Subdivision']").each(function(){
+                                    this.disabled = false;
+                                     $(this).empty(); 
+                                 $(this).append("<option value='' disabled selected hidden>Choose Subdivision</option>");
+                                   for(var optionsxx in json.options)
+                                   {this.disabled = false;
+                                   $(this).append("<option>"+json.options[optionsxx]+"</option>");
+                                   }
+
+                                  $(this).append("<option style='font-weight: bold;'>Create New</option>"); 
+                                  });
+                                 },
+                                 });}
+                                 }); 
+
+
+
+
+
+                              $('#Subdivision').change(function() {
+                                  Subdivision=document.getElementById("Subdivision").value;
+                                  if(Subdivision == 'Create New')
+                                  { 
+                                    subdivchange = true;
+                                   // alert('This must not be here '+Subdivision)
+                                    document.getElementById("LongTitle").innerHTML = 'Creating New Subdivision';
+                                    $("#newvalin").attr("placeholder", "Input New Subdivision Name");
+                                    $('#ModalCenter').modal('show');
+                                    
+                                   $("#nvmsave").click(function(){
+                                    var newin =  document.getElementById("newvalin").value.titleize();
+                                    newin = newin.titleize();
+                                    var exists = false;
+                                       $('#Subdivision option').each(function(){
+                                           if (this.value == newin) {
+                                               exists = true;
+                                              
+                                           }
+                                       });
+                                       //alert(exists)
+                                   
+                                    
+                                    //$("#Subdivision").val(newin);
+                                     //alert('Subdivision value in Subdivision '+document.getElementById("Subdivision").value)
+                          
+                                 //alert('semchange ' + semchange)
+                                  if (subjectchange == false) 
+                                  {  
+
+                                    $("#Subdivision").val(newin);
+                                    document.getElementById("Subdivision").disabled = true;
+                                    document.getElementById("RoomName").disabled = true;
+                                    document.getElementById("Semsiter").disabled = true;
+                                    document.getElementById("Course").disabled = true;
+                                    document.getElementById("Degree").disabled = true;
+                                    document.getElementById("DegreeType").disabled = true;
+                                  
+                                     $("#clonebttn").remove(); 
+                                     $("#removebttn").empty(); 
+                                     $("#removebttn").append('+1 <strong>Disabled</strong> in Create New Mode <br><p style="font-size:11px">For Data Security Reasons</p>'); 
+
+
+                                    if(exists == false)
+                                    {
+                                      $("#Subdivision").prepend("<option>"+newin+"</option>"); 
+                                    }  
+                                   // alert("Subdivision Overwrote")
+                                    Subdivision = newin;
+                                    $('#ModalCenter').modal('hide');
+                                   Subdivisionf();
+                                  }
+                                  
+                                   });
+                                  }
+
+                                  else{
+                                    Subdivisionf();
+                                 }
+                                 
+                                  
+                                    function Subdivisionf()
+                                  {  
+                                  console.log(RoomName);
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                              DegreeType:DegreeType,
+                                              Degree:Degree,
+                                              Course:Course,
+                                              Semsiter:Semsiter,
+                                              Room_Name:RoomName,
+                                              Subdivision:Subdivision,
+                                              subject:'None',
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                                  $("[name='Subject']").each(function(){
+                                    this.disabled = false;
+                                     $(this).empty(); 
+                                 $(this).append("<option value='' disabled selected hidden>Choose Subject</option>");
+                                   for(var optionsxx in json.options)
+                                   {this.disabled = false;
+                                   $(this).append("<option>"+json.options[optionsxx]+"</option>");
+                                   }
+
+                                  $(this).append("<option style='font-weight: bold;'>Create New</option>"); 
+                                  });
+                                 
+                                  
+                                 },
+                                 });}
+                                 });   
+
+
+
+
+                        var save = false;
+
+                        $('#Subject').change(function() {
+                                  Subject=document.getElementById("Subject").value;
+                                  if(Subject == 'Create New')
+                                  { 
+                                    subjectchange = true;
+                                   // alert('This must not be here '+Subject)
+                                    document.getElementById("LongTitle").innerHTML = 'Creating New Subject';
+                                    $("#newvalin").attr("placeholder", "Input New Subject Name");
+                                    $('#ModalCenter').modal('show');
+                                    
+                                   $("#nvmsave").click(function(){
+                                    var newin =  document.getElementById("newvalin").value.titleize();
+                                    newin = newin.titleize();
+                                    var exists = false;
+                                       $('#Subject option').each(function(){
+                                           if (this.value == newin) {
+                                               exists = true;
+                                              
+                                           }
+                                       });
+                                       //alert(exists)
+                                   
+                                    
+                                    //$("#Subject").val(newin);
+                                     //alert('Subject value in Subject '+document.getElementById("Subject").value)
+                                 
+                                 //alert('semchange ' + semchange)
+                                  if (save == false) 
+                                  {  
+
+                                    $("#Subject").val(newin);
+                                    document.getElementById("Subject").disabled = true;
+                                    document.getElementById("Subdivision").disabled = true;
+                                    document.getElementById("RoomName").disabled = true;
+                                    document.getElementById("Semsiter").disabled = true;
+                                    document.getElementById("Course").disabled = true;
+                                    document.getElementById("Degree").disabled = true;
+                                    document.getElementById("DegreeType").disabled = true;
+                                    $("#footerr").prepend('Please click <strong> Save </strong> to create this new batch you teach - '); 
+
+                                     $("#clonebttn").remove(); 
+                                     $("#removebttn").empty(); 
+                                     $("#removebttn").append('+1 <strong>Disabled</strong> in Create New Mode <br><p style="font-size:11px">For Data Security Reasons</p>'); 
+                                     document.getElementById("submitit").disabled = false;
+
+                                    if(exists == false)
+                                    {
+                                      $("#Subject").prepend("<option>"+newin+"</option>"); 
+                                    }  
+                                   // alert("Subject Overwrote")
+                                    Subject = newin;
+                                    $('#ModalCenter').modal('hide');
+                                   Subjectf();
+                                  }
+                                  
+                                   });
+                                  }
+
+                                  else{
+                                    Subjectf();
+                                 }
+                                 
+                                  
+                                    function Subjectf()
+                                  {  
+                                  console.log(RoomName);
+                                  $.ajax({
+                                       type:'POST',
+                                       url: "{% url 'common:getdata' %}",
+                                       data:{
+                                              DegreeType:DegreeType,
+                                              Degree:Degree,
+                                              Course:Course,
+                                              Semsiter:Semsiter,
+                                              Room_Name:RoomName,
+                                              Subdivision:Subdivision,
+                                              subject: Subject,
+                                           csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                           action: 'post',
+                                       },
+                                  success:function(json){
+                         
+                                 document.getElementById("submitit").disabled = false;
+                                  
+                                 },
+                                 });}
+                                 });   
+
+
+                                  
+
+                              
+                                                               //Dynamic Data loader
+
+
+
+
+                           </script>
+                      
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- ============================================================== -->
+         <!-- end wrapper -->
+         <!-- ============================================================== -->
+      </div>
+      <!-- ============================================================== -->
+      <!-- end main wrapper -->
+      <!-- ============================================================== -->
+      <!-- Optional JavaScript -->
+      <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js'%}"></script>
+      <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js'%}"></script>
+      <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js'%}"></script>
+      <script src="{% static 'assets/libs/js/main-js.js"></script>
+      <script>
+         $('.collapse').on('shown.bs.collapse', function() {
+             $(this).parent().find(".fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-up");
+         }).on('hidden.bs.collapse', function() {
+             $(this).parent().find(".fa-angle-up").removeClass("fa-angle-up").addClass("fa-angle-down");
+         });
+         
+         $('.panel-heading a').click(function() {
+             $('.panel-heading').removeClass('active');
+         
+             //If the panel was open and would be closed by this click, do not active it
+             if (!$(this).closest('.panel').find('.panel-collapse').hasClass('in'))
+                 $(this).parents('.panel-heading').addClass('active');
+         });
+      </script>
+   </body>
+</html>

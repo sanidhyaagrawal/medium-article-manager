@@ -1,0 +1,2805 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!--   meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <link href="{% static 'css/cropper.min.css' %}" rel="stylesheet">
+    <title>Edversity</title>
+   <style>
+   html,
+  
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #EFEFF6;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ffff; 
+  border-bottom: 1px solid #EFEFF6; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #EFEFF6; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #EFEFF6 !important; 
+  color: #00000; 
+}
+</style>
+   <style>
+      .btn-wrap-text {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      }
+      @media (min-width: 5000px) {
+      .modal-xlg {
+      width: 100%; 
+      }
+      }    
+      .center {
+      margin: auto;
+      width: 50%;
+      }
+           .toptext {
+  display: flex;
+  align-items: baseline;
+
+}
+
+
+
+
+$white: #ffffff;
+$black: #000000;
+$purple200: #c1bde3;
+$purple300: #24243e;
+$purple400: #302b63;
+$purple500: #201a4e;
+$width-md: 720px;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background: $purple400;
+
+  @media (min-width: $width-md) {
+    flex-direction: row;
+  }
+}
+
+::selection {
+  background-color: rgba($purple200, 0.25);
+}
+
+#text {
+  box-sizing: border-box;
+  min-height: 40px;
+  background-color: rgba($purple200, 0.05);
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.85rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  box-shadow: 0px 2px 12px -3px rgba($black, 0.75);
+
+  @media (min-width: $width-md) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 0;
+  }
+}
+
+
+  &:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    bottom: -20px;
+    left: 33px;
+    clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+  }
+
+  &:after {
+    content: attr(tooltip);
+    width: 140px;
+    bottom: -48px;
+    left: -30px;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  &:before,
+  &:after {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: $black;
+    color: $white;
+    transform: translateY(-10px);
+    transition: all 300ms ease;
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+$white: #ffffff;
+$black: #000000;
+$purple200: #c1bde3;
+$purple300: #24243e;
+$purple400: #302b63;
+$purple500: #201a4e;
+$width-md: 720px;
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  background: $purple400;
+
+  @media (min-width: $width-md) {
+    flex-direction: row;
+  }
+}
+
+::selection {
+  background-color: rgba($purple200, 0.25);
+}
+
+#messtext {
+  box-sizing: border-box;
+  min-height: 40px;
+  background-color: rgba($purple200, 0.05);
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.85rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  box-shadow: 0px 2px 12px -3px rgba($black, 0.75);
+
+  @media (min-width: $width-md) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 0;
+  }
+}
+
+
+  &:before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    bottom: -20px;
+    left: 33px;
+    clip-path: polygon(50% 40%, 0% 100%, 100% 100%);
+  }
+
+  &:after {
+    content: attr(tooltip);
+    width: 140px;
+    bottom: -48px;
+    left: -30px;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  &:before,
+  &:after {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: $black;
+    color: $white;
+    transform: translateY(-10px);
+    transition: all 300ms ease;
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.toptext {
+  display: flex;
+  align-items: baseline;
+
+}
+
+
+
+
+
+
+
+
+   </style>
+</head>
+
+<body>
+<script>
+var state_arr = new Array("Andaman & Nicobar", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra & Nagar Haveli", "Daman & Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu & Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttar Pradesh", "Uttaranchal", "West Bengal");
+
+var s_a = new Array();
+s_a[0]="";
+s_a[1]=" Alipur | Andaman Island | Anderson Island | Arainj-Laka-Punga | Austinabad | Bamboo Flat | Barren Island | Beadonabad | Betapur | Bindraban | Bonington | Brookesabad | Cadell Point | Calicut | Chetamale | Cinque Islands | Defence Island | Digilpur | Dolyganj | Flat Island | Geinyale | Great Coco Island | Haddo | Havelock Island | Henry Lawrence Island | Herbertabad | Hobdaypur | Ilichar | Ingoie | Inteview Island | Jangli Ghat | Jhon Lawrence Island | Karen | Kartara | KYD Islannd | Landfall Island | Little Andmand | Little Coco Island | Long Island | Maimyo | Malappuram | Manglutan | Manpur | Mitha Khari | Neill Island | Nicobar Island | North Brother Island | North Passage Island | North Sentinel Island | Nothen Reef Island | Outram Island | Pahlagaon | Palalankwe | Passage Island | Phaiapong | Phoenix Island | Port Blair | Preparis Island | Protheroepur | Rangachang | Rongat | Rutland Island | Sabari | Saddle Peak | Shadipur | Smith Island | Sound Island | South Sentinel Island | Spike Island | Tarmugli Island | Taylerabad | Titaije | Toibalawe | Tusonabad | West Island | Wimberleyganj | Yadita";
+s_a[2]=" Achampet | Adilabad | Adoni | Alampur | Allagadda | Alur | Amalapuram | Amangallu | Anakapalle | Anantapur | Andole | Araku | Armoor | Asifabad | Aswaraopet | Atmakur | B. Kothakota | Badvel | Banaganapalle | Bandar | Bangarupalem | Banswada | Bapatla | Bellampalli | Bhadrachalam | Bhainsa | Bheemunipatnam | Bhimadole | Bhimavaram | Bhongir | Bhooragamphad | Boath | Bobbili | Bodhan | Chandoor | Chavitidibbalu | Chejerla | Chepurupalli | Cherial | Chevella | Chinnor | Chintalapudi | Chintapalle | Chirala | Chittoor | Chodavaram | Cuddapah | Cumbum | Darsi | Devarakonda | Dharmavaram | Dichpalli | Divi | Donakonda | Dronachalam | East Godavari | Eluru | Eturnagaram | Gadwal | Gajapathinagaram | Gajwel | Garladinne | Giddalur | Godavari | Gooty | Gudivada | Gudur | Guntur | Hindupur | Hunsabad | Huzurabad | Huzurnagar | Hyderabad | Ibrahimpatnam | Jaggayyapet | Jagtial | Jammalamadugu | Jangaon | Jangareddygudem | Jannaram | Kadiri | Kaikaluru | Kakinada | Kalwakurthy | Kalyandurg | Kamalapuram | Kamareddy | Kambadur | Kanaganapalle | Kandukuru | Kanigiri | Karimnagar | Kavali | Khammam | Khanapur (AP) | Kodangal | Koduru | Koilkuntla | Kollapur | Kothagudem | Kovvur | Krishna | Krosuru | Kuppam | Kurnool | Lakkireddipalli | Madakasira | Madanapalli | Madhira | Madnur | Mahabubabad | Mahabubnagar | Mahadevapur | Makthal | Mancherial | Mandapeta | Mangalagiri | Manthani | Markapur | Marturu | Medachal | Medak | Medarmetla | Metpalli | Mriyalguda | Mulug | Mylavaram | Nagarkurnool | Nalgonda | Nallacheruvu | Nampalle | Nandigama | Nandikotkur | Nandyal | Narasampet | Narasaraopet | Narayanakhed | Narayanpet | Narsapur | Narsipatnam | Nazvidu | Nelloe | Nellore | Nidamanur | Nirmal | Nizamabad | Nuguru | Ongole | Outsarangapalle | Paderu | Pakala | Palakonda | Paland | Palmaneru | Pamuru | Pargi | Parkal | Parvathipuram | Pathapatnam | Pattikonda | Peapalle | Peddapalli | Peddapuram | Penukonda | Piduguralla | Piler | Pithapuram | Podili | Polavaram | Prakasam | Proddatur | Pulivendla | Punganur | Putturu | Rajahmundri | Rajampeta | Ramachandrapuram | Ramannapet | Rampachodavaram | Rangareddy | Rapur | Rayachoti | Rayadurg | Razole | Repalle | Saluru | Sangareddy | Sathupalli | Sattenapalle | Satyavedu | Shadnagar | Siddavattam | Siddipet | Sileru | Sircilla | Sirpur Kagaznagar | Sodam | Sompeta | Srikakulam | Srikalahasthi | Srisailam | Srungavarapukota | Sudhimalla | Sullarpet | Tadepalligudem | Tadipatri | Tanduru | Tanuku | Tekkali | Tenali | Thungaturthy | Tirivuru | Tirupathi | Tuni | Udaygiri | Ulvapadu | Uravakonda | Utnor | V.R. Puram | Vaimpalli | Vayalpad | Venkatgiri | Venkatgirikota | Vijayawada | Vikrabad | Vinjamuru | Vinukonda | Visakhapatnam | Vizayanagaram | Vizianagaram | Vuyyuru | Wanaparthy | Warangal | Wardhannapet | Yelamanchili | Yelavaram | Yeleswaram | Yellandu | Yellanuru | Yellareddy | Yerragondapalem | Zahirabad ";
+s_a[3]=" Along | Anini | Anjaw | Bameng | Basar | Changlang | Chowkhem | Daporizo | Dibang Valley | Dirang | Hayuliang | Huri | Itanagar | Jairampur | Kalaktung | Kameng | Khonsa | Kolaring | Kurung Kumey | Lohit | Lower Dibang Valley | Lower Subansiri | Mariyang | Mechuka | Miao | Nefra | Pakkekesang | Pangin | Papum Pare | Passighat | Roing | Sagalee | Seppa | Siang | Tali | Taliha | Tawang | Tezu | Tirap | Tuting | Upper Siang | Upper Subansiri | Yiang Kiag ";
+s_a[4]=" Abhayapuri | Baithalangshu | Barama | Barpeta Road | Bihupuria | Bijni | Bilasipara | Bokajan | Bokakhat | Boko | Bongaigaon | Cachar | Cachar Hills | Darrang | Dhakuakhana | Dhemaji | Dhubri | Dibrugarh | Digboi | Diphu | Goalpara | Gohpur | Golaghat | Guwahati | Hailakandi | Hajo | Halflong | Hojai | Howraghat | Jorhat | Kamrup | Karbi Anglong | Karimganj | Kokarajhar | Kokrajhar | Lakhimpur | Maibong | Majuli | Mangaldoi | Mariani | Marigaon | Moranhat | Morigaon | Nagaon | Nalbari | Rangapara | Sadiya | Sibsagar | Silchar | Sivasagar | Sonitpur | Tarabarihat | Tezpur | Tinsukia | Udalgiri | Udalguri | UdarbondhBarpeta";
+s_a[5]=" Adhaura | Amarpur | Araria | Areraj | Arrah | Arwal | Aurangabad | Bagaha | Banka | Banmankhi | Barachakia | Barauni | Barh | Barosi | Begusarai | Benipatti | Benipur | Bettiah | Bhabhua | Bhagalpur | Bhojpur | Bidupur | Biharsharif | Bikram | Bikramganj | Birpur | Buxar | Chakai | Champaran | Chapara | Dalsinghsarai | Danapur | Darbhanga | Daudnagar | Dhaka | Dhamdaha | Dumraon | Ekma | Forbesganj | Gaya | Gogri | Gopalganj | H.Kharagpur | Hajipur | Hathua | Hilsa | Imamganj | Jahanabad | Jainagar | Jamshedpur | Jamui | Jehanabad | Jhajha | Jhanjharpur | Kahalgaon | Kaimur (Bhabua) | Katihar | Katoria | Khagaria | Kishanganj | Korha | Lakhisarai | Madhepura | Madhubani | Maharajganj | Mahua | Mairwa | Mallehpur | Masrakh | Mohania | Monghyr | Motihari | Motipur | Munger | Muzaffarpur | Nabinagar | Nalanda | Narkatiaganj | Naugachia | Nawada | Pakribarwan | Pakridayal | Patna | Phulparas | Piro | Pupri | Purena | Purnia | Rafiganj | Rajauli | Ramnagar | Raniganj | Raxaul | Rohtas | Rosera | S.Bakhtiarpur | Saharsa | Samastipur | Saran | Sasaram | Seikhpura | Sheikhpura | Sheohar | Sherghati | Sidhawalia | Singhwara | Sitamarhi | Siwan | Sonepur | Supaul | Thakurganj | Triveniganj | Udakishanganj | Vaishali | Wazirganj";
+s_a[6]=" Chandigarh | Mani Marja";
+s_a[7]=" Ambikapur | Antagarh | Arang | Bacheli | Bagbahera | Bagicha | Baikunthpur | Balod | Balodabazar | Balrampur | Barpalli | Basana | Bastanar | Bastar | Bderajpur | Bemetara | Berla | Bhairongarh | Bhanupratappur | Bharathpur | Bhatapara | Bhilai | Bhilaigarh | Bhopalpatnam | Bijapur | Bilaspur | Bodla | Bokaband | Chandipara | Chhinagarh | Chhuriakala | Chingmut | Chuikhadan | Dabhara | Dallirajhara | Dantewada | Deobhog | Dhamda | Dhamtari | Dharamjaigarh | Dongargarh | Durg | Durgakondal | Fingeshwar | Gariaband | Garpa | Gharghoda | Gogunda | Ilamidi | Jagdalpur | Janjgir | Janjgir-Champa | Jarwa | Jashpur | Jashpurnagar | Kabirdham-Kawardha | Kanker | Kasdol | Kathdol | Kathghora | Kawardha | Keskal | Khairgarh | Kondagaon | Konta | Korba | Korea | Kota | Koyelibeda | Kuakunda | Kunkuri | Kurud | Lohadigundah | Lormi | Luckwada | Mahasamund | Makodi | Manendragarh | Manpur | Marwahi | Mohla | Mungeli | Nagri | Narainpur | Narayanpur | Neora | Netanar | Odgi | Padamkot | Pakhanjur | Pali | Pandaria | Pandishankar | Parasgaon | Pasan | Patan | Pathalgaon | Pendra | Pratappur | Premnagar | Raigarh | Raipur | Rajnandgaon | Rajpur | Ramchandrapur | Saraipali | Saranggarh | Sarona | Semaria | Shakti | Sitapur | Sukma | Surajpur | Surguja | Tapkara | Toynar | Udaipur | Uproda | Wadrainagar";
+s_a[8]=" Amal | Amli | Bedpa | Chikhli | Dadra & Nagar Haveli | Dahikhed | Dolara | Galonda | Kanadi | Karchond | Khadoli | Kharadpada | Kherabari | Kherdi | Kothar | Luari | Mashat | Rakholi | Rudana | Saili | Sili | Silvassa | Sindavni | Udva | Umbarkoi | Vansda | Vasona | Velugam ";
+s_a[9]=" Brancavare | Dagasi | Daman | Diu | Magarvara | Nagwa | Pariali | Passo Covo ";
+s_a[10]=" Central Delhi | East Delhi | New Delhi | North Delhi | North East Delhi | North West Delhi | South Delhi | South West Delhi | West Delhi ";
+s_a[11]=" Canacona | Candolim | Chinchinim | Cortalim | Goa | Jua | Madgaon | Mahem | Mapuca | Marmagao | Panji | Ponda | Sanvordem | Terekhol ";
+s_a[12]=" Ahmedabad | Ahwa | Amod | Amreli | Anand | Anjar | Ankaleshwar | Babra | Balasinor | Banaskantha | Bansada | Bardoli | Bareja | Baroda | Barwala | Bayad | Bhachav | Bhanvad | Bharuch | Bhavnagar | Bhiloda | Bhuj | Billimora | Borsad | Botad | Chanasma | Chhota Udaipur | Chotila | Dabhoi | Dahod | Damnagar | Dang | Danta | Dasada | Dediapada | Deesa | Dehgam | Deodar | Devgadhbaria | Dhandhuka | Dhanera | Dharampur | Dhari | Dholka | Dhoraji | Dhrangadhra | Dhrol | Dwarka | Fortsongadh | Gadhada | Gandhi Nagar | Gariadhar | Godhra | Gogodar | Gondal | Halol | Halvad | Harij | Himatnagar | Idar | Jambusar | Jamjodhpur | Jamkalyanpur | Jamnagar | Jasdan | Jetpur | Jhagadia | Jhalod | Jodia | Junagadh | Junagarh | Kalawad | Kalol | Kapad Wanj | Keshod | Khambat | Khambhalia | Khavda | Kheda | Khedbrahma | Kheralu | Kodinar | Kotdasanghani | Kunkawav | Kutch | Kutchmandvi | Kutiyana | Lakhpat | Lakhtar | Lalpur | Limbdi | Limkheda | Lunavada | M.M.Mangrol | Mahuva | Malia-Hatina | Maliya | Malpur | Manavadar | Mandvi | Mangrol | Mehmedabad | Mehsana | Miyagam | Modasa | Morvi | Muli | Mundra | Nadiad | Nakhatrana | Nalia | Narmada | Naswadi | Navasari | Nizar | Okha | Paddhari | Padra | Palanpur | Palitana | Panchmahals | Patan | Pavijetpur | Porbandar | Prantij | Radhanpur | Rahpar | Rajaula | Rajkot | Rajpipla | Ranavav | Sabarkantha | Sanand | Sankheda | Santalpur | Santrampur | Savarkundla | Savli | Sayan | Sayla | Shehra | Sidhpur | Sihor | Sojitra | Sumrasar | Surat | Surendranagar | Talaja | Thara | Tharad | Thasra | Una-Diu | Upleta | Vadgam | Vadodara | Valia | Vallabhipur | Valod | Valsad | Vanthali | Vapi | Vav | Veraval | Vijapur | Viramgam | Visavadar | Visnagar | Vyara | Waghodia | Wankaner ";
+s_a[13]=" Adampur Mandi | Ambala | Assandh | Bahadurgarh | Barara | Barwala | Bawal | Bawanikhera | Bhiwani | Charkhidadri | Cheeka | Chhachrauli | Dabwali | Ellenabad | Faridabad | Fatehabad | Ferojpur Jhirka | Gharaunda | Gohana | Gurgaon | Hansi | Hisar | Jagadhari | Jatusana | Jhajjar | Jind | Julana | Kaithal | Kalanaur | Kalanwali | Kalka | Karnal | Kosli | Kurukshetra | Loharu | Mahendragarh | Meham | Mewat | Mohindergarh | Naraingarh | Narnaul | Narwana | Nilokheri | Nuh | Palwal | Panchkula | Panipat | Pehowa | Ratia | Rewari | Rohtak | Safidon | Sirsa | Siwani | Sonipat | Tohana | Tohsam | Yamunanagar ";
+s_a[14]=" Amb | Arki | Banjar | Bharmour | Bilaspur | Chamba | Churah | Dalhousie | Dehra Gopipur | Hamirpur | Jogindernagar | Kalpa | Kangra | Kinnaur | Kullu | Lahaul | Mandi | Nahan | Nalagarh | Nirmand | Nurpur | Palampur | Pangi | Paonta | Pooh | Rajgarh | Rampur Bushahar | Rohru | Shimla | Sirmaur | Solan | Spiti | Sundernagar | Theog | Udaipur | Una";
+s_a[15]=" Akhnoor | Anantnag | Badgam | Bandipur | Baramulla | Basholi | Bedarwah | Budgam | Doda | Gulmarg | Jammu | Kalakot | Kargil | Karnah | Kathua | Kishtwar | Kulgam | Kupwara | Leh | Mahore | Nagrota | Nobra | Nowshera | Nyoma | Padam | Pahalgam | Patnitop | Poonch | Pulwama | Rajouri | Ramban | Ramnagar | Reasi | Samba | Srinagar | Udhampur | Vaishno Devi ";
+s_a[16]=" Bagodar | Baharagora | Balumath | Barhi | Barkagaon | Barwadih | Basia | Bermo | Bhandaria | Bhawanathpur | Bishrampur | Bokaro | Bolwa | Bundu | Chaibasa | Chainpur | Chakardharpur | Chandil | Chatra | Chavparan | Daltonganj | Deoghar | Dhanbad | Dumka | Dumri | Garhwa | Garu | Ghaghra | Ghatsila | Giridih | Godda | Gomia | Govindpur | Gumla | Hazaribagh | Hunterganj | Ichak | Itki | Jagarnathpur | Jamshedpur | Jamtara | Japla | Jharmundi | Jhinkpani | Jhumaritalaiya | Kathikund | Kharsawa | Khunti | Koderma | Kolebira | Latehar | Lohardaga | Madhupur | Mahagama | Maheshpur Raj | Mandar | Mandu | Manoharpur | Muri | Nagarutatri | Nala | Noamundi | Pakur | Palamu | Palkot | Patan | Rajdhanwar | Rajmahal | Ramgarh | Ranchi | Sahibganj | Saraikela | Simaria | Simdega | Singhbhum | Tisri | Torpa ";
+s_a[17]=" Afzalpur | Ainapur | Aland | Alur | Anekal | Ankola | Arsikere | Athani | Aurad | Bableshwar | Badami | Bagalkot | Bagepalli | Bailhongal | Bangalore | Bangalore Rural | Bangarpet | Bantwal | Basavakalyan | Basavanabagewadi | Basavapatna | Belgaum | Bellary | Belthangady | Belur | Bhadravati | Bhalki | Bhatkal | Bidar | Bijapur | Biligi | Chadchan | Challakere | Chamrajnagar | Channagiri | Channapatna | Channarayapatna | Chickmagalur | Chikballapur | Chikkaballapur | Chikkanayakanahalli | Chikkodi | Chikmagalur | Chincholi | Chintamani | Chitradurga | Chittapur | Cowdahalli | Davanagere | Deodurga | Devangere | Devarahippargi | Dharwad | Doddaballapur | Gadag | Gangavathi | Gokak | Gowribdanpur | Gubbi | Gulbarga | Gundlupet | H.B.Halli | H.D. Kote | Haliyal | Hampi | Hangal | Harapanahalli | Hassan | Haveri | Hebri | Hirekerur | Hiriyur | Holalkere | Holenarsipur | Honnali | Honnavar | Hosadurga | Hosakote | Hosanagara | Hospet | Hubli | Hukkeri | Humnabad | Hungund | Hunsagi | Hunsur | Huvinahadagali | Indi | Jagalur | Jamkhandi | Jewargi | Joida | K.R. Nagar | Kadur | Kalghatagi | Kamalapur | Kanakapura | Kannada | Kargal | Karkala | Karwar | Khanapur | Kodagu | Kolar | Kollegal | Koppa | Koppal | Koratageri | Krishnarajapet | Kudligi | Kumta | Kundapur | Kundgol | Kunigal | Kurugodu | Kustagi | Lingsugur | Madikeri | Madugiri | Malavalli | Malur | Mandya | Mangalore | Manipal | Manvi | Mashal | Molkalmuru | Mudalgi | Muddebihal | Mudhol | Mudigere | Mulbagal | Mundagod | Mundargi | Murugod | Mysore | Nagamangala | Nanjangud | Nargund | Narsimrajapur | Navalgund | Nelamangala | Nimburga | Pandavapura | Pavagada | Puttur | Raibag | Raichur | Ramdurg | Ranebennur | Ron | Sagar | Sakleshpur | Salkani | Sandur | Saundatti | Savanur | Sedam | Shahapur | Shankarnarayana | Shikaripura | Shimoga | Shirahatti | Shorapur | Siddapur | Sidlaghatta | Sindagi | Sindhanur | Sira | Sirsi | Siruguppa | Somwarpet | Sorab | Sringeri | Sriniwaspur | Srirangapatna | Sullia | T. Narsipur | Tallak | Tarikere | Telgi | Thirthahalli | Tiptur | Tumkur | Turuvekere | Udupi | Virajpet | Wadi | Yadgiri | Yelburga | Yellapur ";
+s_a[18]=" Adimaly | Adoor | Agathy | Alappuzha | Alathur | Alleppey | Alwaye | Amini | Androth | Attingal | Badagara | Bitra | Calicut | Cannanore | Chetlet | Ernakulam | Idukki | Irinjalakuda | Kadamath | Kalpeni | Kalpetta | Kanhangad | Kanjirapally | Kannur | Karungapally | Kasargode | Kavarathy | Kiltan | Kochi | Koduvayur | Kollam | Kottayam | Kovalam | Kozhikode | Kunnamkulam | Malappuram | Mananthodi | Manjeri | Mannarghat | Mavelikkara | Minicoy | Munnar | Muvattupuzha | Nedumandad | Nedumgandam | Nilambur | Palai | Palakkad | Palghat | Pathaanamthitta | Pathanamthitta | Payyanur | Peermedu | Perinthalmanna | Perumbavoor | Punalur | Quilon | Ranni | Shertallai | Shoranur | Taliparamba | Tellicherry | Thiruvananthapuram | Thodupuzha | Thrissur | Tirur | Tiruvalla | Trichur | Trivandrum | Uppala | Vadakkanchery | Vikom | Wayanad ";
+s_a[19]=" Agatti Island | Bingaram Island | Bitra Island | Chetlat Island | Kadmat Island | Kalpeni Island | Kavaratti Island | Kiltan Island | Lakshadweep Sea | Minicoy Island | North Island | South Island ";
+s_a[20]=" Agar | Ajaigarh | Alirajpur | Amarpatan | Amarwada | Ambah | Anuppur | Arone | Ashoknagar | Ashta | Atner | Babaichichli | Badamalhera | Badarwsas | Badnagar | Badnawar | Badwani | Bagli | Baihar | Balaghat | Baldeogarh | Baldi | Bamori | Banda | Bandhavgarh | Bareli | Baroda | Barwaha | Barwani | Batkakhapa | Begamganj | Beohari | Berasia | Berchha | Betul | Bhainsdehi | Bhander | Bhanpura | Bhikangaon | Bhimpur | Bhind | Bhitarwar | Bhopal | Biaora | Bijadandi | Bijawar | Bijaypur | Bina | Birsa | Birsinghpur | Budhni | Burhanpur | Buxwaha | Chachaura | Chanderi | Chaurai | Chhapara | Chhatarpur | Chhindwara | Chicholi | Chitrangi | Churhat | Dabra | Damoh | Datia | Deori | Deosar | Depalpur | Dewas | Dhar | Dharampuri | Dindori | Gadarwara | Gairatganj | Ganjbasoda | Garoth | Ghansour | Ghatia | Ghatigaon | Ghorandogri | Ghughari | Gogaon | Gohad | Goharganj | Gopalganj | Gotegaon | Gourihar | Guna | Gunnore | Gwalior | Gyraspur | Hanumana | Harda | Harrai | Harsud | Hatta | Hoshangabad | Ichhawar | Indore | Isagarh | Itarsi | Jabalpur | Jabera | Jagdalpur | Jaisinghnagar | Jaithari | Jaitpur | Jaitwara | Jamai | Jaora | Jatara | Jawad | Jhabua | Jobat | Jora | Kakaiya | Kannod | Kannodi | Karanjia | Kareli | Karera | Karhal | Karpa | Kasrawad | Katangi | Katni | Keolari | Khachrod | Khajuraho | Khakner | Khalwa | Khandwa | Khaniadhana | Khargone | Khategaon | Khetia | Khilchipur | Khirkiya | Khurai | Kolaras | Kotma | Kukshi | Kundam | Kurwai | Kusmi | Laher | Lakhnadon | Lamta | Lanji | Lateri | Laundi | Maheshwar | Mahidpurcity | Maihar | Majhagwan | Majholi | Malhargarh | Manasa | Manawar | Mandla | Mandsaur | Manpur | Mauganj | Mawai | Mehgaon | Mhow | Morena | Multai | Mungaoli | Nagod | Nainpur | Narsingarh | Narsinghpur | Narwar | Nasrullaganj | Nateran | Neemuch | Niwari | Niwas | Nowgaon | Pachmarhi | Pandhana | Pandhurna | Panna | Parasia | Patan | Patera | Patharia | Pawai | Petlawad | Pichhore | Piparia | Pohari | Prabhapattan | Punasa | Pushprajgarh | Raghogarh | Raghunathpur | Rahatgarh | Raisen | Rajgarh | Rajpur | Ratlam | Rehli | Rewa | Sabalgarh | Sagar | Sailana | Sanwer | Sarangpur | Sardarpur | Satna | Saunsar | Sehore | Sendhwa | Seondha | Seoni | Seonimalwa | Shahdol | Shahnagar | Shahpur | Shajapur | Sheopur | Sheopurkalan | Shivpuri | Shujalpur | Sidhi | Sihora | Silwani | Singrauli | Sirmour | Sironj | Sitamau | Sohagpur | Sondhwa | Sonkatch | Susner | Tamia | Tarana | Tendukheda | Teonthar | Thandla | Tikamgarh | Timarani | Udaipura | Ujjain | Umaria | Umariapan | Vidisha | Vijayraghogarh | Waraseoni | Zhirnia ";
+s_a[21]=" Achalpur | Aheri | Ahmednagar | Ahmedpur | Ajara | Akkalkot | Akola | Akole | Akot | Alibagh | Amagaon | Amalner | Ambad | Ambejogai | Amravati | Arjuni Merogaon | Arvi | Ashti | Atpadi | Aurangabad | Ausa | Babhulgaon | Balapur | Baramati | Barshi Takli | Barsi | Basmatnagar | Bassein | Beed | Bhadrawati | Bhamregadh | Bhandara | Bhir | Bhiwandi | Bhiwapur | Bhokar | Bhokardan | Bhoom | Bhor | Bhudargad | Bhusawal | Billoli | Brahmapuri | Buldhana | Butibori | Chalisgaon | Chamorshi | Chandgad | Chandrapur | Chandur | Chanwad | Chhikaldara | Chikhali | Chinchwad | Chiplun | Chopda | Chumur | Dahanu | Dapoli | Darwaha | Daryapur | Daund | Degloor | Delhi Tanda | Deogad | Deolgaonraja | Deori | Desaiganj | Dhadgaon | Dhanora | Dharani | Dhiwadi | Dhule | Dhulia | Digras | Dindori | Edalabad | Erandul | Etapalli | Gadhchiroli | Gadhinglaj | Gaganbavada | Gangakhed | Gangapur | Gevrai | Ghatanji | Golegaon | Gondia | Gondpipri | Goregaon | Guhagar | Hadgaon | Hatkangale | Hinganghat | Hingoli | Hingua | Igatpuri | Indapur | Islampur | Jalgaon | Jalna | Jamkhed | Jamner | Jath | Jawahar | Jintdor | Junnar | Kagal | Kaij | Kalamb | Kalamnuri | Kallam | Kalmeshwar | Kalwan | Kalyan | Kamptee | Kandhar | Kankavali | Kannad | Karad | Karjat | Karmala | Katol | Kavathemankal | Kedgaon | Khadakwasala | Khamgaon | Khed | Khopoli | Khultabad | Kinwat | Kolhapur | Kopargaon | Koregaon | Kudal | Kuhi | Kurkheda | Kusumba | Lakhandur | Langa | Latur | Lonar | Lonavala | Madangad | Madha | Mahabaleshwar | Mahad | Mahagaon | Mahasala | Mahaswad | Malegaon | Malgaon | Malgund | Malkapur | Malsuras | Malwan | Mancher | Mangalwedha | Mangaon | Mangrulpur | Manjalegaon | Manmad | Maregaon | Mehda | Mekhar | Mohadi | Mohol | Mokhada | Morshi | Mouda | Mukhed | Mul | Mumbai | Murbad | Murtizapur | Murud | Nagbhir | Nagpur | Nahavara | Nanded | Nandgaon | Nandnva | Nandurbar | Narkhed | Nashik | Navapur | Ner | Newasa | Nilanga | Niphad | Omerga | Osmanabad | Pachora | Paithan | Palghar | Pali | Pandharkawada | Pandharpur | Panhala | Paranda | Parbhani | Parner | Parola | Parseoni | Partur | Patan | Pathardi | Pathari | Patoda | Pauni | Peint | Pen | Phaltan | Pimpalner | Pirangut | Poladpur | Pune | Pusad | Pusegaon | Radhanagar | Rahuri | Raigad | Rajapur | Rajgurunagar | Rajura | Ralegaon | Ramtek | Ratnagiri | Raver | Risod | Roha | Sakarwadi | Sakoli | Sakri | Salekasa | Samudrapur | Sangamner | Sanganeshwar | Sangli | Sangola | Sanguem | Saoner | Saswad | Satana | Satara | Sawantwadi | Seloo | Shahada | Shahapur | Shahuwadi | Shevgaon | Shirala | Shirol | Shirpur | Shirur | Shirwal | Sholapur | Shri Rampur | Shrigonda | Shrivardhan | Sillod | Sinderwahi | Sindhudurg | Sindkheda | Sindkhedaraja | Sinnar | Sironcha | Soyegaon | Surgena | Talasari | Talegaon S.Ji Pant | Taloda | Tasgaon | Thane | Tirora | Tiwasa | Trimbak | Tuljapur | Tumsar | Udgir | Umarkhed | Umrane | Umrer | Urlikanchan | Vaduj | Velhe | Vengurla | Vijapur | Vita | Wada | Wai | Walchandnagar | Wani | Wardha | Warlydwarud | Warora | Washim | Wathar | Yavatmal | Yawal | Yeola | Yeotmal ";
+s_a[22]=" Bishnupur | Chakpikarong | Chandel | Chattrik | Churachandpur | Imphal | Jiribam | Kakching | Kalapahar | Mao | Mulam | Parbung | Sadarhills | Saibom | Sempang | Senapati | Sochumer | Taloulong | Tamenglong | Thinghat | Thoubal | Ukhrul ";
+s_a[23]=" Amlaren | Baghmara | Cherrapunjee | Dadengiri | Garo Hills | Jaintia Hills | Jowai | Khasi Hills | Khliehriat | Mariang | Mawkyrwat | Nongpoh | Nongstoin | Resubelpara | Ri Bhoi | Shillong | Tura | Williamnagar";
+s_a[24]=" Aizawl | Champhai | Demagiri | Kolasib | Lawngtlai | Lunglei | Mamit | Saiha | Serchhip";
+s_a[25]=" Dimapur | Jalukie | Kiphire | Kohima | Mokokchung | Mon | Phek | Tuensang | Wokha | Zunheboto ";
+s_a[26]=" Anandapur | Angul | Anugul | Aska | Athgarh | Athmallik | Attabira | Bagdihi | Balangir | Balasore | Baleswar | Baliguda | Balugaon | Banaigarh | Bangiriposi | Barbil | Bargarh | Baripada | Barkot | Basta | Berhampur | Betanati | Bhadrak | Bhanjanagar | Bhawanipatna | Bhubaneswar | Birmaharajpur | Bisam Cuttack | Boriguma | Boudh | Buguda | Chandbali | Chhatrapur | Chhendipada | Cuttack | Daringbadi | Daspalla | Deodgarh | Deogarh | Dhanmandal | Dharamgarh | Dhenkanal | Digapahandi | Dunguripali | G. Udayagiri | Gajapati | Ganjam | Ghatgaon | Gudari | Gunupur | Hemgiri | Hindol | Jagatsinghapur | Jajpur | Jamankira | Jashipur | Jayapatna | Jeypur | Jharigan | Jharsuguda | Jujumura | Kalahandi | Kalimela | Kamakhyanagar | Kandhamal | Kantabhanji | Kantamal | Karanjia | Kashipur | Kendrapara | Kendujhar | Keonjhar | Khalikote | Khordha | Khurda | Komana | Koraput | Kotagarh | Kuchinda | Lahunipara | Laxmipur | M. Rampur | Malkangiri | Mathili | Mayurbhanj | Mohana | Motu | Nabarangapur | Naktideul | Nandapur | Narlaroad | Narsinghpur | Nayagarh | Nimapara | Nowparatan | Nowrangapur | Nuapada | Padampur | Paikamal | Palla Hara | Papadhandi | Parajang | Pardip | Parlakhemundi | Patnagarh | Pattamundai | Phiringia | Phulbani | Puri | Puruna Katak | R. Udayigiri | Rairakhol | Rairangpur | Rajgangpur | Rajkhariar | Rayagada | Rourkela | Sambalpur | Sohela | Sonapur | Soro | Subarnapur | Sunabeda | Sundergarh | Surada | T. Rampur | Talcher | Telkoi | Titlagarh | Tumudibandha | Udala | Umerkote ";
+s_a[27]=" Bahur | Karaikal | Mahe | Pondicherry | Purnankuppam | Valudavur | Villianur | Yanam ";
+s_a[28]=" Abohar | Ajnala | Amritsar | Balachaur | Barnala | Batala | Bathinda | Chandigarh | Dasua | Dinanagar | Faridkot | Fatehgarh Sahib | Fazilka | Ferozepur | Garhashanker | Goindwal | Gurdaspur | Guruharsahai | Hoshiarpur | Jagraon | Jalandhar | Jugial | Kapurthala | Kharar | Kotkapura | Ludhiana | Malaut | Malerkotla | Mansa | Moga | Muktasar | Nabha | Nakodar | Nangal | Nawanshahar | Nawanshahr | Pathankot | Patiala | Patti | Phagwara | Phillaur | Phulmandi | Quadian | Rajpura | Raman | Rayya | Ropar | Rupnagar | Samana | Samrala | Sangrur | Sardulgarh | Sarhind | SAS Nagar | Sultanpur Lodhi | Sunam | Tanda Urmar | Tarn Taran | Zira ";
+s_a[29]=" Abu Road | Ahore | Ajmer | Aklera | Alwar | Amber | Amet | Anupgarh | Asind | Aspur | Atru | Bagidora | Bali | Bamanwas | Banera | Bansur | Banswara | Baran | Bari | Barisadri | Barmer | Baseri | Bassi | Baswa | Bayana | Beawar | Begun | Behror | Bhadra | Bharatpur | Bhilwara | Bhim | Bhinmal | Bikaner | Bilara | Bundi | Chhabra | Chhipaborad | Chirawa | Chittorgarh | Chohtan | Churu | Dantaramgarh | Dausa | Deedwana | Deeg | Degana | Deogarh | Deoli | Desuri | Dhariawad | Dholpur | Digod | Dudu | Dungarpur | Dungla | Fatehpur | Gangapur | Gangdhar | Gerhi | Ghatol | Girwa | Gogunda | Hanumangarh | Hindaun | Hindoli | Hurda | Jahazpur | Jaipur | Jaisalmer | Jalore | Jhalawar | Jhunjhunu | Jodhpur | Kaman | Kapasan | Karauli | Kekri | Keshoraipatan | Khandar | Kherwara | Khetri | Kishanganj | Kishangarh | Kishangarhbas | Kolayat | Kota | Kotputli | Kotra | Kotri | Kumbalgarh | Kushalgarh | Ladnun | Ladpura | Lalsot | Laxmangarh | Lunkaransar | Mahuwa | Malpura | Malvi | Mandal | Mandalgarh | Mandawar | Mangrol | Marwar-Jn | Merta | Nadbai | Nagaur | Nainwa | Nasirabad | Nathdwara | Nawa | Neem Ka Thana | Newai | Nimbahera | Nohar | Nokha | Onli | Osian | Pachpadara | Pachpahar | Padampur | Pali | Parbatsar | Phagi | Phalodi | Pilani | Pindwara | Pipalda | Pirawa | Pokaran | Pratapgarh | Raipur | Raisinghnagar | Rajgarh | Rajsamand | Ramganj Mandi | Ramgarh | Rashmi | Ratangarh | Reodar | Rupbas | Sadulshahar | Sagwara | Sahabad | Salumber | Sanchore | Sangaria | Sangod | Sapotra | Sarada | Sardarshahar | Sarwar | Sawai Madhopur | Shahapura | Sheo | Sheoganj | Shergarh | Sikar | Sirohi | Siwana | Sojat | Sri Dungargarh | Sri Ganganagar | Sri Karanpur | Sri Madhopur | Sujangarh | Taranagar | Thanaghazi | Tibbi | Tijara | Todaraisingh | Tonk | Udaipur | Udaipurwati | Uniayara | Vallabhnagar | Viratnagar ";
+s_a[30]=" Barmiak | Be | Bhurtuk | Chhubakha | Chidam | Chubha | Chumikteng | Dentam | Dikchu | Dzongri | Gangtok | Gauzing | Gyalshing | Hema | Kerung | Lachen | Lachung | Lema | Lingtam | Lungthu | Mangan | Namchi | Namthang | Nanga | Nantang | Naya Bazar | Padamachen | Pakhyong | Pemayangtse | Phensang | Rangli | Rinchingpong | Sakyong | Samdong | Singtam | Siniolchu | Sombari | Soreng | Sosing | Tekhug | Temi | Tsetang | Tsomgo | Tumlong | Yangang | Yumtang ";
+s_a[31]=" Ambasamudram | Anamali | Arakandanallur | Arantangi | Aravakurichi | Ariyalur | Arkonam | Arni | Aruppukottai | Attur | Avanashi | Batlagundu | Bhavani | Chengalpattu | Chengam | Chennai | Chidambaram | Chingleput | Coimbatore | Courtallam | Cuddalore | Cumbum | Denkanikoitah | Devakottai | Dharampuram | Dharmapuri | Dindigul | Erode | Gingee | Gobichettipalayam | Gudalur | Gudiyatham | Harur | Hosur | Jayamkondan | Kallkurichi | Kanchipuram | Kangayam | Kanyakumari | Karaikal | Karaikudi | Karur | Keeranur | Kodaikanal | Kodumudi | Kotagiri | Kovilpatti | Krishnagiri | Kulithalai | Kumbakonam | Kuzhithurai | Madurai | Madurantgam | Manamadurai | Manaparai | Mannargudi | Mayiladuthurai | Mayiladutjurai | Mettupalayam | Metturdam | Mudukulathur | Mulanur | Musiri | Nagapattinam | Nagarcoil | Namakkal | Nanguneri | Natham | Neyveli | Nilgiris | Oddanchatram | Omalpur | Ootacamund | Ooty | Orathanad | Palacode | Palani | Palladum | Papanasam | Paramakudi | Pattukottai | Perambalur | Perundurai | Pollachi | Polur | Pondicherry | Ponnamaravathi | Ponneri | Pudukkottai | Rajapalayam | Ramanathapuram | Rameshwaram | Ranipet | Rasipuram | Salem | Sankagiri | Sankaran | Sathiyamangalam | Sivaganga | Sivakasi | Sriperumpudur | Srivaikundam | Tenkasi | Thanjavur | Theni | Thirumanglam | Thiruraipoondi | Thoothukudi | Thuraiyure | Tindivanam | Tiruchendur | Tiruchengode | Tiruchirappalli | Tirunelvelli | Tirupathur | Tirupur | Tiruttani | Tiruvallur | Tiruvannamalai | Tiruvarur | Tiruvellore | Tiruvettipuram | Trichy | Tuticorin | Udumalpet | Ulundurpet | Usiliampatti | Uthangarai | Valapady | Valliyoor | Vaniyambadi | Vedasandur | Vellore | Velur | Vilathikulam | Villupuram | Virudhachalam | Virudhunagar | Wandiwash | Yercaud ";
+s_a[32]=" Agartala | Ambasa | Bampurbari | Belonia | Dhalai | Dharam Nagar | Kailashahar | Kamal Krishnabari | Khopaiyapara | Khowai | Phuldungsei | Radha Kishore Pur | Tripura ";
+s_a[33]=" Achhnera | Agra | Akbarpur | Aliganj | Aligarh | Allahabad | Ambedkar Nagar | Amethi | Amiliya | Amroha | Anola | Atrauli | Auraiya | Azamgarh | Baberu | Badaun | Baghpat | Bagpat | Baheri | Bahraich | Ballia | Balrampur | Banda | Bansdeeh | Bansgaon | Bansi | Barabanki | Bareilly | Basti | Bhadohi | Bharthana | Bharwari | Bhogaon | Bhognipur | Bidhuna | Bijnore | Bikapur | Bilari | Bilgram | Bilhaur | Bindki | Bisalpur | Bisauli | Biswan | Budaun | Budhana | Bulandshahar | Bulandshahr | Capianganj | Chakia | Chandauli | Charkhari | Chhata | Chhibramau | Chirgaon | Chitrakoot | Chunur | Dadri | Dalmau | Dataganj | Debai | Deoband | Deoria | Derapur | Dhampur | Domariyaganj | Dudhi | Etah | Etawah | Faizabad | Farrukhabad | Fatehpur | Firozabad | Garauth | Garhmukteshwar | Gautam Buddha Nagar | Ghatampur | Ghaziabad | Ghazipur | Ghosi | Gonda | Gorakhpur | Gunnaur | Haidergarh | Hamirpur | Hapur | Hardoi | Harraiya | Hasanganj | Hasanpur | Hathras | Jalalabad | Jalaun | Jalesar | Jansath | Jarar | Jasrana | Jaunpur | Jhansi | Jyotiba Phule Nagar | Kadipur | Kaimganj | Kairana | Kaisarganj | Kalpi | Kannauj | Kanpur | Karchhana | Karhal | Karvi | Kasganj | Kaushambi | Kerakat | Khaga | Khair | Khalilabad | Kheri | Konch | Kumaon | Kunda | Kushinagar | Lalganj | Lalitpur | Lucknow | Machlishahar | Maharajganj | Mahoba | Mainpuri | Malihabad | Mariyahu | Math | Mathura | Mau | Maudaha | Maunathbhanjan | Mauranipur | Mawana | Meerut | Mehraun | Meja | Mirzapur | Misrikh | Modinagar | Mohamdabad | Mohamdi | Moradabad | Musafirkhana | Muzaffarnagar | Nagina | Najibabad | Nakur | Nanpara | Naraini | Naugarh | Nawabganj | Nighasan | Noida | Orai | Padrauna | Pahasu | Patti | Pharenda | Phoolpur | Phulpur | Pilibhit | Pitamberpur | Powayan | Pratapgarh | Puranpur | Purwa | Raibareli | Rampur | Ramsanehi Ghat | Rasara | Rath | Robertsganj | Sadabad | Safipur | Sagri | Saharanpur | Sahaswan | Sahjahanpur | Saidpur | Salempur | Salon | Sambhal | Sandila | Sant Kabir Nagar | Sant Ravidas Nagar | Sardhana | Shahabad | Shahganj | Shahjahanpur | Shikohabad | Shravasti | Siddharthnagar | Sidhauli | Sikandra Rao | Sikandrabad | Sitapur | Siyana | Sonbhadra | Soraon | Sultanpur | Tanda | Tarabganj | Tilhar | Unnao | Utraula | Varanasi | Zamania ";
+s_a[34]=" Almora | Bageshwar | Bhatwari | Chakrata | Chamoli | Champawat | Dehradun | Deoprayag | Dharchula | Dunda | Haldwani | Haridwar | Joshimath | Karan Prayag | Kashipur | Khatima | Kichha | Lansdown | Munsiari | Mussoorie | Nainital | Pantnagar | Partapnagar | Pauri Garhwal | Pithoragarh | Purola | Rajgarh | Ranikhet | Roorkee | Rudraprayag | Tehri Garhwal | Udham Singh Nagar | Ukhimath | Uttarkashi ";
+s_a[35]=" Adra | Alipurduar | Amlagora | Arambagh | Asansol | Balurghat | Bankura | Bardhaman | Basirhat | Berhampur | Bethuadahari | Birbhum | Birpara | Bishanpur | Bolpur | Bongoan | Bulbulchandi | Burdwan | Calcutta | Canning | Champadanga | Contai | Cooch Behar | Daimond Harbour | Dalkhola | Dantan | Darjeeling | Dhaniakhali | Dhuliyan | Dinajpur | Dinhata | Durgapur | Gangajalghati | Gangarampur | Ghatal | Guskara | Habra | Haldia | Harirampur | Harishchandrapur | Hooghly | Howrah | Islampur | Jagatballavpur | Jalpaiguri | Jhalda | Jhargram | Kakdwip | Kalchini | Kalimpong | Kalna | Kandi | Karimpur | Katwa | Kharagpur | Khatra | Krishnanagar | Mal Bazar | Malda | Manbazar | Mathabhanga | Medinipur | Mekhliganj | Mirzapur | Murshidabad | Nadia | Nagarakata | Nalhati | Nayagarh | Parganas | Purulia | Raiganj | Rampur Hat | Ranaghat | Seharabazar | Siliguri | Suri | Takipur | Tamluk";
+
+function print_state(state_id){
+	// given the id of the <select> tag as function argument, it inserts <option> tags
+	var option_str = document.getElementById(state_id);
+	option_str.length=0;
+	option_str.options[0] = new Option('Select State','');
+	option_str.selectedIndex = 0;
+	for (var i=0; i<state_arr.length; i++) {
+		option_str.options[option_str.length] = new Option(state_arr[i],state_arr[i]);
+	}
+}
+
+function print_city(city_id, city_index){
+	var option_str = document.getElementById(city_id);
+	option_str.length=0;	// Fixed by Julian Woods
+	option_str.options[0] = new Option('Select City','');
+	option_str.selectedIndex = 0;
+	var city_arr = s_a[city_index].split("|");
+	for (var i=0; i<city_arr.length; i++) {
+		option_str.options[option_str.length] = new Option(city_arr[i],city_arr[i]);
+	}
+}
+</script>
+  <form id='ok' name='ok' >
+ <div id='mainn'>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+   
+    <a class="navbar-brand" href="/"><span><div class="toptext">Sujati Samaj <div style="font-size:11px"> Directory</div></div></span></a>       <div class="bg-light text-center" >
+            <div class="container"> 
+            
+<form id='ok' name='ok'>
+
+                <div id="myNav" class="overlay"> 
+                  <div class="overlay-content">
+                  <h3>Verifying Credentials...</h3>
+                  </div>
+                </div>
+
+
+
+     
+   
+           
+              <div class="card">
+               <h5 class="card-header">Createing new entry</h5>
+    <form method="POST" role="form" class="form" id='signupfrm'>
+                        {% csrf_token %}
+                        <div class="card-body">
+                          <div class="mdl-grid">
+                            
+                            
+     
+                       
+
+                            <h3>Personal data</h3>
+                            <p>All the data <strong>CAN</strong> be edited afterwards.</p>
+                           
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="first_name" id="first_name" placeholder="First name"/>
+                                
+                                </div>
+
+                                 <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="secondName" id="last_name" placeholder="Last name"/>
+                                 
+                                </div>
+                                    <div class="form-group" style="text-align: left;">
+                                
+                                                <label for="gender">Gender </label>
+                                                <select class="form-control" value="Male" type="text" name="gender" id="gender"  >
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                                 <label for="gender">
+                                    
+                                    </label>
+                                                
+                                  </div>
+                                   <div class="form-group">
+                                <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input style="width:20% " class="form-control " value="+91"  name="ccode1" type="text" />
+                                <input style="width:80% " class="form-control " placeholder="Primary Phone Number" maxlength="10" id="phone_number1" type="number" />
+                                </div>
+                                <br>
+                                  <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input style="width:20%" class="form-control " value="+91"  name="ccode2" type="text" />
+                                <input style="width:80% " class="form-control " placeholder="Secondary Phone Number (Optional)" maxlength="10" id="phone_number2" type="number" />
+                                </div>
+                           </div>
+                                
+
+                            
+                                <div class="form-group">
+                                    <input class="form-control form-control-lg" type="text" name="email" id="email"  placeholder="E-mail"  />
+                                    </div>
+                             
+
+         <div class="form-group">       
+<input class="form-control form-control-lg" type="text" name="residential_address" id="residential_address"  placeholder="Residential Address"  />   
+<input class="form-control" type="number" name="residential_pincode" id="residential_pincode" placeholder="Pincode"/>            
+<div class="input-group">
+<select style="width:50%" onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="form-control"  ></select>
+<select style="width:50%" id ="state" class="form-control" placeholder='city'  ></select>
+<script language="javascript">print_state("sts");</script>  
+ </div>
+ </div>                              
+ 
+
+                         
+                           <h3>Professional Details</h3>
+                           <h4 style="text-align:left;">Choose your income source-<h4>
+                                <div class="card">
+                                    <div class="card-header tab-regular">
+                                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="card-tab-1" data-toggle="tab" href="#card-1" role="tab" aria-controls="card-1" aria-selected="true">Business/Startup</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-2" role="tab" aria-controls="card-2" aria-selected="false">Job/Profession</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="card-tab-3" data-toggle="tab" href="#card-3" role="tab" aria-controls="card-3" aria-selected="false">Student</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="card-1" role="tabpanel" aria-labelledby="card-tab-1">
+                                                
+                                                <div class="form-group">
+                                                <input class="form-control form-control-lg" type="text" name="business_name" id="business_name"  placeholder="Business Name"  />
+                                                </div>
+                                                <div class="form-group" style="text-align: left;">
+                                                  <label for="business_catagory">Business Category </label>
+                                                  <select class="form-control" value="Private" type="text" name="business_catagory" id="business_catagory"  >
+                                                    <option>Select Business Category</option>
+                                                    <option>Manufacturing</option>
+                                                    <option>WholeSale</option>
+                                                    <option>Retail</option>
+                                                    <option>Service Business</option>
+                                                    <option>Startup</option>
+                                                    <option>Other</option>
+                                                  </select>
+                                                  
+                                                </label>
+                                                </div>
+                                                <div class="form-group">
+                                                <input class="form-control form-control-lg" type="text" name="business_type" id="business_type"  placeholder="Business Type (Ex- Female Garment Retailer)"  />
+                                                </div>
+                                                
+                                                <div class="form-group">       
+                                                <input class="form-control form-control-lg" type="text" name="business_address" id="business_address"  placeholder="Business Address"  />   
+                                                <input class="form-control" type="number" name="business_pincode" id="business_pincode" placeholder="Pincode"/>            
+                                                <div class="input-group">
+                                                <select style="width:50%" onchange="print_city('statee', this.selectedIndex);" id="stss" name ="sttt" class="form-control"  ></select>
+                                                <select style="width:50%" id ="statee" class="form-control" placeholder='city'  ></select>
+                                                <script language="javascript">print_state("stss");</script>  
+                                                </div>
+                                                </div>       
+
+                                            </div>
+
+                                            <div class="tab-pane fade" id="card-2" role="tabpanel" aria-labelledby="card-tab-2">
+                                              
+                                              <div class="form-group" style="text-align: left;">
+                                                <label for="job_type">Job Type </label>
+                                                <select class="form-control" value="Private" type="text" name="job_type" id="job_type"  >
+                                                  <option>Select Job Type</option>  
+                                                  <option>Private</option>
+                                                    <option>Govenment</option>
+                                                </select>
+                                                 <label for="gender">
+                                              </label>
+                                              </div>
+                                              <div class="form-group" style="text-align: left;">
+                                                <label for="job_catagory">Job Category </label>
+                                                <select class="form-control" value="Private" type="text" name="job_catagory" id="job_catagory"  >
+                                                  <option>Select Job Category</option>
+                                                  <option>Police Department</option>
+                                                  <option>Doctor</option>
+                                                  <option>Politicain</option>
+                                                  <option>Chartered Accountant</option>
+                                                  <option>Engineer</option>
+                                                  <option>Lawyer</option>
+                                                  <option>Business Administrator/Finance</option>
+                                                  <option>Architect</option>
+                                                  <option>Other</option>
+                                                </select>
+                                                
+                                              </label>
+                                              </div>
+                                              
+                                                     
+                                              <div class="form-group">
+                                                <input class="form-control form-control-lg" type="text" name="job_title" id="job_title"  placeholder="Job Title"  />
+                                                </div>
+                                                <div class="form-group">
+                                                <input class="form-control form-control-lg" type="text" name="job_department" id="job_department"  placeholder="Department"  />
+                                                </div>
+                                              
+                                              
+                                                <div class="form-group">       
+                                                <input class="form-control form-control-lg" type="text" name="business_address" id="job_address"  placeholder="Company Name"  />   
+                                                       
+                                                <div class="input-group">
+                                                <select style="width:50%" onchange="print_city('job_state', this.selectedIndex);" id="job_city" name ="sttt" class="form-control"  ></select>
+                                                <select style="width:50%" id ="job_state" class="form-control" placeholder='city'  ></select>
+                                                <script language="javascript">print_state("job_city");</script>  
+                                                </div>
+                                                </div>     
+                                            </div>
+
+
+                                            <div class="tab-pane fade" id="card-3" role="tabpanel" aria-labelledby="card-tab-3">
+                                               
+
+
+                                              <div class="autocomplete" style="width:100%;" autocomplete="new-password" >
+                                                <div class="form-group" style="text-align: left;">
+                                                   <label class="mdl-textfield__label" for="iname">Institution Username</label>
+                                                    <input class="form-control form-control-lg" type="text"  id="iname" placeholder='Institution Full Name'  />
+                                               </div>   
+                                               </div>
+
+                                               <div class="form-group">
+
+                                                <select class="form-control" id="DegreeType" name='DegreeType' placeholder='Choose Degree Type'  >
+                                                   <option>Select Degree Type</option>
+                                                   <option>Bachlors</option>
+                                                   <option>Masters</option>
+                                                   <option>PhD</option>
+                                                </select>
+                                              </div>
+
+
+
+                                                <div class="form-group">
+                                                  <input class="form-control form-control-lg" type="text" name="degree_name" id="degree_name"  placeholder="Degree Name (Ex- B. Tech)"  />
+                                                  </div>
+
+                                                  <div class="form-group">
+                                                    <input class="form-control form-control-lg" type="number" name="year_of_com" id="year_of_com" maxlength="4" placeholder="Year of Completion"  />
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                    
+                              
+                                   
+                               
+                                  
+                       
+
+                      
+                              <script src="{% static 'js/cropper.min.js' %}"></script>
+                              <script>
+                        
+                              </script>
+
+                            <div id='errors'>
+
+                            </div>   
+                         
+                        <div class="form__action">
+                           
+                            <button id="submit_button" name="submit_button" class="btn btn-primary" type='submit'>
+                                Create New Entry
+                            </button><br>
+                            
+                            
+                        </div>
+                    </form>
+                  
+
+
+
+
+                   
+              
+            </div>
+            <p>*Your data will apper in the directory after verification by our admins.</p>
+
+        </main>
+    </div>
+</form>
+  <script src="{% static 'js/jquery-2.2.4.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>        
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
+</script>
+
+    <script>
+
+      
+         $("#submit_button").click(function(e){
+            openNav()
+            e.preventDefault()
+            
+            $.ajax({
+                type:'POST',
+                url: "{% url 'create_entry' %}",
+                data:{
+                  csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+                  fisrt_name: $("#first_name").val(),
+                  last_name: $("#last_name").val(),
+                  gender: $("#gender").val(),
+                  phone_number1: $("#phone_number1").val(),
+                  phone_number2: $("#phone_number2").val(),
+                  email: $("#email").val(),
+      
+                  residential_address: $("#residential_address").val(),
+                  residential_city: $("#state").val(),
+                  residential_state: $("#sts").val(),
+                  residential_pincode: $("#residential_pincode").val(),
+      
+                  business_name: $("#business_name").val(),
+                  business_catagory: $("#business_catagory").val(),
+                  business_type:$("#business_type").val(),
+                  business_address: $("#business_address").val(),
+                  business_pincode: $("#business_pincode").val(),
+                  business_city: $("#statee").val(),
+                  business_state: $("#stss").val(),
+      
+                  
+                  job_title: $("#job_title").val(),
+                  job_catagory: $("#job_catagory").val(),
+                  job_type: $("#job_type").val(),
+                  job_department: $("#job_department").val(),
+                  job_address: $("#job_address").val(),
+                  job_city: $("#job_state").val(),
+                  job_state: $("#job_city").val(),
+                  
+                  iname: $("#iname").val(),
+                  DegreeType: $("#DegreeType").val(),
+                  year_of_com: $("#year_of_com").val(),
+                  degree_name: $("#degree_name").val(),
+        
+                  action: 'post'
+                },
+                success:function(json){
+                     closeNav()   
+                    if (json.otp == false)
+                    {   
+                        $("#errors").empty();
+                          $("#errors").append('<br><div class="text-danger">Errors-</div>');    
+                        $.each(json.errors, function( index, error ) {
+                          //alert( error );
+                          $("#errors").append('<li class="text-danger">'+error+'</li>');
+                         
+                    });
+                    $.each(json.warnings, function( index, warnings ) {
+                      //alert( error );
+                      $("#errors").append('<li class="text-warning">'+warnings+'</li>');
+                     
+                     });
+                        $("#signupbtn").replaceWith( '<button type="submit"  id = "signupbtn" class="signupbtn"> Create User </button>' )
+                    }
+
+                    else if (json.otp == true)
+                    {
+                      window.location = '/success/'+json.key;
+                        
+          
+
+                    }
+        
+                   
+
+
+                },
+                error : function(xhr,errmsg,err) {
+                $('#sigunuperror').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+            });
+        });
+
+
+
+                   
+
+
+
+
+     
+    </script>    
+   
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script>
+    <script src="{% static 'assets/vendor/inputmask/js/jquery.inputmask.bundle.js' %}"></script>
+    <script>
+    $(function(e) {
+        "use strict";
+        $(".date-inputmask").inputmask("dd/mm/yyyy"),
+            $(".phone-inputmask").inputmask("(999) 999-9999"),
+            $(".international-inputmask").inputmask("+9(999)999-9999"),
+            $(".xphone-inputmask").inputmask("(999) 999-9999 / x999999"),
+            $(".purchase-inputmask").inputmask("aaaa 9999-****"),
+            $(".cc-inputmask").inputmask("9999 9999 9999 9999"),
+            $(".ssn-inputmask").inputmask("999-99-9999"),
+            $(".isbn-inputmask").inputmask("999-99-999-9999-9"),
+            $(".currency-inputmask").inputmask("$9999"),
+            $(".percentage-inputmask").inputmask("99%"),
+            $(".decimal-inputmask").inputmask({
+                alias: "decimal",
+                radixPoint: "."
+            }),
+
+            $(".email-inputmask").inputmask({
+                mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[*{2,6}][*{1,2}].*{1,}[.*{2,6}][.*{1,2}]",
+                greedy: !1,
+                onBeforePaste: function(n, a) {
+                    return (e = e.toLowerCase()).replace("mailto:", "")
+                },
+                definitions: {
+                    "*": {
+                        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~/-]",
+                        cardinality: 1,
+                        casing: "lower"
+                    }
+                }
+            })
+    });
+    </script>
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var countries = [
+
+"Aayojan School of Architecture",
+"Challengers Academy of S.H.E", 
+ "CHINMAYA TECHNICAL ACADEMY", 
+ "INSTITUTE OF ENGINEERING & MANAGEMENT", 
+ "APEX INSTITUTE OF MANAGEMENT AND TECHNOLOGY", 
+ "ASBM Institute of BBA", 
+ "Aastha Polytechnic,YamunaNagar", 
+ "CHANDANA SCHOOL OF NURSING", 
+ "CHANDANA BSC MLT COLLEGE", 
+ "ACE College of Engineering & Management", 
+ "MAULANA AZAD NATIONAL INSTITUTE OF TEHCHNOLOGY", 
+ "College of Engineering & Management", 
+ "Asansol Engineering College", 
+ "INTERNATIONAL INSTITUTE OF INFORMATION TECHNOLOGY, BHUBANESWAR", 
+ "Sri Sai Aditya Institute Of Science & Technology.", 
+ "Maxim Institute of Technology", 
+ "Ajmer Institute of  Technology", 
+ "DHANESWAR RATH INST OF ENGG & MGMT STUDIES", 
+ "MODINAGAR INSTITUTE OF TECHNOLOGY", 
+ "Montfort Pvt. Industrial Training Institute", 
+ "PATIALA POLYTECHNIC COLLEGE", 
+ "Bansal College of Engineering", 
+ "Corporate Institute of Science & Technology", 
+ "Institute of Hotel Management,Lucknow", 
+ "Deviprasad Goenka Management College of Media Studies Mimbai", 
+ "G.H.RAISONI COLLEGE OF ENGINEERING", 
+ "HINDUSTAN INSTITUTE OF TECHNOLOGY AND MANAGEMENT", 
+ "BHIMESWAR INDUSTRIAL TRAINING CENTRE", 
+ "SHYAM COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "Holy Cross College of Nursing", 
+ "Vidhyapeeth Institute Of Science And Technology", 
+ "Asians Institute of Technology", 
+ "ROLAND INSTITUTE OF PHARMACEUTICAL SCIENCES", 
+ "LAZARUS SCHOOL OF NURSING", 
+ "nalanda institute of technology", 
+ "M. S. Ramaiah Management Institute", 
+ "Noida Institute of EngineeringTechnology", 
+ "Murshidabad College  of Engg. & Technology", 
+ "Seemanta Engineering College", 
+ "Millennium Institute Of Technology", 
+ "Gravismeds School of Nursing", 
+ "Yashoda School Of Nursing", 
+ "Lakshmi School of Nursing", 
+ "Poulomi School of Nurshing", 
+ "VMKVEC, SALEM", 
+ "GANDHI POLYTECHNIC, BERHAMPUR", 
+ "FILM AND TELEVISION INSTITUTE OF INDIA", 
+ "SHANKARA INSTITUTEOF TECHNOLOGY,", 
+ "SUBHARTI INSTITUTE OF TECHNOLOGY & ENGINEERING", 
+ "NATIONAL INSTITUTE OF AGRICULTURAL EXTENSION MANAGEMENT", 
+ "School of  Nursing Holy Cross Hospital Kunkuri", 
+ "Shri Shankaracharya Engineering College, Durg", 
+ "Kanti Darshan Mahavidyalaya", 
+ "Agrasen College", 
+ "Maitri College of Dentistry and Research Center, Durg", 
+ "Dr. Rajendra Prasad Arts & Commerce College", 
+ "Apollo College, Durg", 
+ "SHIVA COLLEGE", 
+ "Rungta College of Science & Technology", 
+ "Vipra Physical Education College", 
+ "St. vincent Pallotti College", 
+ "INSTITUTE OF TEACHERS EDUCATION, RAIPUR", 
+ "Rungta College of Engineering and Technology, Raipur", 
+ "Shri Ram College", 
+ "Kruti Institute of Teacher  Education", 
+ "Aricent B.ed college.", 
+ "Kamlakant Shukla Insitute", 
+ "ZAKIR HUSAIN POST GRADUATE EVENING COLLEGE", 
+ "CH. Brahm Prakash Government Engineering College", 
+ "SVNIT, Surat", 
+ "New Kalpana Chawla College of Education, Hisar", 
+ "NATIONAL INSTITUTE OF FASHION TECHNOLOGY, KANGRA (NIFT)", 
+ "IEC University", 
+ "Symbiosis Institute of Business Management, Bangalore", 
+ "NEW HORIZON COLLEGEOF ENGINEERING", 
+ "Basavakalyan Engineering College", 
+ "Holy Cross School of Nursing", 
+ "Indore Institute of Science & Technology, Indore", 
+ "Vidyasagar Institute of Technology", 
+ "Mansarovar Institute of Science & Technology", 
+ "Aisect University", 
+ "PARMAR INSTITUTE OF PROFESSIONAL STUDIES, GWALIOR", 
+ "Vishwakarma Institute of Management Pune  (VIT)", 
+ "Symbiosis Law School, Pune", 
+ "MIT College of Engineering", 
+ "PRIYADARSHINI INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Bhubaneswar Institute of Technology", 
+ "B.I.T Bhubaneswar", 
+ "Indus College of Engineering,Bhubaneswar", 
+ "IMARAT UMAR TECHNICAL TRAINING CENTRE", 
+ "Rourkela Institute of Technical Education", 
+ "Mewar University", 
+ "Rajdhani Institute of Technology and Management", 
+ "Padmavathi College of Nursing", 
+ "Padmavathi School of Nursing", 
+ "NANDHA POLYTECHNIC COLLEGE", 
+ "Greater noida college of technology", 
+ "ACCURATE INSTITUTE OF MANAGEMENT & TECHNOLOGY", 
+ "Lucknow Institute Of Technology", 
+ "S.R INSTITUTE OF MANAGEMENT AND TECHNOLOGY", 
+ "IIJMC, Lucknow", 
+ "KASHI  INSTITUTE  OF  TECHNOLOGY", 
+ "BANARAS HINDU UNIVERSITY", 
+ "ASSAM UNIVERSITY,SILCHAR(A CENTRAL UNIVERSITY)(SCHOOL OF TECHNOLOGY)", 
+ "National Institute of Technology, Silchar", 
+ "Assam Medical College", 
+ "Tezpur University", 
+ "Surguja University", 
+ "JMJ College of Nursing", 
+ "Delhi College of Engineering", 
+ "Grant Medical College", 
+ "Bombay Flying Club", 
+ "Ali Yavar Jung National Institute for the Hearing Handicapped", 
+ "Tata Institute of Social Science", 
+ "National Institute of Technology", 
+ "KRUPAJAL ENGINEERING COLLEGE", 
+ "PRIST UNIVERSITY", 
+ "BHARATH INSTITUE OF HIGHER EDUCATION & RESEARCH", 
+ "DURGAPUR INSTITUTE OF ADVANCE TECHNOLOGY AND MANAGEMENT", 
+ "ALPHA COLLEGE OF ENGINEERING", 
+ "SRI RAWATPURA SARKAR INSTITUTE OF TECH & SCIENCE", 
+ "MANGALMAY INSTITUTE OF MANAGEMENT & TECHNOLOGY", 
+ "Bhabha Institute of Technology", 
+ "GURU NANAK INSTITUTE OF TECHNOLOGY", 
+ "DON BOSCO INSTITUTE OF TECHNOLOGY", 
+ "KARNAL INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "NIMS UNIVERSITY", 
+ "INSTITUTE OF MANAGEMENT BHUBANESWAR", 
+ "SATHYABAMA UNIVERSITY", 
+ "JAGANNATH INSTITUTE FOR TECHNOLOGY & MANAGEMENT", 
+ "ST. THOMAS COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "NATIONAL INSTITUTE OF FASHION TECHNOLOGY", 
+ "GOVERNMENT ENGINEERING COLLEGE, AJMER", 
+ "IAMR COLLEGE OF ENGINEERING", 
+ "Jan Nayak Ch. Devi Lal College of Engineering", 
+ "Bihar College of Pharmacy", 
+ "Indian Institute of Health Education & Research", 
+ "Indraprasth Institute of Aeronautics", 
+ "PRESTON COLLEGE", 
+ "KK Polytechnic", 
+ "NATIONAL INSTITUTE OF TECHNOLOGY  PATNA", 
+ "NITIE", 
+ "Indian Institute of Management", 
+ "Al-Falah School of Engineering & Technology (AFSET)?", 
+ "Swami Devi Dayal College of Nursing", 
+ "Swami Devi Dyal College of Technical Education", 
+ "NATIONAL INSTITUTE OF TECHNOLOGY SILCHAR", 
+ "NATIONAL INSTITUTE OF TECHNOLOGY KURUKSHETRA", 
+ "VISVESVARAYA NATIONAL INSTITUTE OF TECHNOLOGHY NAGPUR", 
+ "NATIONAL INSTITUTE OF TECHNOLOGY  CALICUT KERALA", 
+ "NATIONAL INSTITUTE OF TECHNOLOGY  RAIPUR", 
+ "INDIAN INSTITUTE OF TECHNOLOGHY DELHI", 
+ "NATIONAL INSTITUTE OF FASHION TECHNOLOGY", 
+ "INDIAN INSTITUTE OF TECHNOLOGY MADRAS", 
+ "VELLORE INSTITUTE OF TECHNOLOGY", 
+ "NATIONAL INSTITUTION OF TECHNOLOGY ROURKELA", 
+ "Vidya Vikas Institute of Engineering & Technology", 
+ "Dileef College of Nursing", 
+ "Technocrats institute of technology (excellence)", 
+ "Malaviya National Inst. Of Technology", 
+ "School of Planning & Architecture, Delhi", 
+ "Institute of Technoloty, Banaras Hindu University", 
+ "Indian Institute of Information Technology", 
+ "Birla Institute of  Technology", 
+ "Indian Institute of Management Raipur", 
+ "Indian Institute of Forest Management", 
+ "Bharati Vidyapeeth", 
+ "L.N. Mishra Institute of  Economic Development & Social Change", 
+ "National Institute of Rural Development", 
+ "National Law Institute University", 
+ "Hidayatullah National Law University", 
+ "Gandhi Medical College", 
+ "B J Medical College", 
+ "Institute of  Medical Sciences, Banaras Hindu University", 
+ "King Edward Memorial Hospital", 
+ "Central Institute of Agricultural Engineering", 
+ "Indian Statistical Institute", 
+ "COLLEGE OF ENGINEERING", 
+ "Emax School of Engg & Applied Research", 
+ "Rajarajeshwari College Of Nursing", 
+ "National Institute of Fashion Technology", 
+ "National Institute of Fashion Technology", 
+ "National Institute of Fashion Technology", 
+ "National Institute of Fashion Technology", 
+ "National Institute of Design", 
+ "Institute of Hotel Management, Catering & Nutrition", 
+ "Institute of Hotel Management, Catering Technoloty & Applied Nutrition", 
+ "Institute of Hotel Management, Catering Technoloty & Applied Nutrition", 
+ "Andhra Pradesh Flying Club", 
+ "Rajasthan State Flying School", 
+ "National Institute for the Orthopaedically Handicapped", 
+ "Film and Television Institute  of India", 
+ "GANDHI INSTITUTE OF INDUSTRIAL TECHNOLOGY", 
+ "BANSTHALI UNIVERSITY", 
+ "B.I.T EXTENTION ALLAHABAD", 
+ "TATA INSTITUTE OF SOCIAL SCIENCES", 
+ "NIFT, MUMBAI", 
+ "SRI SIDDHARTHA INSTITUTE OF TECHNOLOGY", 
+ "INSTITUTE OF ADVANCED MANAGEMENT", 
+ "TRUBA INSTITUTE OF ENGG & IT", 
+ "DAYANANDA SAGAR COLLEGE, BANGALORE", 
+ "MARINE ENGINEERING & RESEARCH INSTITUTE", 
+ "ENGINEERING COLLEGE, BIKANER", 
+ "VEL TECH DR. RR & DR. SR TECHNICAL UNIVERSIY", 
+ "RURAL ENGG. COLLEGE ,BHALKI", 
+ "SIKKIM MANIPAL UNIVERSITY,DELHI", 
+ "DOON PG COLLEGE OF AGRI. SC. & TECH", 
+ "SAGAR INSTITUTE OF RESEARCH & TECHNOLOGY", 
+ "MATS UNIVERSITY", 
+ "VNIT,NAGPUR", 
+ "SUBAS INSTITUTE OF TECHNOLOGY (SIT)", 
+ "RATTAN INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "KOUSTUV INSTITUTE OF TECHNOLOGY BHUBANESWAR", 
+ "NIFT, KOLKATA", 
+ "SIR MVIT BANGALORE", 
+ "REVA INSTITUTE OF TECHNOLOGY AND MANAGEMENT", 
+ "C.V.RAMAN COLLEGE OF ENGINEERING", 
+ "SCHOOL OF NURSING DUNCAN HOSPITAL", 
+ "JAIPUR ENGINEERING COLLEGE & RESEARCH CENTER", 
+ "MALOUT INSTITUTE OF MANAGEMENT & INFO TECH", 
+ "ST. THOMAS COLLEGE, BHILAI", 
+ "BHABHA ENGINEERING RESEARCH INSTITURE", 
+ "ADESH INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "INSTITUTE OF ADVANCED COMPUTER & RESEARCH", 
+ "FUTURE INSTITUE OF ENGINEERING & MANAGEMENT", 
+ "AMRITSAR COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "FACULTY OF ENGINEERING & TECHNOLOGY,GKU, HARIDWAR", 
+ "RKDF INSITUTE OF SCIENCE & TECHNOLOGY, BHOPAL", 
+ "NIFT - GANDHINAGAR", 
+ "SIKKIM MANIPAL INSTITUTE OF TECHNOLOGY", 
+ "NALANDA INSTITUTE OF TECHNOLOGY,BBSR", 
+ "ST XAVIERS COLLEGE, KOLKATA", 
+ "BHUBANESWAR ENGINEERING COLLEGE (BEC)", 
+ "GLOBAL ACADEMY OF TECHNOLOGY BANGALORE", 
+ "ADVENTIST COLLEGE OF NURSING", 
+ "NIT DURGAPUR", 
+ "KOSHYS COLLEGE OF NURSING", 
+ "SRI SANT GADGE BABA COLLEGE OF ENGG.&TECH", 
+ "KRUPAJAL ENGG. COLLEGE", 
+ "SILICON INSTITUTE OF TECHNOLOGY, SAMBALPUR", 
+ "BANASTHALI VIDYAPITH", 
+ "NIT TIRUCHIRAPPALLI", 
+ "SEEMANTA INSTITUTE OF PHARMACEUTICAL SCIENCES", 
+ "INSTITUTE OF  HOTEL MANAGEMENT,BANGALORE", 
+ "GANDHI ENGINEERING COLLEGE", 
+ "HERITAGE INSTITUTE OF TECHNOLOGY", 
+ "SAROJ MOHAN INSTITUTE OF TECHNOLOGY", 
+ "LOVELY PROFESSIONAL UNIVERSITY", 
+ "RADHARAMAN INSTITUTE OF TECHNOLOGY & SCIENCE", 
+ "PURUSHOTTAM INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "INTEGRAL UNIVERSITY, LUCKNOW", 
+ "OXFORD COLLEGE OF ENGINEERING & MANAGEMENT", 
+ "NETAJI SUBHASH ENGINEERING COLLEGE", 
+ "SRI SATYA SAI COLLEGE OF ENGINEERING", 
+ "MAHAVIR INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "BENGAL COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "SOBHASARIA ENGINEERING COLLEGE", 
+ "MALLABHUM  INSTITUTE OF TECH.", 
+ "RAJEEV GANDHI PROUDYOGIK MAHAVIDYALAYA", 
+ "MAGHNAD SAHA INSTITUTE OF TECHNOLOGY", 
+ "STANI MEMORIAL COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "ADITYA ENGINEERING COLLEGE", 
+ "Godavari Institute of Engineering & Technology", 
+ "Sri Ram School of Nursing", 
+ "Newtons Institute of Engineering", 
+ "Nalanda Institute of  Technology, Siddharth Nagar", 
+ "Amara Institute of Engineering & Technology", 
+ "Koneru Lakshmyiah College of Engineering", 
+ "Nalanda Institute of Engineering & Technology", 
+ "GUNTUR ENGINEERING COLLEGE", 
+ "NRI Institute of Technology  visadala Medikonduru Guntur", 
+ "Chaitanya Bharathi Institute of Technology", 
+ "NIMRA COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "Nagarjuna School of Nursing", 
+ "NIMRA INSTITUTE OF SCIENCE AND TECHNOLOGY", 
+ "School of Planning and Architecture, Vijayawada", 
+ "Nagarjun Hospital Collage of Nursing", 
+ "Balaji School of Nursing", 
+ "Murali Krishna School of Nursing", 
+ "RICH COLLEGE OF NURSING", 
+ "MALYADRI SCHOOL OF NURSING, NELLORE", 
+ "Sri Padmavathi School of Nursing", 
+ "Sri Bhargavi School of Nursing, Nellore", 
+ "Narayan Nursing Institution", 
+ "Bollineni School of Nursing", 
+ "Dileef School of Nursing", 
+ "J.S. College of Nursing.Ongole", 
+ "S.S.N. ENGINEERING COLLEGE", 
+ "Sri Venkateswara College of Engineering & Technology", 
+ "Visakha Technical Campus", 
+ "Visakha  School of Nursing", 
+ "Murli Krishna School of Nursing", 
+ "College of Life Sciences  Nursing Krishi Hospital", 
+ "Manisha College of Nursing Krishi Hospital", 
+ "Minerva School of Nursing Krishi Hospital", 
+ "ST. Lukes School of Nursing", 
+ "Academy of Life Sciences Nursing", 
+ "Chaitanya College of Pharmacy", 
+ "Indira Institute of Technology & Sciences", 
+ "Siddhartha School of Nursing", 
+ "Bethany School of Nursing", 
+ "Sagardurga School of Nursing", 
+ "Indian Maritime University, Visakhapatnam Campus (NSDRC)", 
+ "D D R School of Nursing", 
+ "INDIAN INSTITUTE OF TECHNOLOGY,GUWAHATI", 
+ "Dr Zakir Husain Institute", 
+ "Bhagalpur Industrial Training Institute", 
+ "Marwari College .", 
+ "T.N.B. Law College", 
+ "T. N. B. College", 
+ "Maulana Azad College Of Engineering & Technology, Patna", 
+ "Krishna Public School", 
+ "Department of Applied Economics & Commerce", 
+ "SCHOOL OF NURSING KURJI HOLY FAMILY HOSPITAL", 
+ "Netaji Subhash Institute of Technology", 
+ "Bihar National College, Patna", 
+ "Loyola Industrial School, Patna", 
+ "B. I. T., Patna Center", 
+ "The Catalyst Academy, Patna", 
+ "Raghunath Prasad Sharma Institute Of Technology", 
+ "Central University of Bihar", 
+ "St. Xavier s College of  Education,Patna", 
+ "ST. MICHAEL S HIGH SCHOOL,DIGHA GHAT", 
+ "Bharat Institute of  Aeronautics", 
+ "National Institute of Fashion Technology,Bihar", 
+ "Takshila College of Education", 
+ "St Xavier s College,Patna", 
+ "Tapindu Institute of Higher Studies", 
+ "All India Institute of Medical Sciences Patna", 
+ "Arcade Business College", 
+ "Mirza Galib Teachers Training College", 
+ "NALANDA OPEN UNIVERSITY", 
+ "Hari Narain Singh Institute of Teachers Education", 
+ "Sityog Institute of Technology", 
+ "SRI BHAGWAT PRASAD SINGH MEMORIAL B.Ed. COLLEGE", 
+ "Magadh Teachers Training College", 
+ "S.Sinha College", 
+ "COLLEGE OF  AGRICULTURAL ENGINEERING, PUSA", 
+ "Sant Maalik Memorial Institute", 
+ "MAGADH COLLEGE OF EDUCATION", 
+ "Institute of Physiotherapy, Magadh University", 
+ "Gyan Prakash College of Education", 
+ "Buddha Institute of Technology", 
+ "Bhubha Institute of Technology", 
+ "Rashidiya Rani Sagari Teachers Education", 
+ "ANUGRAH MEMORIAL COLLEGE, GAYA", 
+ "Millat Teachers Training College, Madhubani", 
+ "Mahatma Gandhi Shikshak Prashikshan Mahavidyalaya", 
+ "Adwaita Mission Training College,Mandar Vidyapeeth", 
+ "B.N.College of Education, Dhoraiya", 
+ "CENTRAL INSTITUTE OF PLASTICS ENGINEERING & TECHNOLOGY", 
+ "Millia Institute OF Technology", 
+ "Millia Polytechnic", 
+ "Oriental College of Education", 
+ "Azmet Institute of Technology", 
+ "Khawaja Shahid Hussain  D.EL. ED. Teachers Training College", 
+ "SAINT XAVIER S COLLEGE OF EDUCATION, AMBIKAPUR", 
+ "PARWATI INSTITUTE OF TRAINING RESEARCH & MANAGEMENT", 
+ "SHRI SAI BABA AADARSH MAHAVIDYALAYA, SARGUJA", 
+ "sarswati shiksha mahavidyalaya", 
+ "Swami Shri Swaroopanand Saraswati Mahavidyalaya", 
+ "Uday College", 
+ "Bhilai College of Information Technology, Bhilai", 
+ "Aryavart Shiksha Mahavidyalaya", 
+ "Shri Shankaracharya Institute of technology Management", 
+ "Shri Shankaracharya Group of Institution", 
+ "Khalsa Education Societys, Khalsa College", 
+ "Chhattisgarh Nursing College", 
+ "Bhilai Maitri College", 
+ "M. J. College, Bhilai", 
+ "Chattisgarh Engineering College, Durg", 
+ "bhilai institute of technology, durg", 
+ "Raipur Institute of Technology", 
+ "Spectrum College of Education", 
+ "Pt. Harishankar Shukla Smriti college", 
+ "Columbia College of Nursing", 
+ "Shri Rawatpura  Sarkar Institute of Technology", 
+ "Columbia Institute of Engineering And Technology", 
+ "Gracious college of Nursing, Belbhatha", 
+ "BHILAI INSTITUTE OF TECHNOLOGY", 
+ "Christ College Jagdalpur", 
+ "Chattisgarh Dental College & Research Institute", 
+ "Central India College of Nursing", 
+ "Dr. C. V. RAMAN UNIVERSITY", 
+ "Institute of Technology, Guru Ghashi Das University, Bilaspur", 
+ "CHHATRAPATI SHIVAJI INSTITUTE OF TECHNOLOGY - DURG", 
+ "SAINT HARKEWAL SHIKSHA MAHAVIDAYALAYA, AMBIKAPUR C.G.", 
+ "Ayush College of Education", 
+ "J.E.S College", 
+ "D.P. Vipra College of Education", 
+ "Department of Education, Guru Ghasidas university", 
+ "Jagadguru Shankaracharya College of Education, Bhilai", 
+ "M.J. COLLEGE, Bhilai", 
+ "Shri Shankaracharya Mahavidyalaya", 
+ "Prism School of Education", 
+ "G.D. Rungta College of Science & Technology", 
+ "R.S.R Rungta College of Engineering & Technology", 
+ "Disha College", 
+ "SHRI SHANKRACHARYA ENGINEERING COLLEGE", 
+ "Rungta College of EngineeringTechnology", 
+ "Rahod education society", 
+ "Utkarsh College of Education", 
+ "Pandit Harishankar College", 
+ "Jagrani Devi Siksha Mahavidyalaya", 
+ "Gyanodaya College of Education", 
+ "KONARK COLLEGE OF EDUCATION", 
+ "Gyan Roshni Lok Kalyan Sanstha", 
+ "Viswa Bharathi Institute Konta", 
+ "Hasdeo education  college", 
+ "OP Jindal Institute of Technology(OPJIT)", 
+ "College of Vocational studies", 
+ "Shyamlal college", 
+ "GOVINDAM BUSINESS SCHOOL", 
+ "Hans Raj College", 
+ "ATM Global business School", 
+ "All India Institute of Medical Sciences", 
+ "GURU GOBIND SINGH INDRAPRASTHA UNIVERSITY", 
+ "The Institution of Electronics & Telecommunication Engineers", 
+ "Banarsidas Chandiwala Institute of Information Technology", 
+ "Institute of Hotel Management, Pusa", 
+ "Jamia Millia Islamia University", 
+ "HINDU  COLLEGE  DELHI UNIVERSITY", 
+ "DELHI TECHNOLOGICAL UNIVERSITY, Delhi", 
+ "Pt. Deendayal Upadhyaya Institute for Physically Handicapped", 
+ "University Of Delhi", 
+ "DELHI TECHNOLOGICAL UNIVERSITY (formerly DELHI COLLEGE OF ENGINEERING)", 
+ "Maharaja Agrasen Institute of Technology", 
+ "Keshav Mahavidyalaya", 
+ "Jagannath International Management School,New Delhi", 
+ "NATIONAL INSTITUTE OF FASHION TECHNOLOGY,NEW DELHI", 
+ "P.G.D.A.V. College", 
+ "College of Professional Courses", 
+ "jamia hamdard", 
+ "Atma Ram Sanatan Dharma College", 
+ "AMITY SCHOOL OF ENGINEERING & TECHNOLOGY", 
+ "Shri Ram College of Commerce", 
+ "Rukmini Devi Institute of Advanced Studies", 
+ "Gitarattan International Business School", 
+ "Indira Ghandi Institute of Physical Education and Sports Sciences", 
+ "Dhirubhai Ambani Institute of Information and Communication Technology", 
+ "Geeta Engineering College", 
+ "D.R.COLLEGE OF ENGG & TECH", 
+ "Shri Ram Polytechnic,Panipat", 
+ "Samalkha Group Of Institutions", 
+ "Panipat Institute of Engineering &Technology", 
+ "GALAXY GLOBAL EDUCATIONAL TRUST s GROUP OF INSTITUTIONS", 
+ "Shree Ram Mulkh Institute of Engineering & Technology", 
+ "Maharishi Markandeshwar University", 
+ "ICL Institute of Diploma & Engineering", 
+ "JAI POLYTECHNIC", 
+ "Emax Group of Institutions", 
+ "Shree Birkha Ram College of Education", 
+ "G.D. Polytechnic Bhuna", 
+ "MM Polytechnic", 
+ "Sat Kabir Institute of Technology & Management", 
+ "Gyan Bharti College of Education", 
+ "DOON VALLEY INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Karnal Institute of Polytechnic", 
+ "Greenwood College of Education", 
+ "RASHOBA COLLEGE OF EDUCATION", 
+ "Bhiwani Institute of Technology & Sciences", 
+ "BITS College of Polytechnic", 
+ "Gurgaon Institute of Technology & Management", 
+ "ITM University.", 
+ "BM College of Technology & Management", 
+ "GLOBAL INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "World College of Technology and Management", 
+ "Amity University Haryana", 
+ "Jind Polytechnic College", 
+ "Jai Bharat College Education", 
+ "Ram Narayan Institute of Education", 
+ "J.B.M College of Education", 
+ "Adarsh Polytechnic", 
+ "NIT Kurukshetra", 
+ "Mahabir College Of Education For Women", 
+ "Ashtvinayak Institute of Technology", 
+ "Technology education & research integrated institutions", 
+ "Adarsh College Of Education", 
+ "Ladwa College of Education", 
+ "Dr.B R AMBEDKAR COLLEGE OF EDUCATION", 
+ "Sardar Kewal Singh Polytechnic, Kirmach", 
+ "Kurukshetra University", 
+ "Ch. Matu Ram College of Education", 
+ "Saraswati College of  Education.", 
+ "ICL Institute of Technical Education", 
+ "ICL Institute of EngineeringTechnology", 
+ "Triupati College of Education", 
+ "Delhi College of Technology & Management, Palwal", 
+ "NGF College of Engineering & Technology", 
+ "Satya College of Engineering & Technology", 
+ "Mata Raj Kaur Institute Of Engineering & Technology", 
+ "National Institute of Food Technology Entrepreneurship and Management", 
+ "Modern College of education  .", 
+ "Royal Institute of Management & Technology", 
+ "Delhi Institute of Technology and Management", 
+ "P.M. Polytechnic", 
+ "INTERNATIONAL INSTITUTE OF TECHNOLOGY & BUSINESS", 
+ "Gateway Institute of Engineering &Technology", 
+ "Bhagat Phool Singh Mahila Vishwavidyalaya", 
+ "Bharat Institute of Polytechnic, Sonepat", 
+ "Bharat Institute of Technology Sonipat", 
+ "Shri Ram Memorial College of Education, BIDHLAN", 
+ "D.B.M College of Education, Sonepat", 
+ "JAWAHARLAL NEHRU COLLEGE OF EDUCATION, Gohana", 
+ "Mukhi College of Education", 
+ "MRM College of Education Sonipat", 
+ "DCS College of education", 
+ "DELHI INSTITUTE OF TECHNOLOGY MANAGEMENT AND RESEACH", 
+ "FACULTY OF ENGINEERING AND TECHNOLOGY(FET)", 
+ "Bimla Devi Educational Societys Group of Institution", 
+ "National Power Training Institute, Faridabad", 
+ "Ambika College of Education", 
+ "City College of Education", 
+ "Arya College of Education", 
+ "C.L. College of Education", 
+ "B.R. College of Education", 
+ "Yaduvanshi College/Institute Of  Education", 
+ "Modern College of Education", 
+ "sarswati college of education .", 
+ "Rao Lal Singh College of Education", 
+ "Aravali College of Education", 
+ "Swami Devi Dayal Institute of Engineering", 
+ "Swami Devi Dyal College of Education.", 
+ "Indian Institute of Management,Rohtak", 
+ "S S M College of Education", 
+ "Yash College of Education", 
+ "Vaish College", 
+ "Hari om shiv om college of education", 
+ "Shree ganesh polytechnic", 
+ "Swami Vivekanand College of Education.", 
+ "SHRI BALAJI POLYTECHNIC", 
+ "Tagore College of Education  .", 
+ "JKP polytechnic", 
+ "Bhartiya  College Of  Education", 
+ "Ganpati Polytechnic for Engineering", 
+ "Baba Jai Ram Dass College of Education", 
+ "Akash Institute of Technology", 
+ "Delhi Technical Campus", 
+ "Himachal Pradesh University Shimla", 
+ "SIRDA Institute of Engineering Technology", 
+ "National Institute of Technology .", 
+ "Dev Bhumy Group of Institutes, Una", 
+ "Vishva Bharti College of Education", 
+ "University of Jammu", 
+ "Ramisht  College of Education", 
+ "Lake City College of Education", 
+ "Sai Shyam College of Education", 
+ "Gandhi Memorial College of Education", 
+ "Guru Nanak College of Education", 
+ "B.N College of Education", 
+ "Taawish College of Education", 
+ "Hill People College of Education and Training", 
+ "Kalra College of Education,Udhampur", 
+ "Garden City College", 
+ "Sambhram Institute of Technology", 
+ "Sri Krishna Institute of Technology", 
+ "ACHARYAS BANGALORE B-SCHOOL", 
+ "RR Institute", 
+ "Faran College & School of Nursing", 
+ "ADMINISTRATIVE MANAGEMENT COLLEGE", 
+ "Indian Institute of Plantation Management, Bangalore", 
+ "JSS ACADEMY OF TECHNICAL EDUCATION,BANGALORE", 
+ "CMR Institute of Technology(CMRIT)", 
+ "Sri Venkateshwara College of Engineering", 
+ "Nitte Meenakshi Institute of Technology", 
+ "PESIT", 
+ "M S RAMAIYAH COLLEGE OF ARTS,SCIENCE & COMMERCE", 
+ "Bangalore Institute of Technology", 
+ "KNS Institute of Technology,Hedge Nagar", 
+ "MVJ COLLEGE OF ENGINEERING", 
+ "Acharya Institute of Technology", 
+ "EAST WEST INSTITUTE OF TECHNOLOGY", 
+ "HKBK College of Engineering", 
+ "T.John College, Bangalore", 
+ "East Point College of Engg & Tech", 
+ "Sapthagiri College of Engineering", 
+ "M S Ramaiah  Institute of Technology", 
+ "B.N.M Institute of Technology", 
+ "K.S. INSTITUTE OF TECHNOLOGY", 
+ "Raman Polytechnic", 
+ "Sir M. Visvesvaraya Institute of Technology", 
+ "Royal Institutions", 
+ "St. Josephs College of Commerce (Autonomous), Bangalore", 
+ "Christ University", 
+ "R N S  INSTITUTE OF TECHNOLOGY", 
+ "Nagarjuna College of Engineering & Technology", 
+ "Cambridge Institute of Technology", 
+ "T.John Institute of Technology", 
+ "M.S ENGINEERING COLLEGE, BANGALORE", 
+ "Vydehi Institute of Medical Sciences and Research Centre", 
+ "VIJAYANAGAR  COLLEGE  OF  NURSING", 
+ "R.L. Jalappa Institute of Technology,Kodigehali,Doddaballapur", 
+ "BMS Institute of Technology", 
+ "Reva Institute of Science & Management", 
+ "R. V. Institute of Management", 
+ "St. Theresa School of Nursing", 
+ "Xavier Institute of Management & Entrepreneurship", 
+ "BMS College of Engineering", 
+ "B T L Institute of Technology and Mangement", 
+ "AMC Engineering College", 
+ "SJB Institute of Technology", 
+ "S.E.A College of Engineering & Technology, Bangalore", 
+ "HARSHA COLLEGE OF NURSING", 
+ "Rajiv Gandhi Institute of Technology", 
+ "Smt. Laxmi Devi College of Nursing", 
+ "Harsha Group of Institute", 
+ "KLS Gogte Institute of Technology", 
+ "Shaikh College of Engineering & Technology", 
+ "Ballari Institute of Technology & Management", 
+ "Bilal College of Education For Women", 
+ "Guru Nanak Dev Engineering College", 
+ "Adichunchanagiri Institute of Technology", 
+ "S.J.M Institute Of Technology", 
+ "Masood School Of Nursing", 
+ "National Institute of Technology Ka", 
+ "Masood College of Nursing", 
+ "St Anns Institute of Health Sciences", 
+ "Bapuji Pharmacy College", 
+ "S.D.M College of Engineering & Technology", 
+ "Y k d polytechnic", 
+ "ANANDA MARGA POLYTECHNIC, MALUR- TALUK", 
+ "Vijayalakshmi Polytechnic", 
+ "P.E.S. College of Engineering", 
+ "Karnataka State Open University", 
+ "CSIR-Central Food Technological Research Institute", 
+ "Jawaharlal Nehru National College of Engineering", 
+ "Channabasaveshwara Institute of Technology", 
+ "Siddaganga Institute of Technology", 
+ "Shridevi Institute of EngineeringTechnology", 
+ "Shridevi Polytechnic", 
+ "H.M.S. Institute of Technology", 
+ "Sikkim Manipal University", 
+ "Manipal Institute of Technology Manipal", 
+ "P.A. College of Engineering", 
+ "K.S.Hegde Medical Academy", 
+ "Ghousia College of Engineering.", 
+ "Sri Venkateshwara College of Engineering, Bengalaru", 
+ "Cochin University College of Engineering", 
+ "Department of  Computer Applications, C.U.S.A.T", 
+ "International School Of Photonics", 
+ "School of Engineering, Kochi", 
+ "National Institute of Technology, Kozhikode", 
+ "Swami Vivekanand College of Engineering", 
+ "IPS Academy", 
+ "Oriental Institute of Science And Technology, Indore", 
+ "Institute of Management Studies, DAVV, Indore", 
+ "Vindhya Institute of Technology and Science", 
+ "M.I.B.E Graduate School For Nurses", 
+ "Prestige Institute of Engineering & Science", 
+ "R.K.D.F SCHOOL OF ENGINEERING", 
+ "Central India Institute of Technology", 
+ "BM College of Technology", 
+ "Medi-Caps Group of Institutions", 
+ "LORD KRISHNA COLLEGE OF TECHNOLOGY", 
+ "Patel College of Science &Technology", 
+ "Central Institute of Technology (Polytechnic)", 
+ "Malwa Institute of Science and Technology", 
+ "Astral Institute of Technology & Research", 
+ "INTERNATIONAL INSTITUTE OF PROFESSIONAL STUDIES, DAVV", 
+ "Indo German Tool Room", 
+ "INDIAN INSTITUTE OF MANAGEMENT INDORE", 
+ "Institute of Engineering & Technology.", 
+ "Lakshmi Narain college of technology", 
+ "JAGADGURU DATTATRAY COLLEGE OF TECHNOLOGY, INDORE", 
+ "RISHIRAJ INSTITUTE OF TECHNOLOGY ,INDORE", 
+ "Patel College of Science & Technology", 
+ "Shree Institute of Science & Technology", 
+ "N I I S T", 
+ "SISTech,Ghandhi Nagar", 
+ "Crescent College of Technology", 
+ "Technocrats Institute of Technology, Bhopal", 
+ "INDIAN MARITIME UNIVERSITY", 
+ "MITTAL INSTITUTE OF TECHNOLOGY", 
+ "Bhabha College of Engineering, Bhopal", 
+ "Bhopal Institute of Technology, Bhopal", 
+ "Vaishnavi Institute of Technology & Science, Medua", 
+ "MILLENNIUM COLLEGE OF PHARMACY", 
+ "Vedica institute of technology", 
+ "Patel Institute Of Technology", 
+ "madhav proudyogiki mahavidyalaya", 
+ "Iasscom Fortune Institute of Technology,Bhopal", 
+ "Rajeev Gandhi College, Shahpura", 
+ "Bhopal School of Social Sciences", 
+ "SURABHI COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "Malhotra College", 
+ "BAGULA MUKHI COLLEGE OF TECHNOLOGY", 
+ "JAI NARAIN COLLEGE OF TECHNOLOGY", 
+ "Surabhi group of institutions,bhopal", 
+ "Laxmipati Institute of ScienceTechnology", 
+ "Kailash Chandra Bansal College of Technology", 
+ "Patel College of Pharmacy", 
+ "T.I.T. COLLEGE, BHOPAL", 
+ "MANSAROVAR NURSING COLLEGE", 
+ "GANDHI P.R. COLLEGE, BHOPAL", 
+ "Bhabha College Of Dental Sciences", 
+ "Kailash Narayan Patidar College of Science & Technology", 
+ "oriental college of technology", 
+ "KOPAL INSTITUTE OF SCIENCE AND TECHNOLOGY", 
+ "AGNOS COLLEGE OF TECHNOLOGY", 
+ "NRI Group of Institutions", 
+ "Alia Polytechnic College", 
+ "Knp College Of Science And Technology", 
+ "IES College of Education", 
+ "VNS Institute of Pharmacy", 
+ "Acropolis Institute of Technology & Research", 
+ "Institute of Hotel Management Catering Technology & Applied Nutrition.", 
+ "All Saints College of Engineering", 
+ "Girdhar Siksha Evam Samaj Kalyan Samiti Group of Institutions", 
+ "Iasscom Fortune Institute of Technology", 
+ "J.N. College of Technology", 
+ "Gyan Ganga Institute of Technology And Management", 
+ "Peoples College of Dental ScienceResearch Center", 
+ "Radharaman Institute of ResearchTechnology", 
+ "Makhanlal Chaturvedi National University", 
+ "R.D. Memorial College of Physical Education", 
+ "Vishal Vate Memorial College Of Nursing", 
+ "Barkatullah University Institute of Technology", 
+ "Corporate Institute of ResearchTechnology", 
+ "Institute of Polytechnic Engineering ,Bhopal", 
+ "SAM COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "Bhopal Institute of Technology & Science", 
+ "VNS Institute of Technology, Bhopal", 
+ "RADHARAMAN ENGINEERING COLLEGE, RATIBAD", 
+ "Carporate Institute of Science & Technology", 
+ "GLOBUS ENGINEERING COLLEGE", 
+ "Satyam Educational & Social Welfare Society Group of Institutions", 
+ "ORIENTAL INSTITUTE OF SCIENCE & TECHNOLOGY", 
+ "IES Institute of Technology & Management", 
+ "All Saints College of Technology", 
+ "TRINITY INSTITUTE OF TECHNOLOGY & RESEARCH", 
+ "UJJAIN COLLEGE", 
+ "Sewak Shri Ram College of Education", 
+ "IPS College Of Technology and Management shivpuri Gwalior", 
+ "Jai Institute of Nursing and Research", 
+ "Training Ship Chanakya", 
+ "Vijayaraje Institute of Science and Management", 
+ "BVM College of Technology and Management", 
+ "Miss Sill College of Education", 
+ "Bright College of Education", 
+ "Shri Ram College of Education, Gwalior", 
+ "Institute of Technology & Management", 
+ "Dayal Nursing College", 
+ "GWALIOR ENGINEERING COLLEGE", 
+ "Shri Ram College of engineering & management", 
+ "Gwalior Institute of Technology and Science (GITS)", 
+ "LAXMI NARAYAN INSTITUTE OF TECHNOLOGY", 
+ "Lakshmi Narain Academy of Technology, Gwalior", 
+ "J.B. Institute of Nursing and Research", 
+ "IITTM,Govindpuri", 
+ "Maharana Pratap College of Technology", 
+ "ITM UNIVERSITY", 
+ "Awadh Madhav College of Nursing Science", 
+ "Lakshmibai National University of Physical Education", 
+ "Atal Bihari Vajpayee IIIT&M", 
+ "St. Aloysis Institute of Technology", 
+ "Gyan Ganga Institute of Technology & Science", 
+ "Oriental Institute Of Science And Technology, Jabalpur", 
+ "S.G .B.M. Institute of technology & science", 
+ "XIDAS", 
+ "Jabalpur Public College", 
+ "Bansal Institute of Science & Technology", 
+ "Scope College of Engineering", 
+ "SAGAR INSTITUTE OF SCIENCE TECHNOLOGY & ENGINEERING", 
+ "BANSAL INSTITUTE OF RESEARCH & TECHNOLOGY", 
+ "Sardar Patel Institute Of Education", 
+ "Dr. Radha Krishnan College of Education, Jabalpur", 
+ "Vindhya Institute of Technology & Science", 
+ "Takshshila Institute of Engg. & Technology Jabalpur", 
+ "Amar Jyoti Institute of Nursing Sciences & Research", 
+ "shree ram institute of Technology,jabalpur", 
+ "Laxminarayan College Of Technology", 
+ "Vijayshree Educational Institute", 
+ "OJASWINI INSTITUTE OF MANAGEMENT & TECHNOLOGY", 
+ "Siddhi vinayak Paramedical and Nursing college", 
+ "AISECT Institute of Science & Technology", 
+ "BANSAL COLLEGE OF ENGINEERING,MANDIDEEP", 
+ "Shri Satya Sai College of Education", 
+ "Jaytee University of Engineering & Technology", 
+ "Swami Vivekanand University", 
+ "Dr. Hari Singh Guor Vishwavidyalaya", 
+ "Gyan Sagar College of Engineering", 
+ "AKS University, Sherganj", 
+ "Nes Hoshangabad", 
+ "N.E.S College of physical Education", 
+ "Sardar Patel College of Technology", 
+ "St. Xavier s College Mumbai", 
+ "Indian Institute of Technology, Bombay", 
+ "Dr.D.Y.Patil", 
+ "Maharashtra Academy of Engineering", 
+ "G.H. Raisoni Institute of Engineering & Technology", 
+ "Sinhgad College of Engineering", 
+ "N.B.N. Sinhgad School of Engineering", 
+ "D.Y. PATIL, PUNE", 
+ "Maharastra Academy of  Naval Education & Training (manet)", 
+ "SINHGAD INSTITUTE OF MANAGMENT", 
+ "Indira College of Engineering and Management", 
+ "Sinhgad Institute of Technology", 
+ "JSPM JAYAWANTRAO SAWANT COLLEGE OF ENGINEERING, PUNE", 
+ "SINHGAD TECHNICAL EDUCATION SOCIETY, SINHGAD INSTITUTE OF MANAGEMENT", 
+ "Mitcon Institute of Management", 
+ "ATSS, IICMR, Pune", 
+ "IBMR College Pune", 
+ "MKSSSs Cummins College of Engineering for Women", 
+ "MIT Arts Commerce & Science College", 
+ "Symbiosis Institute of Technology, Pune", 
+ "SINHGAD INSTITUTE OF BUSINESS ADMINISTRATION & RESEARCH", 
+ "Sinhgad Management School", 
+ "Indira College of Commerce & Science", 
+ "G.H Raisoni College of Engeneering and Management", 
+ "ARMY INSTITUTE OF TECHNOLOGY", 
+ "Institute of ManagementEnterpreneurship Development", 
+ "G.H.Raisoni Polytechnic", 
+ "Karmavir Dadasaheb Kannamwar College of Engineering", 
+ "Kavikulguru Institute of TechnologyScience", 
+ "Wainganga College of Engineering and Management", 
+ "Jyotiba College of Physical Education", 
+ "Pryadarshini College of Engineering", 
+ "Priyadarshini Indira Gandhi College", 
+ "Tulsiramji Gaikwad-Patil College of Engineering & Technology, Nagpur", 
+ "Yeshwantrao Chavan College of Engineering", 
+ "G.H.Raisoni Institute of Engg. & Technology, for women", 
+ "Vidarbha Institute of Technology", 
+ "Smt. Bhagwati Chaturvedi College of Enggineering, Nagpur", 
+ "Chirayu. K. C Bajaj College of Education", 
+ "Nagpur Institute of Technology", 
+ "Shri Madhaorao Wankhade Sharirik Shikshan Mahavidyalaya", 
+ "Priyadarshini Institute of Architecture & Design Studies", 
+ "Priyadarshini Indira Gandhi College of Engineering, Nagpur", 
+ "J.T. Mahajan College of Engineering, Faizpur", 
+ "Tata Institute of Social Sciences ,Osmanabad", 
+ "DKTE Societys Textile & Engineering", 
+ "D.Y.Patil College of Engg. & Tech", 
+ "Manoharbhai Patel Institute of Engineering & Technology, Gondia", 
+ "Degree College of Physical Education Amravati", 
+ "Marathwada Institute of Technology", 
+ "Symbiosis Institute of Operations Management", 
+ "Shri Shankarprasad Agnihotri College of Engineering", 
+ "GANDHI INSTITUTE OF SCIENCE AND TECHNOLOGY, RAYAGADA", 
+ "Rayagada Institute of Technology and Management", 
+ "College of pharmaceutical sciences", 
+ "GHANSHYAM HEMALATA INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "Milandevi Industrial Training Center", 
+ "G .C Bala Industrial Training Center", 
+ "Maharaja Purna Chandra College", 
+ "Rinkulraj  ITC", 
+ "Seemanta Mahavidyalaya", 
+ "SEEMANTA  I.T.C", 
+ "Gorumahi Sane I.T.C", 
+ "SEC JHARPOKHRIA", 
+ "Mayurbhanj Industrial Training Centre", 
+ "Little Flower  I T C", 
+ "Mayurbhanj Medical Academy", 
+ "Divine Institute of Engineering & Technology, Baripada", 
+ "Maa Saraswati College of Professional Education, ITC", 
+ "Ritayani Industrial Training Center", 
+ "Rakhal Chandra Industrial Training Centre", 
+ "Samanta Chandrasekhar Institute of Technology and Management", 
+ "Mayurbhanj School Of Engineering", 
+ "MITS", 
+ "SSB Regional Institute of Science & Technology", 
+ "Regional College of Management", 
+ "Gandhi Institute of Excellent Technocrats", 
+ "Barrister Ranjit Mohanty International Institute Of Technology", 
+ "CENTRAL INSTITUTE OF PLASTIC ENGINEERING.", 
+ "GANDHI INSTITUTE FOR EDUCATION AND TECHNOLOGY, KHURDA", 
+ "Ganesh Institute Of Engineering & Technology", 
+ "Silicon Institute of Technology, Bhubaneswar", 
+ "NILACHAL POLYTECHNIC COLLEGE", 
+ "KIIT School of Management", 
+ "C.V.Raman Polytechnic", 
+ "VIVTECH, Orissa", 
+ "Eastern Academy of Science & Technology (EAST)", 
+ "School of Pharmaceutical Sciences", 
+ "KIIT School of Biotechnology", 
+ "National Institute Of Social Works and Social Sciences", 
+ "Regional Institue Of Education", 
+ "MODERN INSTITUTE OF TECHNOLOGY AND MANAGEMENT", 
+ "College of Engineering Bhubneshwar (CEB)", 
+ "The Techno School", 
+ "HI-TECH COLLEGE OF ENGINEERING", 
+ "Biju Patnaik Institute of Information Technology & Management Studies", 
+ "KMBB College of Engineering and Technology", 
+ "NM INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "MAHARAJA INSTITUTE OF TECHNOLOGY", 
+ "Centurion Institute of Technology, Jatni", 
+ "Synergy Institute of Technology , Bhubaneswar", 
+ "College of Engineering & Technology, Bhubaneswar (CET)", 
+ "Bhubaneswar Polytechnic", 
+ "KIIT", 
+ "Orissa Engineering College", 
+ "Rama Devi Womens College", 
+ "INDIC INSTITUTE OF DESIGN &  RESEARCH", 
+ "Institute of Medical Sciences & SUM Hospital", 
+ "SOPHITORIUM ENGINEERING COLLEGE", 
+ "Srusti Academy of Management, Bhubaneswar", 
+ "Indian Institute of Tourism and Travel Management", 
+ "Bhubaneswar Institute of Industrial Technology", 
+ "NMIET, Bhubaneswar", 
+ "Shibani Institute Of Technical Education", 
+ "Institute of management & information science", 
+ "Asian School Of Technology", 
+ "Orissa University Of Agriculture", 
+ "EINSTEIN ACADEMY OF TECHNOLOGY & MANAGEMENT", 
+ "Gandhi Institute For Technology", 
+ "Raajdhani Engineering College", 
+ "Hi-Tech Institute of Technology(H.I.T)", 
+ "TempleCity Institute of Technology & Engineering", 
+ "KONARK INSTITUTE OF SCIENCE & TECHNOLOGY", 
+ "GURUKULA INSTITUTE OF TECHNOLOGY", 
+ "SUDDHANANDA ENGINEERING & RESEARCH CENTER (SERC)", 
+ "Asian School of Business Management", 
+ "Gurukula Engineering School", 
+ "Swami Vivekananda School of Engineering & Technology", 
+ "Trident Academy Of Technology,Bhubaneswar", 
+ "Maharaja Polytechnic", 
+ "Indus School Of Engineering", 
+ "KIIT University", 
+ "College of Agriculture", 
+ "Gandhi Institute OF Technology And Management", 
+ "Trident Academy Of Creative Technology", 
+ "Aryan Institute of Engg. & Technology", 
+ "Spintronic Technology & Advance Research", 
+ "Dadhibamana ITC", 
+ "Baitarani Industrial Training Centre", 
+ "Orissa School of Mining Engineering, Keonjhar", 
+ "Rajiv Gandhi South Campus", 
+ "Chandrasekhar industrial training centre", 
+ "GOVERNMENT COLLEGE OF ENGINEERING KALAHANDI", 
+ "Black Diamond School of Engineering", 
+ "National Institute Of ScienceTechnology, Ganjam", 
+ "Pharmaceutical Science Mohuda", 
+ "GANDHI ACADEMY OF TECHNOLOGY AND ENGINEERING(GATE)", 
+ "Synergy Institute of Engineering & Technology", 
+ "Deogarh Industrial Training Centre, Deogarh", 
+ "Dhabaleswar institute of polytechnic", 
+ "Suddhananda Residential Polytechnic", 
+ "National Law College, Odisha", 
+ "AJAY-BINAY INSTITUTE OF TECHNOLOGY- PILOO MODY COLLEGE OF", 
+ "ARCHITECTURE", 
+ "Royal Industrial Training Centre", 
+ "BHADRAK INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "MAA RANI ITC", 
+ "Hi-Tech Institute of Engineering & Management", 
+ "Baba Rameswar & Ragunath Industrial Training Centre", 
+ "Padmashree Krutartha Acharya College of Engineering , Bargarh", 
+ "Adarsha College of Engineering", 
+ "KALINGA INSTITUE OF MINING ENGINEERING & TECHNOLOGY", 
+ "shree Dhriti Industrial Training Center", 
+ "Pavitramohan Institute of Technology, Talchar", 
+ "Sushree Institute of Technical Education", 
+ "Satyasai Engineering College", 
+ "Balasore Technical School", 
+ "BIT Polytechnic", 
+ "Jhadeswar Institute of Engineering & Technology", 
+ "RajaKishore Chandra Academy of Technology", 
+ "Koustuv School of Engineering", 
+ "Vivekananda Institute of Technology", 
+ "BALASORE COLLEGE OF ENGINEERING", 
+ "Basanti Industrial Training Center", 
+ "Bonaigarh Industrial Training Centre", 
+ "Jalda Industrial Training centre", 
+ "Modern Industrial Training Centre", 
+ "Sundargarh Engineering College, Sundargarh", 
+ "Indira Memorial Industrial Training Centre Jhirpani", 
+ "Rourkela Institute of Technology", 
+ "Don Bosco ITC, Kuarmunda", 
+ "BUDHUVIR INDUSTRIAL TRAINING CENTRE", 
+ "Khandadhar Industrial Training Centre", 
+ "Nirman Institute of Technology, Nuagaon", 
+ "Industrial Training Centre, Raghunath Palli", 
+ "Bramhani Industrial Training Centre", 
+ "BANWARILAL MEMORIAL ITC, RAJGANGPUR", 
+ "Koel Industrial Training Centre", 
+ "Progati ITC", 
+ "Utkal Industrial Training Center", 
+ "Guru Nanak Public school Rourkela", 
+ "IB Industrial Training Centre", 
+ "ROURKELA INSTITUTE OF MANAGEMENT STUDIES", 
+ "Dr. Ambedkar Memorial Institute of Information Technology & Management", 
+ "Science", 
+ "Chhend Industrial Training Centre", 
+ "CITY Institute of Technical Education", 
+ "Kanak Manjari Institute of Pharmaceutical Sciences", 
+ "Global Industrial Training Centre", 
+ "Kalinga Industrial Training Centre", 
+ "Veer Surendra Sai University of Technology", 
+ "Gayatri College of Pharmacy", 
+ "Orissa Engineering college, Nabajyoti Bihar", 
+ "Regional College of Management Autonomous", 
+ "U. C. Industrial Training Institute Birikuan", 
+ "Bhimeshwar Industrial Training Center", 
+ "Koenjhar school of Engineering", 
+ "Panchayat Samiti Industrial Training Institute", 
+ "JIPMER INSTITUTE OF POST GRADUATE MEDICAL EDUCATION AND RESEARCH", 
+ "Pondicherry Engineering College", 
+ "Regency Institute of Technology", 
+ "Pondicherry Central University", 
+ "Dr. Ambedkar Memorial Industrial Training Centre", 
+ "Rourkela Industrial Training Centre (RITC)", 
+ "ISPAT INDUSTRIAL TRAINING CENTRE", 
+ "Rayat Institute of Engineering and Information Technology .", 
+ "KC COLLEGE OF ENGINEERING & IT", 
+ "KC POLYTECHNIC COLLEGE", 
+ "Guru Kashi University", 
+ "Bhai Mani Singh Polytechnic College", 
+ "Saraswati Polytechnic College", 
+ "Guru Ram Das Polytechnic College", 
+ "Guru Teg Bahadur Khalsa Institute of Engineering & Technology", 
+ "Bhai Maha Singh College of Engineering", 
+ "Adesh Polytechnic College", 
+ "ABBNOOR POLYTECHNIC COLLEGE", 
+ "MALWA POLYTECHNIC COLLEGE", 
+ "shiv shankar institute of engineering & technology", 
+ "Global Institute of Management and Emerging Technologies", 
+ "Shaheed Bhagat Singh Polytechnic College", 
+ "C T Institute of Engineering Management & Technology", 
+ "Punjab Technical University", 
+ "Lovely Professional University, Jalandhar", 
+ "CT POLYTECHNIC COLLEGE JALANDHAR", 
+ "Dr. B.R. Ambedkar National Institute of Technology Jalandhar", 
+ "Bhai Gurdas Institute of EngineeringTechnology", 
+ "Gian Jyoti Group of Institutions", 
+ "Swami Vivekanand Institute of Engineering & Technology", 
+ "Aryans College of Engineering", 
+ "Surya School of Engineering & Technology", 
+ "RIMT-Maharaja Agrasen Engineering College", 
+ "CONTINENTAL INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "RIMT Polytechnic MandiGobindgarh", 
+ "RIMT Institute of Engineering Technology", 
+ "Baba Banta Singh Bahadur Engineering College", 
+ "Desh Bhagat Engineering College", 
+ "Shaheed Bhagat Singh State Technical Campus", 
+ "Ghubaya College of Engineering & Technology", 
+ "Sri Sukhmani Institute of Engineering & Technology", 
+ "Longowal Polytechnic & Pharmacy College", 
+ "Swami Parmanand Polytechnic", 
+ "GGS Polytechnic, Kharar", 
+ "Swami Parmanand Engineering College", 
+ "GGS College of Modern Technology", 
+ "Universal Institute of Enginering & Technology", 
+ "Longowal Polytechnic College", 
+ "Punjab College Of Engineering & Technology", 
+ "Chandigarh Engineering College", 
+ "Chandigarh Group of Colleges", 
+ "PUNJAB COLLEGE OF ENGINEERING & APPLIED RESEARCH", 
+ "Aryabhatta Group of Institutes, Barnala", 
+ "Paras Institute of Information Technology & Management Studies", 
+ "Sukhjinder Technical Campus, Tehsil Dhar Kalan, Dunera", 
+ "S. Sukhbinder singh Engineering & Technology", 
+ "Gurunanak Dev university of Regionl Campus", 
+ "Gulzar Group of Institutes� G T Road Khanna Ludhiana Punjab", 
+ "Indian Institute of Technology Ropar", 
+ "Adesh Institute of Technology", 
+ "Panjab University Swami Sarvanand Giri Regional Centre", 
+ "Advanced Technical Training Centre", 
+ "National Institute of Technology, Sikkim", 
+ "Bhagwant University", 
+ "School of Aeronautics (Neemrana)", 
+ "Laxmi Devi Institute of Engineering & Technology,Chikani", 
+ "Institute of Engineering & Technology, Alwar", 
+ "Siddhi Vinayak College of Science & Hr. Education", 
+ "Government Engineering College,Bharatpur", 
+ "MLV Textile & Engineering College, Bilwara", 
+ "Marudhar Engineering College", 
+ "Faculty of Engineering & Department of Life Science", 
+ "KAUTILYA INSTITUTE OF TECHNOLOGY AND ENGINEERING", 
+ "Manipal University Jaipur", 
+ "MJRP UNIVERSITY, JAIPUR", 
+ "Global Institute of Technology", 
+ "Apex Institute of Management & Science", 
+ "BMIT,Jaipur", 
+ "Amity University.", 
+ "Jaipur Institute of Technology (group of Institution)", 
+ "Regional Institute of Polytechnic Studies", 
+ "Poddar International College.", 
+ "BIRLA INSTITUTE OF TECHNOLOGY, EXTENSION CENTRE JAIPUR", 
+ "Jaipur National University", 
+ "Poornima College Of Engineering", 
+ "Dr Radhakrishnan Polytechnic College", 
+ "Poornima University", 
+ "Compucom Institute of Information Technology & Management, Jaipur", 
+ "Jagannath University", 
+ "Vivekananda  Institute  of  Technology", 
+ "Jagannath Gupta Institute of Engineering & Technology", 
+ "APEX INSTITUTE OF ENGINEERING & TECHNOLOGY,JAIPUR", 
+ "MJRP College Of Engineering & Technology", 
+ "Jaipur college of engineering,kukas", 
+ "Arya College of Engg. & IT", 
+ "Guru Nanak Dev Engineering College, Ludhiana", 
+ "LALA LAJPAT RAI INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Pratap University", 
+ "Govt. College of Engineering and Technology", 
+ "Siddharth Institute of Technology", 
+ "Universal Technical College", 
+ "Swami Keshwanand Institute Of Technology", 
+ "UNIVERSITY OF ENGINEERING AND MANAGEMENT,JAIPUR", 
+ "SURESH GYAN VIHAR UNIVERSITY", 
+ "Biyani School Of Nursing Para Medical Science", 
+ "NIMS INSTITUTE OF ENGINEERING AND TECH, NIMS UNIVERSITY", 
+ "International College for Girls", 
+ "Maharani Girls Engineering College", 
+ "Maharishi Arvind Institute of Engineering & Technology", 
+ "Rajeshthan Institute of Engineering & Technology", 
+ "Dr. RadhaKrishnan Institute of Technology", 
+ "Jaipur Institute of Engineering & Technology", 
+ "Rajsthan college of Engineering for womens", 
+ "JAYOTI VIDYAPEETH WOMENS UNIVERSITY, JAIPUR", 
+ "Sri Balaji College of Engineering & Technology, Jaipur", 
+ "A C E R C, Jaipur", 
+ "Government Engineering College", 
+ "Shridhar University Pilani", 
+ "Jodhpur Engineering College & Research Centre", 
+ "Marwar BEd College", 
+ "Jodhpur National University", 
+ "Raj Engineering College", 
+ "Mayurakshi Institute of Engineering and Technology", 
+ "University College of Engineering", 
+ "NATHDWARA INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "Govindam Polytechnic College", 
+ "Dr. K. N. Modi University, Tonk", 
+ "S S College of Engineering, Udaipur", 
+ "S.S. Polytechnic College", 
+ "College of Technology and Engineering", 
+ "Indian Institute of Management,Udaipur", 
+ "Pacific Academy of Higher Education & Research University", 
+ "Institute of Hotel Management Catering Technology & Applied Nutrition", 
+ "SRM University Chennai", 
+ "BHARATH UNIVERSITY,SELAIYUR", 
+ "DR. M G R Educational And Research Institute University", 
+ "Dhanalakshmi College of Engineering", 
+ "HINDUSTAN INSTITUTE OF TECHNOLOGY & SCIENCE, CHENNAI", 
+ "Bharath Polytechnic College", 
+ "Dr MGR University", 
+ "Arya Institute of Engineering & Technology, Kukas", 
+ "Agni college of technology", 
+ "Yagyavalkya Institute of Technology (YIT)", 
+ "Chanakya Technical Campus", 
+ "Bharath Institute of Science and Technology", 
+ "Karunya University", 
+ "ANNAMALAI UNIVERSITY", 
+ "Pee Gee Polytechnic college, Periyanahalli", 
+ "SRM INSTITUTE OF SCIENCE AND TECHNOLOGY", 
+ "St. Josephs Residential School", 
+ "Hindustan Institute of Technology & Science", 
+ "P.B. College of Engineering", 
+ "Bharath University", 
+ "Sri Chandrasekharendra Saraswathi Viswa Mahavidyalaya", 
+ "Aarupadai Veedu Institute of Technology", 
+ "Dhanlakshmi Srinivasan College of Engg. & Tech", 
+ "Hindustan University", 
+ "Archana Institute of Technology, Thimmapuram", 
+ "Madurai Kamaraj University", 
+ "Dhanlakshmi Srinivasan Engg. College", 
+ "Vinayaka Missions University", 
+ "SASTRA UNIVERSITY", 
+ "SHIVANI ENGINEERING COLLEGE", 
+ "DR. MGR EDUCATION & RESEARCH INSTITUTE, TIRUVALLUR", 
+ "GRT Institute of Engineering and Technology", 
+ "S.R.I. Polytechnic college", 
+ "Sri Nandhanam College of Engineering & Technology", 
+ "VIT UNIVERSITY", 
+ "KALASALINGAM UNIVERSITY", 
+ "National Institute of Technology, Agartala", 
+ "NIT AGARTALA", 
+ "I.I.M.T. Medical college & Hospital", 
+ "Dayalbagh Educational Institute", 
+ "Dulari Devi Institute of Pharmacy", 
+ "zakir hussain college of engg & technology", 
+ "NIT Allahabad", 
+ "INDIAN INSTITUTE OF INFORMATION TECHNOLOGY ,ALLAHABAD (IIIT-A)", 
+ "University of Allahabad", 
+ "Allahabad Agriculture Institute", 
+ "SAM HIGGINBOTOM INSTITUTE OF AGRICULTURE, TECHNOLOGY & SCIENCE", 
+ "LDC INSTITUTE OF TECHNICAL STUDIES", 
+ "Jahangirabad Institute of Technology (JIT)", 
+ "Future Institute of Engineering & Technology", 
+ "Invertis Institute of Engineering & Technology", 
+ "Allahabad College of Engineering & Management", 
+ "GNIT Girls Institute of Technology", 
+ "Heritage Institute of Hotel & Tourism", 
+ "OM SAI INSTITUTE OF TECHNOLOGY &S CIENCE", 
+ "Swaraj Institute of Management & Technology", 
+ "Shri Krishna College of Engineering", 
+ "I.T.S Detal College Hospital and Research Center Knowledge Park Greater Noida", 
+ "APEEJAY INSTITUTE OF TECHNOLOGY (School of Management)", 
+ "IMS-Design & Innovation Academy", 
+ "Sarvottam Instititute of Technology & Management", 
+ "IIMT College of Engineering, Greater Noida", 
+ "Galgotias University", 
+ "INSTITUTE OF MANAGEMENT STUDIES, NOIDA", 
+ "IEC COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "Sharda University", 
+ "I.T.S Engineering College", 
+ "Galgotia College of Engineering and Technology", 
+ "Footwear Design & Development Institute (FDDI)", 
+ "SKYLINE INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "DIT School of Engineering", 
+ "Amity University", 
+ "IIMT College of Management", 
+ "Noida International University", 
+ "KCC Institute of Technology & Management", 
+ "N.I.E.T Greater Noida", 
+ "Aryan Institute of Technology", 
+ "SRM University( NCR Campus), Modinagar", 
+ "K S Jain Institute of Engineering & Technology", 
+ "MAHARAJA AGARSAIN INSTITUTE OF TECHNOLOGY", 
+ "R. D. Engineering College (RDEC), Ghaziabad", 
+ "Kedar Nath Ginni Devi Modi Engineering College", 
+ "D. J. College of Engineering & Technology", 
+ "HR GROUP OF INSTITUTE GHAZIABAD", 
+ "Acme College of Engineering", 
+ "MONAD UNIVERSITY", 
+ "Institute of Technology and Science", 
+ "Sree Bankey Bihari Dental College & Research Centre", 
+ "Devendra Singh Institute Of Technology and Management", 
+ "Institute of Professional Excellence & Management", 
+ "Divya Jyoti College of Engineering & Technology", 
+ "Sri Ganpati Institute of Technology", 
+ "Vedant Institute of Management & Technology", 
+ "vivekanand institute of technology & science", 
+ "Hi-Tech Institute of Engineering & Technology", 
+ "ABES Engineering College", 
+ "V B S Purvanchal University", 
+ "Bundelkhand University", 
+ "Maharaja Agrasen College of EngineeringTechnology", 
+ "D.N.S. College of Engineering & Technology", 
+ "Indraprastha Institute of Technology", 
+ "PRANVEER SINGH ACADEMY OF TECHNOLOGY", 
+ "IIT, Kanpur", 
+ "Pranveer Singh Institute of Technology", 
+ "Naraina Vidyapeeth Engineering & Management", 
+ "Krishna Institute of Technology", 
+ "Chandra Sekhar Azad University of Agriculture & Technology", 
+ "AXIS INSTITUTE OF  TECHNOLOGY AND MANAGEMENT", 
+ "Maharana Pratap Engineering College", 
+ "AMITY UNIVERSITY UTTAR PRADESH LUCKNOW CAMPUS", 
+ "BABU BANARSI DAS INSTITUTE OF ENGINEERING TECHNOLOGY & RESEARCH", 
+ "CENTER", 
+ "Indian Institute of Management, Lucknow", 
+ "Dr M. C. Saxena College of Engineering & Technology", 
+ "Sanskriti Institute of  ManagementTechnology", 
+ "Sachdeva institute of technology", 
+ "Tirthankar Mahabir University, College of Engineering, Bagarpur", 
+ "Moradabad Institute Of Technology", 
+ "Radha Govind Institutes of Technology", 
+ "Institute of Foreign Trade and Management College Moradabad", 
+ "Kothiwal Dental College And Research Centre", 
+ "BANSAL INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "IIMT ENGINEERING COLLEGE", 
+ "Radha Govind Group Of Institutions", 
+ "JP Institute of Hotel Management & Catering Technology", 
+ "CERT COLLEGE", 
+ "Shanti Institute Of Technology", 
+ "INSTITUTE OF TECHNOLOGY AND MANAGEMENT,MEERUT", 
+ "Meerut Institute of Technology", 
+ "Kalka Engineering College", 
+ "IIMT Management College", 
+ "Bharat institute of technology", 
+ "J.P. Institute of EngineeringTechnolog", 
+ "Master School of Management", 
+ "Institute of Engineering & Technology", 
+ "Rajiv Gandhi Institute of Petroleum Technology,Rae Bareli", 
+ "INDIRA GANDHI RASHTRIYA URAB AKADEMI", 
+ "INDIAN INSTITUTE OF CARPET TECHNOLOGY", 
+ "Sitapur Siksha Sansthan Group of Institutions", 
+ "Sant kinaraam p.g college,robertsganj", 
+ "Kamal Institute of Higher Education", 
+ "Basant Kanya Mahavidyalaya, Varanasi", 
+ "Ambition Institute of Technology", 
+ "Dewan v.s. institute of engg & tech", 
+ "Neelkanth College of Engineering", 
+ "DEWAN INSTITUTE OF MANAGEMENT STUDIES", 
+ "Neelkanth institute of engineering & technology", 
+ "Dewan v.s. institute of hotel management & catering technology", 
+ "NEELKANTH INSTITUTE OF TECHNOLOGY", 
+ "Grace Institute for Advanced Studies", 
+ "Sakshi Institute for Higher Studies", 
+ "Hastinapur Institute of Technology & Management", 
+ "Arya Mahila P.G College", 
+ "Vasanta College for Women", 
+ "DAV Post Graduate college", 
+ "Phonics School of Engineering Roorkee", 
+ "INDIAN INSTITUTE OF TECHNOLOGY ROORKEE", 
+ "Roorkee College of Polytechnic Roorkee (RCP)- A", 
+ "Roorkee Institute Of Technology", 
+ "Institute of Technology Roorkee (ITR)  A", 
+ "Graphic Era Institute of Technology", 
+ "College of Engineering Roorkee", 
+ "ICFAI OR FACULTY OF SCIENCE AND TECHNOLOGY", 
+ "BFIT Technical Campus Dehradun", 
+ "JB Institute of Technology", 
+ "UNIVERSITY OF PETROLEUM & ENERGY STUDIES", 
+ "DIBNS, Dehradun", 
+ "UTTARANCHAL INSTITUTE OF TECHNOLOGY", 
+ "Shivalik College of Engineering", 
+ "Dehradoon Institute of Technology", 
+ "Dev Bhoomi Institute of Technology, Dehradun", 
+ "Tulas Institute the Engineering & Management college", 
+ "National Institute of Technology,Pauri Garhwal", 
+ "Govind Ballabh Pant Engineering College", 
+ "Haldia Law College", 
+ "Institute of Science & Technology", 
+ "Techno Global Balurghat", 
+ "Footware DesignDevelopment Institute", 
+ "Institute of Technology and Marine Engineering", 
+ "Dream Institute Of Technology, Kolkata", 
+ "Greater Kolkata College of EngineeringManagement", 
+ "Adamas institute of technology", 
+ "CAMELLIA INSTITUTE OF ENGINEERING", 
+ "National Institute for the Orthpaedically Handicapped", 
+ "CAMELLIA INSTITUTE OF TECHNOLOGY", 
+ "B.P. Poddar Institute of Management and Technology", 
+ "Narula institute of technology", 
+ "Institute of Technology & Marine Engineering", 
+ "CAMELLIA SCHOOL OF ENGINEERING & TECHNOLOGY", 
+ "International Institute of Hotel Management", 
+ "Techno India College of Technology", 
+ "Institute of Hotel Mgt. Catering Technology & Applied Nutrition", 
+ "Global Institute of ManagementTechnology", 
+ "JIS College of Engineering", 
+ "Bidhan Chandra Krishi Vishwavidyalaya", 
+ "Dumkal Institute of Engineering", 
+ "Dumkal Polytechnic, Basantpur", 
+ "Techno India Banipur", 
+ "IMPS College of Engineering & Technology", 
+ "College Of Engineering & Management, Kolaghat", 
+ "BIRBHUM INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Vinaya-Bhavan,Visva-Bharati, Santiniketan", 
+ "IGNOU Study Center", 
+ "aryabhatta institute of Eng & Mgm", 
+ "Paramedical College Durgapur", 
+ "NHIT ,Durgapur", 
+ "NSHM Knowledge Campus", 
+ "Rajendra Nath College of Polytechnic", 
+ "KANAD INSTITUTE OF ENGINEERING AND MANEGEMENT", 
+ "Kanksa Academi of Technology & management", 
+ "Bengal College of Engineering for Womens, Durgapur", 
+ "Burdwan University", 
+ "Institute of Engineering & Industrial Technology", 
+ "Durgapur Society of Management Science", 
+ "N.S.H.M Academy Durgapur", 
+ "DURGAPUR INSTITUTE OF MANAGEMENT AND SCIENCE", 
+ "University institute of technology", 
+ "Sanaka Educational Trust Group of Institutions, Durgapur", 
+ "NATIONAL SCHOOL OF MANAGEMENT STUDIES", 
+ "Management Institute of Durgapur", 
+ "Gobindpur Sephali Memorial Polytechnic", 
+ "Camellia Institute of Engineering & Technology", 
+ "National Power Training Institute (NPTI), Durgapur", 
+ "ABS Academy of Polytechnic Sagarbhanga", 
+ "Bankura Unnayani Institute of Engineering", 
+ "ACADEMY OF TECHNOLOGY", 
+ "HOOGHLY ENGINEERING & TECHNOLOGY COLLEGE (HETC)", 
+ "Supreme Knowledge Foundation Group Of Institutions", 
+ "SURENDRA INSTITUTE OF ENGINEERING AND MANAGEMENT", 
+ "SILIGURI INSTITUTE OF TECHNOLOGY (T.I.G.)", 
+ "MCKV Institute of Enginering, Liluah", 
+ "Seacom Engineering College", 
+ "Bengal EngineeringScience University,Shibpur", 
+ "CALCUTTA INSTITUTE OF TECHNOLOGY", 
+ "The Institution of Engineers", 
+ "Goenka College of Commerce and Business Administration", 
+ "Bengal Institute of Technology", 
+ "Birla Institute of Technology, Extension Center Kolkata", 
+ "Medical College Kolkata", 
+ "Jadavpur University", 
+ "ANNEX COLLEGE", 
+ "Tecno India", 
+ "West Bengal University of Technology", 
+ "Modern Institute of Engineering & Technology, Barol, Malipur", 
+ "Haldia Institute of Technology", 
+ "BENGAL INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "Regent Education & Research Foundation", 
+ "Swami Vivekananda Institute of Science & Technology", 
+ "BIT,Kolkata", 
+ "BUDGE BUDGE INSTITUTE OF TECHNOLOGY", 
+ "RCC INSTITUTE OF INFORMATION TECHNOLOGY", 
+ "Aliah University", 
+ "Brainware Group of Institutions", 
+ "DR. SUDHIR CHANDRA SUR DEGREE ENGINEERING COLLEGE & SPORTS COMPLEX", 
+ "CALCUTTA INSTITUTE OF ENGINEERING AND MANAGEMENT", 
+ "Vishva Bharti  University", 
+ "ACN  COLLEGE OF ENGINEERING & MANAGEMENT STUDIES", 
+ "ADARSHA SCHOOL OF ENGINEERING & INTERNATIONAL POLYTECHNIC", 
+ "AISHWARYA COLLEGE OF ENGINNERING & TECHNOLOGY", 
+ "AISHWARYA POLYTECHNIC COLLEGE", 
+ "APEX INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "ARYAN INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "ASIA PACIFIC INSTITUTE OF INFORMATION TECHNOLOGY (APIIT)", 
+ "AURANGABAD B.ED TRAINING COLLEGE", 
+ "B.P PODDAR INSTITUTE OF MANAGEMENT AND TECHNOLOGY,KOLKATA", 
+ "BABA HIRA SINGH BHATTAL INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "LEHRAGAGA ( SANGRUR), PUNJAB", 
+ "BALAJI COLLEGE OF ENGINEERING, BHIWANI (HARYANA)", 
+ "BALASORE COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "BANGALORE CITY COLLEGE", 
+ "BAPUJI INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "BHANGABHUMI  INDUSTRIAL TRAINING CENTRE", 
+ "C.T INSTITUTE OF TECHNOLOGY", 
+ "CENTRAL INDIA INSTITUTE OF TECHNOLOGY AND PHARMACY, INDORE", 
+ "COLLEGE OF AGRICULTURAL ENGINEERING AND TECHNOLOGY", 
+ "COLLEGE OF EDUCATION, MEDUKA", 
+ "D.A.V MODEL COLLEGE", 
+ "DALMIA INDUSTRIAL TRAINING  CENTRE, RAJGANGPUR", 
+ "DATTA MEGHE INSTITUTE OF ENGINEERING TECHNOLOGY & RESEARCH", 
+ "DAYANANDA SAGAR ACADEMY OF TECHNOLOGY AND MANAGEMENT", 
+ "DEEPSIKHA KALA SANSTHAN GROUP OF INSTITUTIONS", 
+ "DR M. C. SAXENA INSTITUTE OF ENGINEERING & MANAGEMENT", 
+ "DR. B.C.ROY ENGINEERING COLLEGE,DURGAPUR", 
+ "G H RAISONI ACADEMY OF ENGINEERING AND TECHNOLOGY", 
+ "G L A UNIVERSITY", 
+ "G L BAJAJ INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "GANDHI INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "GEORGE COLLEGE OF MANAGEMENT AND SCIENCE", 
+ "GREATER NOIDA INSTITUTE OF TECHNOLOGY", 
+ "CBS GROUP OF INSTITUTIONS", 
+ "DR. S.J.S. PAUL MEMORIAL COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "BAISINGA INDUSTRIAL TRAINING CENTRE", 
+ "GANPATI INSTITUTE OF TECHNOLOGY AND MANAGEMENT", 
+ "GANGA INSTITUTE OF TECHNOLOGY AND MANAGMENT", 
+ "GHANDHI INSTITUTE FOR TECHNOLOGICAL ADVANCEMENT ,BHUBANESHWAR", 
+ "GWALIOR  INSTITUTE OF  INFORMATION TECHNOLOGY, GWALIOR (GIIT)", 
+ "HIMALAYAN GROUP OF PROFESSIONAL INSTITUTIONS", 
+ "HINA COLLEGE OF NURSING,BANGLORE", 
+ "HINA SCHOOL OF NURSING", 
+ "IES COLLEGE OF TECHNOLOGY, BHOPAL", 
+ "INDIRA GANDHI INSTITUTE OF TECHNOLOGY", 
+ "INSTITUTE OF TECHNICAL EDUCATION & RESEARCH, BHUBANESWAR", 
+ "J.L CHATURVEDI COLLEGE OF ENGINEERING", 
+ "JAGAD GURU RAMBHADRACHARYA HANDICAP UNIVERSITY", 
+ "KALAM INSTITUTE OF TECHNOLOGY", 
+ "KOUSTUV INSTITUTE OF SELF DOMAIN", 
+ "KRUPAJAL ENGINEERING SCHOOL", 
+ "LAXMI NARAYAN COLLEGE OF TECHNOLOGY", 
+ "MALAVIYA  NATIONAL INSTITUTE OF TECHNOLOGY", 
+ "MARINE ENGINEERING AND RESEARCH INSTITUTE", 
+ "MODERN INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "NEW DELHI INSTITUTE OF MANAGEMENT", 
+ "NMAM INSTITUTE OF TECHNOLOGY", 
+ "NORTHERN INDIA ENGINEERING COLLEGE, NEW DELHI", 
+ "PADMANAVA COLLEGE OF ENGINEERING", 
+ "PATEL INSTITUTE OF ENGINEERING AND SCIENCE", 
+ "POORNIMA GROUPS OF INSTITUTIONS", 
+ "PUNJAB POLYTECHNIC", 
+ "PURNA CHANDRA INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "R.K.D.F  COLLEGE OF ENGINEERING", 
+ "R.V.COLLEGE OF ENGINEERING", 
+ "RATTAN INSTITUTE OF TECHNOLOGY AND MANAGEMENT.", 
+ "SAGAR INSTITUTE OF SCIENCE,TECHNOLOGY & RESEARCH, BHOPAL", 
+ "SANDIPANI ACADEMY", 
+ "SANSKRITI INSTITUTE OF POLYTECHNIC", 
+ "SANSKRITI SCHOOL OF POLYTECHNIC", 
+ "SANT LONGOWAL INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "SAPTHAGIRI COLLEGE  ENGINEERING.", 
+ "SATHYABAMA  UNIVERSITY", 
+ "SHASHI BHUSHAN INDUSTRIAL TRAINING CENTRE", 
+ "SHOBHIT UNIVERSITY", 
+ "SHREE RAM MULKH COLLEGE OF TECHNICAL EDUCATION", 
+ "SILICON INSTITUTE OF TECHNOLOGY", 
+ "SRI COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "SRI JAYA CHAM RAJENDRE COLLEGE OF ENGINEERING", 
+ "PEOPLES COLLEGE OF RESEARCH AND TECHNOLOGY", 
+ "KRISHNA POLYTECHNIC COLLEGE", 
+ "SHRI JEET RAM SMARAK  INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "ROORKEE ENGINEERING & MANAGEMENT TECHNOLOGY INSTITUTE", 
+ "MILLENNIUM INSTITUTE OF TECHNOLOGY & SCIENCE", 
+ "RAIRANGPUR INDUSTRIAL TRAINING CUM PRODUCTION CENTRE", 
+ "SRI SATYA SAI INSTITUTE OF SCIENCE & TECHNOLOGY", 
+ "ST PETERS UNIVERSITY", 
+ "STAR ACADEMY OF TECHNOLOGY & MANAGEMENT", 
+ "TECHNOCRATS INSTITUTE OF TECHNOLOGY & SCIENCE (TITS), BHOPAL", 
+ "VISHVEHWARYA GROUP OF INSTITUTIONS", 
+ "Nagaji Institute of Technology & Management", 
+ "MESS Institute of managementcareer courses(IMCC)", 
+ "Nuva College of engineering & Technology", 
+ "Rajdhani engineering College", 
+ "Manasa College Of Education", 
+ "Jaipur Engineering College,Kukas", 
+ "DDR Para Medical College, Visakhapatnam", 
+ "Geetam School of International Business, GITAM University", 
+ "M.K. School of Nursing Visakapatnam", 
+ "Visakha Institute of Engineering & Technology", 
+ "Vitam college of engineering", 
+ "Mother College of Nurshing", 
+ "Gonna Institute of Information Technology & Sciences", 
+ "Gokul Institute of Technology and Sciences, Vizianagaram", 
+ "Venkatapadma School of Nursing", 
+ "PREVEENYA INSTITUTE OF MARINE ENGINEERING & MARITIME STUDIES.", 
+ "Swamy Vivekananda Engineering College", 
+ "Thandra Paparaya Institute of Science Technology", 
+ "Laxmi Nursing College", 
+ "Sri Sai Aditya Institute Of Science & Technology", 
+ "Sri Venkateshwara school of Nursing Malkajgiri", 
+ "Mumtaz College of Engineering & Technology", 
+ "Archana School of Nursing", 
+ "Rajeshwari School of Nursing, Vanasthal ipuram", 
+ "GREENFORT ENGINEERING COLLEGE", 
+ "CIPTE, Central Institute of Plastics Engineering & Technology", 
+ "MOGHAL COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "Ellenki College Of Engineering & Technology", 
+ "Little Flower School Of Nursing", 
+ "St. Marys College of Engineering and Technolog", 
+ "Vignana Jyothi Institute of Management", 
+ "Maulana Azad National Urdu University", 
+ "Aditya School Of Nursing", 
+ "SWAMI PARMANAND COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "Indira Gandhi Institute of Pharmaceutical Sciences", 
+ "GANDHI INSTITUTE OF ADVANCED COMPUTER & RESEARCH", 
+ "AERP INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "purushottam school of enginnering & Technology", 
+ "Sigma College Of Nursing", 
+ "Vidya Vikas Technology", 
+ "Mangamma Memorial School Of Nursing", 
+ "BBR School of Nursing", 
+ "Healing Touch School of Nursing", 
+ "Thatha School of Nursing", 
+ "SIVANI  SCHOOL OF NURSING", 
+ "syed hashim college of science & technology", 
+ "Ellenki College of Engineering For Women", 
+ "Medak College of Engineering & Technology", 
+ "Arvindaksha Educational Societys Group of Institutions", 
+ "Nizam Institute of EngineeringTechnology", 
+ "Sana College of Teacher Education", 
+ "St. Mary Engineering College", 
+ "St Marys Engineering College", 
+ "E.V.R COLLEGE OF ENGG. AND TECHNOLOGY", 
+ "Sana Engineering College", 
+ "St.Mary College of Engineering and Technology", 
+ "P INDRA REDDY MEMORIAL ENGINEERING COLLEGE", 
+ "Younis Sultan College Of Engineering", 
+ "NISHITHA COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "Guru Nanak Engineering College, Ibrahimpatnam", 
+ "S.V. College of Engineering & Technology", 
+ "NOBLE SCHOOL OF NURSING", 
+ "THE LITTLEFLOWER SCHOOL OF NURSING", 
+ "Kasireddy Narayan Reddy College of Engineering & Research", 
+ "St. Marys College of Engineering and Technology", 
+ "SHAAZ College of Engineering & Technology", 
+ "Kasireddy Narayan Reddy College of Engineering", 
+ "Sagar Institute of Technology", 
+ "Sagar Group of Institutions", 
+ "kite college of professional engineering sciences", 
+ "Holy Mary Institute of Technology & Science", 
+ "BITS PILANI HYDERABAD CAMPUS", 
+ "Vidya Vikas Institute of Technology", 
+ "Annamacharya Institute of Technology & Science", 
+ "netaji subhas college", 
+ "NAUMAN COLLEGE OF ELEMENTARY TEACHER EDUCATION FOR WOMEN", 
+ "LORDS INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "Guru nanak Institutions", 
+ "chaitanya enginnering college", 
+ "Gurukul Vidyapeeth Institute of Engg. & Tech.", 
+ "Dronacharya Group of Institutions", 
+ "Prasad engineering College", 
+ "The Little flower school of nursing", 
+ "Hasvita Institute of Science & Technology", 
+ "Sri Sai Educational Societys Group of Institutions", 
+ "Gandhi Academy of Technical Education(Polytechnic)", 
+ "BHAGYANAGAR SCHOOL OF NURSING", 
+ "Haryana college of Education", 
+ "Aravali Institute of Technical Studies", 
+ "Jyoti ITC", 
+ "BUDHUVIR PRIVATE INDUSTRIAL TRAINING INSTITUTE", 
+ "Asia Pacific Institute ofInformation Technology(APIIT) SD INDIA", 
+ "MILLENNIUM INSTITUTE OF TECHNOLOGY", 
+ "Nalanda University", 
+ "NRI INSTITUTE OF RESEARCH AND TECHNOLOGY", 
+ "Shivalik Institute of Engineering & Technology", 
+ "Jaya School of Nursing ,Secundrabad", 
+ "Arjun College of TechnologyScience", 
+ "Tirumala Engineering College", 
+ "Global Institute of Mangement", 
+ "Vivekananda Institute of Engineering & Technology", 
+ "Bhandari Sriniwas Institute of Technology", 
+ "Joseph Sriharsha and Mary Indraja Education Societys Group of Institutions", 
+ "J J Institute of Information technology", 
+ "Al-Hadeeb College of Engineering & Technology", 
+ "Central Institute of Tool Design, Dalanagar", 
+ "Narayana Engineering & Technical Campus", 
+ "GIET COLLEGE OF ENGINEERING", 
+ "SAI KRISHNA POLYTECHNIC", 
+ "HARSHITH GROUP OF INSTITUTIONS", 
+ "Jagnanath Institute of engineering & Technology", 
+ "R.K.D.F. college of technology and research", 
+ "Vikramaditya Ploytechnic", 
+ "Shekhawati Institute of Engineering & Technology", 
+ "Madras School of Economics", 
+ "Index School of Nursing", 
+ "INNOVATIVE INSTITUTE OF TECHNOLOGY AND MANAGEMENT", 
+ "CMS POLYTECHNIC COLLEGE", 
+ "JSM SCHOOL OF NURSING", 
+ "CHAKRADHAR INDUSTRIAL TRAINING CENTER", 
+ "Bheemanna Khandre Institute of Technology,Bhalki (Formerly Rural Engineering", 
+ "College,Bhalki)", 
+ "MATA RAJ KAURINSTITUTE OF ENGG.& TECHNOLOGY", 
+ "GNANESWARI SCHOOL OF NURSING", 
+ "BHOPAL INSTITUTE OF TECHNOLOGY & SCIENCE PHARMACY", 
+ "SRS COLLEGE OF ENGINEERING AND TECHNOLOGY", 
+ "SVS POLYTECHNIC", 
+ "Roorkee College of Polytechnic Roorkee ( A Christian Minority Institution)", 
+ "ADVAIT VEDANTA INSTITUTE OF TECHNOLOGY", 
+ "Swami Vivekanand Nursing School", 
+ "KODADA INSTITUTE OF TECHNOLOGY & SCIENCE FOR WOMEN", 
+ "Tirupati College of Polytechnic and Pharmacy", 
+ "ANASUYA DEVI INSTITUTE OF TECHNOLOGY &SCIENCES", 
+ "ROURKELA INSTITUTE OF NURSING", 
+ "Grecian Institute for Higher Studies", 
+ "VEDANT COLLEGE OF ENGG & TECH", 
+ "VATHSALYA INSTITUTE OF SCIENCE &TECHNOLOGY", 
+ "Hooghly Engineering & Technology College", 
+ "RIMTECH Itc", 
+ "JAKIR HOSSAIN INSTITUTE OF POLYTECHNIC", 
+ "JAGRUTI INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Gandhi Institute of Managements Study", 
+ "GLOBAL Nature Care Sangathans Group of Institution, Jabalpur", 
+ "SHRI KRISHAN POLYTECHNIC", 
+ "BANKI COLLEGE (AUTONOMOUS), BANKI", 
+ "Ludhiana Group of  Colleges", 
+ "ASRAM College of Nursing", 
+ "ASRAM School of Nursing", 
+ "Padmashree Dr.D.Y.Patil Institute of Engineering &Technology.", 
+ "Shivalik Polytechnic", 
+ "M.G.R. COLLEGE, HOSUR", 
+ "KK COLLEGE OF ENG & MANAGEMENT", 
+ "NBN Sinhgad School Of Management Studies", 
+ "ST JOSEPHS SCHOOL OF NURSING,MAHARANIPETA", 
+ "Gravismeds School of School of Nursing", 
+ "RSC COLLEGE OF NURSING", 
+ "Chaitanya Post graduate college(Autonomous)", 
+ "Tudi Ram Reddy Institute of Technology&Sciences", 
+ "shekhawati polytechnic college", 
+ "shekhawati college sikar.", 
+ "TRINITY COLLEGE FOR MANAGEMENT AND  TECHNOLOGY", 
+ "CHAITANYA COLLEGE OF PHARMACY EDUCATION & RESEARCH", 
+ "CHAITANYA INSTITUTE OF TECHNOLOGY & SCIENCE", 
+ "Oriental college of Managment Bhopal", 
+ "SINHGAD INSTITUTE OF BUSINESS ADMINISTRATION & COMPUTER APPLICATION,", 
+ "(SIBACA) LONAVALA", 
+ "VIJAY KRISHNA COLLEGE OF NURSING", 
+ "VISHNUSREE INSTITUTE OF TECHNOLOGY", 
+ "MANDAVA INSTITUTE OF ENGINEERING AND TECHNOLOGY", 
+ "Pune Institution of Business Management", 
+ "KRISHNA INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "P.N.School of Nursing", 
+ "BIRLA INSTITUTE OF TECHNOLOGY -MESRA, JAIPUR CAMPUS", 
+ "Pragathi College of Nursing", 
+ "SVS GROUP OF INSTITUTIONS", 
+ "GYAN GANGA POLYTECHNIC", 
+ "Rajasthan Institute of Engineering & Technology", 
+ "Pragathi Institute of Nursing", 
+ "TEJA COLLEGE OF PHARMACY", 
+ "CAMELLIA INSTITUTE OF  TECHNOLOGY & MANAGEMENT", 
+ "International School of Management", 
+ "SLCS COLLEGE OF PHARMACY", 
+ "SCHOOL OF ENGINEERING", 
+ "B.V.KRISHNA POLYTECHNIC", 
+ "School of Physical Education, SSSUTMS", 
+ "AGNIHOTRI SCHOOL OF TECHNOLOGY (POLYTECHNIC) WARDHA", 
+ "BHAGATH COLLEGE OF DIPLOMA IN ENGG & TECH.-303", 
+ "INSTITUTE OF PROFESSIONAL EDUCATION AND RESEARCH", 
+ "Sanghvi Institute of Management & Science", 
+ "Shri Sardari Lal College of Education", 
+ "RSC SCHOOL OF NURSING", 
+ "ELLENKI INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Uttaranchal University", 
+ "ARULMURUGAN POLYTECHNIC COLLEGE", 
+ "GRAPHIC ERA UNIVERSITY", 
+ "MAKHANLAL CAHTURVEDI NATIONAL UNIVERSITY OF JOURNALISM AND", 
+ "COMMUNICATION", 
+ "Sri Bhargavi School Of Nursing Ongole", 
+ "NARSIMHA REDDY ENGINEERING COLLEGE", 
+ "Radhika  M.P.H.W. (F) Training Institute", 
+ "Sri Durga School Of Nursing Ongole", 
+ "SHRI DATTA MEGHE POLYTECHNIC", 
+ "KALKA INSTITUTE FOR RESEARCH & ADVANCED STUDIES", 
+ "D.G.R. SCHOOL OF NURSING", 
+ "ROYAL INSTITUTE OF TECHNOLOGY & SCIENCE", 
+ "VITS ENGINEERING COLLEGE", 
+ "College of Engineering & Technology(IILM Academy of Higher Learning)", 
+ "TRUBA COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "saraswati professionalhigher education college of nursing", 
+ "sinhgad school of business studies", 
+ "Vaishnavi Institute of Technology & Science,Bhopal", 
+ "Dr.K.N Modi Institute Of Engineering & Technology,Modinagar", 
+ "SITARAMAIAH COLLEGE OF NURSING", 
+ "PYDAH COLLEGE of Enginnering", 
+ "Padmashree Krutarth Acharya Institute of Engineering Technology", 
+ "B.V.RAJU INSTITUTE OF TECHNOLOGY", 
+ "SunRise University,Alwar", 
+ "S. SINA COLLEGE", 
+ "St. John College of EngineeringTechnology", 
+ "Shivajirao S.Jondhale College Of Engineering Dombivli", 
+ "CDRZ POLYTECHNIC", 
+ "Maruthi Paramedical Academy College Of Nursing B.Sc (Nusing)", 
+ "AP GOYAL SHIMLA UNIVERSITY", 
+ "Maruthi Paramedical Academy School Of Nursing GNM(Nusing)", 
+ "INSTITUTE OF INDUSTRIAL EDUCATION & TRAINING", 
+ "BHAWNA INSTITUTE OF PROFESSIONAL STUDIES", 
+ "DEV POLYTECHNIC COLLEGE, DHEEN (AMBALA)", 
+ "Mahavir Engneering College", 
+ "P R R MEMORIAL ENGINEERING COLLEGE", 
+ "Poornima Institute of Engg & Technology,Jaipur", 
+ "Rao Jai  Ram College of Education", 
+ "Jind Institute of Engineering & Technology, Jind", 
+ "VANDANA SCHOOL OF NURSING", 
+ "SRIGURU ITI", 
+ "GALAXY PARAMEDICAL COLLEGE", 
+ "Swami Dayanand College of Pharmacy, Bathinda", 
+ "NEELKANTH VIDYAPEETH", 
+ "SARASWAT INSTITUTE OF MANAGEMENT", 
+ "Swami Devi Dyal Institute of Engg. & Tech.", 
+ "Swami Devi Dyal School of Nursing", 
+ "North Odisha School of Engineering", 
+ "ISB&M College of  Commerce", 
+ "Shri Shankaracharya College of nursing", 
+ "STES Smt. Kashibai navale college of engineering", 
+ "veltech rangarajan Dr.sagunthala R&D institute  of sciencetechnology", 
+ "RAM NANDAN PANDEY PVT ITI", 
+ "United College of Engineering & Research(AICTE)", 
+ "Inderprastha Polytechnic College", 
+ "RADHARAMAN ENGINEERING COLLEGE, POLYTECHNIC WING", 
+ "Baba Farid College of Engg. & Technology", 
+ "SANA ColLEGE OF PHARMACY", 
+ "ANAND INTERNATIONAL COLLEGE OF ENGINEERING", 
+ "Indo Global College of Engineering", 
+ "birla institute of technology ,mesra, ranchi (noida campus)", 
+ "School of Engineering & Applied Science", 
+ "MAHABIR ITC", 
+ "AUROBINDO INSTITUTE OF ENGINEERING AND TECHNOLOGY(POLYTECHNIC)", 
+ "SREEDATTHA INSTITUTE OF ENGINEERING AND SCIENCE", 
+ "SREEDATTHA INSTITUTE OF ENGINEERING AND SCIENCE (polytechnic)", 
+ "Jaya Prakash Narayan College of Engineering", 
+ "Peoples Institute of Hotel Management, Catering Technology & Applied Nutrition", 
+ "Institute of Management Technology, Hyderabad", 
+ "HOLY MARY INSTITUTE OF TECHNOLOGY", 
+ "ORISSA ITC", 
+ "SHRI RAWATPURA SARKAR COLLEGE OF EDUCATION, NAYA RAIPUR", 
+ "Bhagwan Buddha Primary Teachers Education College", 
+ "Pinkcity Engineering College And Research Center, Jaipur", 
+ "NARAYAN NURSING COLLEGE", 
+ "R.N.Modi Engineering College", 
+ "SANA POLYTECHNIC", 
+ "NARAYANI INSTITUTE OF ENGINEERING & TCHNOLOGY", 
+ "SHANTI NIKETAN GROUP OF INSTITUTIONS", 
+ "Draupadi Insititute for Education & Training - ITC (DIET - ITC)", 
+ "TIT College, Bhopal", 
+ "SUPER AADARSH PVT ITI", 
+ "Peoples Institute of Management & Research", 
+ "JJ COLLEGE OF PHARMACY", 
+ "RADHARAMAN INSTITUTE OF PHARMACEUTICAL SCIENCES", 
+ "RADHARAMAN COLLEGE OF PHARMACY BHOPAL M.P.", 
+ "MEGHNAD SAHA INSTITUTE OF TEC HNOLOGY", 
+ "MOTHER THERESA SCHOOL OF NURSING(G.N.M COURSE)", 
+ "Dr. S P Singh Institute of Nursing", 
+ "VIDYA BHARATHI INSTITUTE OF TECHNOLOGY", 
+ "K C Public School", 
+ "MOTHER VANNINI COLLEGE OF NURSING", 
+ "Sriganaganagar Engineering College", 
+ "Krihsna Polytechnic College", 
+ "Career Point University", 
+ "Indo American Institutions Technical Campus", 
+ "Indo American Institutions", 
+ "SUM NURSING COLLEGE", 
+ "BALAJI INSTITUTE OF TECHNOLOGY KERWAN (M.P.)", 
+ "KRUTI INSTITUE OF TECHNOLOGY & ENGINEERING", 
+ "LAKSHMI NARAIN COLLEGE OF TECHNOLOGY & SCIENCE(LNCT&S)", 
+ "YASHODA COLLEGE OF NURSING", 
+ "World Institute of Technology", 
+ "RAJIV GANDHI PROUDYOGIKI VISHWAVIDYALAYA,BHOPAL", 
+ "St.MARY'S TECHNICAL CAMPUS KOLKATA", 
+ "GIET SCHOOL OF PHARMACY", 
+ "ST. MARYS GROUP OF INSTITUTIONS HYDERABAD", 
+ "ST. MARYS INTEGRATED CAMPUS", 
+ "INSTITUTE OF HOTEL MANAGEMENT CATERING TECHNOLOGY & APPLIED", 
+ "NUTRITION", 
+ "AKHIL BHARTIYA SHIKSHA AUAM PRASHIKSHAN MAHAVIDYALAYA", 
+ "Madhavan Memorial College of Education", 
+ "Indian Institute of Cos & tManagement Studies & Research (IndSearch)", 
+ "ST JOSEPHS SCHOOL OF NURSING, GUNTUR", 
+ "OM I.T.C", 
+ "CMR Group of Institutions", 
+ "HI-TECH COLLEGE OF PHARMACY", 
+ "NIT MIZORAM", 
+ "Rao Pahlad Singh Group of Institutions", 
+ "B.N. College of Engineering & Technology, (BNCET)", 
+ "RAMARANI INSTITUTE OF TECHNOLOGY,BALASORE", 
+ "Madhav University", 
+ "DAV UNIVERSITY, JALANDHAR", 
+ "P.B.G.M College", 
+ "MANAV BHARTI UNIVERSITY", 
+ "Advanced Institute of Education", 
+ "Sri Chaitanya Engineering College", 
+ "Chaitanya Engineering College (II Shift) Polytechnic", 
+ "RAGHURAM MAHAVIDYALAY", 
+ "KHAJAN SINGH GIRLS DEGREE COLLEGE", 
+ "DOON BUSINESS SCHOOL GLOBAL", 
+ "S.S. College of Polytechnic", 
+ "Bells Instititue of Management & Technology", 
+ "AURORAS RESEARCH & TECHNOLOGICAL INSTITUTE", 
+ "Aryavart College of Education", 
+ "SHYAM COLLEGE OF ENGINEERING", 
+ "HERITAGE TECHNICAL COLLEGE", 
+ "JAYA COLLEGE OF NURSING", 
+ "VIJAY SCHOOL OF NURSING(G.N.M COURSE)", 
+ "The City College", 
+ "Tirumala School of Nursing", 
+ "OmDayal Group of Institutions", 
+ "SLCS INSTITUTE OF ENGINEERING & TECHNOLOGY", 
+ "Tirumala College of Nursing", 
+ "GANDHI ACADEMY OF TECHNICAL EDUCATION", 
+ "Baddi University of Emerging Sciences & Technology", 
+ "School of Diploma Engineering", 
+ "S.V COLLEGE OF EDUCATION", 
+ "Jalpaiguri Government Engineering College", 
+ "VNS BUSINESS SCHOOL", 
+ "KAMALKANT INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "CENTRAL INSTITUTE OF PLASTICS ENGINEERING & TECHNOLOGY ( CIPET )", 
+ "INDUSTRIAL TRAINING CENTRE RAGHUNATH PALLI", 
+ "TADIPATRI ENGINEERING COLLEGE", 
+ "KUMAR INSTITUTE FOR HIGHER STUDIES", 
+ "S.E.TS COLLEGE OF PHARMACY", 
+ "SHREE JAGANNATH I.T.C", 
+ "Lala Lajpat Rai Memroial Polytechnic College", 
+ "Indira School of Business Studies", 
+ "Dr. k.N. Modi University, Newai", 
+ "SRISATYASAI ITI", 
+ "KSERT COLLEGE OF EDUCATION HUMHAMA BUDGAM KASHMIR", 
+ "NOVA'S INSTITUTE OF TECHNOLOGY", 
+ "PRABHAT ENGINEERING COLLEGE", 
+ "SOUTH POINT INSTITUTE OF TECHNOLOGY & MANAGEMENT", 
+ "VANDE MAATRAM SCHOOL OF NURSING", 
+ "MARGDARSHAN SANSTHAN SHIKSHA MAHAVIDYALAYA", 
+ "AZAD COLLEGE OF ENGINEERING & TECHNOLOGY", 
+ "Brindavan College of Engineering", 
+ "National Institute of Fashion Technology", 
+ "J.S. School Of Nursing", 
+ "Sharavathi Dental CollegeHospital", 
+ "USHA MARTIN ACADEMY", 
+ "SRI YPR COLLEGE  OF ENGINNERING & TECHNOLOGY", 
+ "BRCM College of engineeringtechnology, Bahal", 
+ "SLCS POLYTECHNIC  COLLEGE", 
+ "TECHNO INDIA UNIVERSITY", 
+ "RP Educational Trust Group of Institutions", 
+ "CGC-College Of Engineering", 
+ "NEW HORIZON DENTAL COLLEGE & RESEARCH INSTITUTE, SAKRI, BILASPUR", 
+ "CHATTISGARH", 
+ "Modern Institute of Higher Studies", 
+ "RAWAL INSTIUTIONS", 
+ "Shri Ramswaroop Memorial University", 
+ "BLACK DIAMOND SCHOOL OF ENGINEERING,BRAJRAJNAGAR,JHARSUGUDA", 
+ "ST.JOSEPH S COLLEGE OF NURSING", 
+ "Central University Of Karnataka", 
+ "Central University Of Haryana", 
+ "Noble Polytechnic college", 
+ "Thakur Hari Prasad Institute of ResearchRehabilitation for the Mentally", 
+ "Handicapped", 
+ "Lakshmi School of Nursing, Vizianagaram", 
+ 
+
+
+
+ ];
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("iname"), countries);
+</script>
+</body>
+</html>
+
+
+

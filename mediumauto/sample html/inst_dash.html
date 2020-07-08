@@ -1,0 +1,377 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="icon" type="image/png" href="images/DB_16?16.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EVERSITY</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{% static 'css/lib/getmdl-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/nv.d3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/application.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lib/material.min.css' %}">
+
+    <!--
+    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="css/.css">
+    -->
+    <!-- endinject -->
+</head>
+
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+     <h2>
+      <span class="mdl-layout-title">NAME OF TEACHER</span>
+     </h2> 
+    </div>
+  
+	  <div class = "mdl-layout__tab-bar mdl-js-ripple-effect">
+	    <a href = "#resources_tab" class = "mdl-layout__tab">RESOURCES</a>
+	    <a href = "#assignments_tab" class = "mdl-layout__tab">ASSIGNMENTS</a>
+	    <a href = "#notices_tab" class = "mdl-layout__tab">NOTICES</a>     
+	  </div>
+	  
+  </header>
+  
+  <main class="mdl-layout__content">
+    <div class="mdl-grid">
+		    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+			    
+			     <section class = "mdl-layout__tab-panel is-active" id = "select_tab">
+			        <div class="mdl-card mdl-shadow">
+			          <div class="mdl-card__title">
+			            <h2 class="mdl-card__title-text">Select a tab</h2>
+			          </div>
+			          <div class="mdl-card__supporting-text">
+			            Select any tab from above given tab-choices
+			          </div>
+			        </div>
+			     </section>
+			    
+			     <section class = "mdl-layout__tab-panel" id = "resources_tab">
+			        <div class="mdl-card mdl-shadow ">
+			          <div class="mdl-card__title">
+			            <h2 class="mdl-card__title-text">RESOURCES</h2>
+			          </div>
+			          <div class="mdl-card__supporting-text">
+			            HELLO WORLD
+			          </div>
+			          <div class = "mdl-card__actions mdl-card--border">
+	                  <a class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+	                     Save
+	                  </a>
+	              </div>
+			        </div>
+			     </section>
+			  
+			     <section class = "mdl-layout__tab-panel" id = "assignments_tab">
+			     <div class="mdl-grid">
+			       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone">
+                   <div class="mdl-card mdl-shadow--2dp">
+		                    <div class="mdl-card__title">
+		                        <h2 class="mdl-card__title-text">Create</h2>
+		                    </div>
+		                    <div class="mdl-card__supporting-text">
+		                        Create, edit or view assignments
+		                    </div>
+		                </div>
+			       </div>
+			       <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--2-col-phone">
+			              <div class="mdl-card mdl-shadow--2dp">
+		                    <div class="mdl-card__title">
+		                        <h2 class="mdl-card__title-text">Send</h2>
+		                    </div>
+		                    <div class="mdl-card__supporting-text">
+		                        Send the assignments which you have already created
+		                    </div>
+		                </div>
+             </div>
+           </div>
+						        <div class="mdl-card mdl-shadow--2dp">
+						          <div class="mdl-card__title">
+						            <h2 class="mdl-card__title-text">ASSIGNMENTS</h2>
+						          </div>
+						          
+						          <div class="mdl-card__supporting-text">
+						          		          
+							            I am assigning following assignment(s) to students of
+							          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select full-size">
+				                            <input class="mdl-textfield__input" type="text" id="branch" readonly tabIndex="-1"/>
+				                            <label class="mdl-textfield__label" for="branch"><i>branch</i></label>
+
+				                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu dark_dropdown" for="branch">
+				                                <li class="mdl-menu__item"><i>B.Tech</i></li>
+				                                <li class="mdl-menu__item"><i>M.Tech</i></li>
+				                                <li class="mdl-menu__item"><i>Ph.D</i></li>
+				                            </ul>
+
+				                            <label for="branch">
+				                                <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
+				                            </label>
+				                </div>
+				                semester
+				                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select full-size">
+				                            <input class="mdl-textfield__input" type="text" id="semester" readonly tabIndex="-1"/>
+				                            <label class="mdl-textfield__label" for="semester"><i>semester</i></label>
+
+				                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu dark_dropdown" for="semester">
+				                                <li class="mdl-menu__item"><i>I</i></li>
+				                                <li class="mdl-menu__item"><i>II</i></li>
+				                                <li class="mdl-menu__item"><i>III</i></li>
+				                                <li class="mdl-menu__item"><i>IV</i></li>
+				                                <li class="mdl-menu__item"><i>V</i></li>
+				                                <li class="mdl-menu__item"><i>VI</i></li>
+				                                <li class="mdl-menu__item"><i>VII</i></li>
+				                                <li class="mdl-menu__item"><i>VIII</i></li>
+				                                <li class="mdl-menu__item"><i>All</i></li>
+				                            </ul>
+
+				                            <label for="semester">
+				                                <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
+				                            </label>
+				                </div>
+				                section
+				                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select full-size">
+				                            <input class="mdl-textfield__input" type="text" id="section" readonly tabIndex="-1"/>
+				                            <label class="mdl-textfield__label" for="section"><i>section</i></label>
+
+				                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu dark_dropdown" for="section">
+				                                <li class="mdl-menu__item"><i>A</i></li>
+				                                <li class="mdl-menu__item"><i>B</i></li>
+				                                <li class="mdl-menu__item"><i>C</i></li>
+				                                <li class="mdl-menu__item"><i>D</i></li>
+				                            </ul>
+
+				                            <label for="section">
+				                                <i class="mdl-icon-toggle__label material-icons">arrow_drop_down</i>
+				                            </label>
+				                </div>
+				                
+							          <div class="mdl-grid ui-tables">
+							          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" id="table">
+							            <thead>
+												    <tr>
+												      <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
+												      <th style="text-align:center"><b>#</b></th>
+												      <th style="text-align:center"><b>Title</b></th>
+												      <th style="text-align:center"><b>File</b></th>
+												      <th style="text-align:center"><b>Criteria</b></th>
+												      <th style="text-align:center"><b>Date</b></th>
+												    </tr>
+												  </thead>
+												  <tbody>
+												    <tr id="row1">
+												      <td style="text-align:center" id="index_no1">1</td>
+												      <td style="text-align:center" id="file_name1">
+												        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                            <input class="mdl-textfield__input" type="text" id="file_name">
+			                            <label class="mdl-textfield__label" for="file_name">File name</label>
+			                          </div>
+			                        </td>
+			                        <td style="text-align:center" id="file1">
+			                          <input type="file" id="file" name="file">
+			                        </td>
+			                        <td style="text-align:center" id="criterias1">
+			                        
+			                        <div id="criteria1">
+			                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                            <input class="mdl-textfield__input" type="text" id="criteria_name1">
+			                            <label class="mdl-textfield__label" for="criteria_name">Criteria Name</label>
+			                          </div>
+
+			                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                            <input class="mdl-textfield__input" type="text" id="criteria_marks1">
+			                            <label class="mdl-textfield__label" for="criteria_marks">Marks</label>
+			                          </div>
+			                          
+			                          <button class="mdl-button mdl-button--icon mdl-button--colored" id="a_criteria">
+			                            <i class="material-icons">add</i>
+			                          </button>
+			                        </div>
+
+			                        </td>
+			                        <td style="text-align:center" id="dates1">
+			                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                            <input class="mdl-textfield__input" type="date" id="do_assign">
+			                            <label class="mdl-textfield__label" for="do_assign">Date of assign</label>
+			                          </div>
+			                          <br>
+			                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			                            <input class="mdl-textfield__input" type="date" id="do_submit">
+			                            <label class="mdl-textfield__label" for="do_submit">Date of submission</label>
+			                          </div>
+			                          <script>
+																	const monthNames = ["01", "02", "03", "04", "05", "06","07", "08", "09", "10", "11", "12"];
+																	var dt = new Date();
+																	//console.log(dt.getFullYear()+'-'+monthNames[dt.getMonth()]+'-'+dt.getDate());
+																	document.getElementById("do_assign").defaultValue = dt.getFullYear()+'-'+monthNames[dt.getMonth()]+'-'+dt.getDate();
+																</script>
+			                        </td>
+												    </tr>
+												  </tbody>
+							          </table>
+							          </div>
+
+				              </div>
+				              <div class="mdl-card__actions mdl-card--border" id="add_more">
+			                      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-red" id="se_button">SAVE</button>
+			                      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-shadow--8dp mdl-button--colored" id="add_row">
+			                          <i class="material-icons mdl-js-ripple-effect">add</i>
+			                      </button>
+			                </div>
+						        </div>
+						 
+			     </section>
+			  
+			     <section class = "mdl-layout__tab-panel" id = "notices_tab">
+			        <div class="mdl-card mdl-shadow">
+			          <div class="mdl-card__title">
+			            <h2 class="mdl-card__title-text">NOTICE</h2>
+			          </div>
+			          <div class="mdl-card__supporting-text">
+			            HELLO WORLD
+			          </div>
+			          <div class = "mdl-card__actions mdl-card--border">
+	                  <a class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+	                     Save and Draft
+	                  </a>
+	              </div>
+			        </div>
+			     </section>
+			     
+		    </div>
+     </div>
+  </main>
+
+</div>
+
+<!-- inject:js -->
+
+<script type = "text/javascript" src="{% static 'js/jquery-3.5.0.min.js'%}"></script>
+<script type="text/javascript">
+$(document).on('click','#a_criteria', function(){
+     var original = $(this).parent('div');
+     var newClone = original.clone(true);
+     cloneCount = original.attr('id');
+     cloneCount = cloneCount.match(/(\d+)/)[0];
+     //console.log(cloneCount);
+     newClone.attr('id', 'criteria'+ ++cloneCount);
+     newClone.find("#criteria_name"+(cloneCount-1)).attr('id', 'criteria_name'+ cloneCount);
+     newClone.find("#criteria_marks"+(cloneCount-1)).attr('id', 'criteria_marks'+ cloneCount);
+     newClone.find("input[type='text']").val(null);
+     newClone.find('div').attr('data-upgraded','');
+     original.find("#a_criteria").hide();
+     newClone.insertAfter(original);
+     componentHandler.upgradeDom();
+     console.log(newClone);
+   });
+</script>
+<script type="text/javascript">
+//var row_count=1;
+$(document).on('click','#add_row', function(){
+     var original = $('tr:last');
+     var newClone = original.clone(true);
+     row_count = original.attr('id');
+     row_count = row_count.match(/(\d+)/)[0];
+     newClone.attr('id', 'row'+ ++row_count);
+     newClone.find("#index_no"+(row_count-1)).attr('id', 'index_no'+ row_count);
+     newClone.find("#file_name"+(row_count-1)).attr('id', 'file_name'+ row_count);
+     newClone.find("#file"+(row_count-1)).attr('id', 'file'+ row_count);
+     newClone.find("#criterias"+(row_count-1)).attr('id', 'criterias'+ row_count).children().not(':first').remove();
+     newClone.find("#a_criteria").show();
+     newClone.find("#dates"+(row_count-1)).attr('id', 'dates'+ row_count);
+     newClone.find('#index_no'+ row_count).html(row_count);
+     newClone.find("input[type='file']").val(null);
+     newClone.find("input[type='text']").val(null);
+     newClone.find("#do_submit").val(null);
+     newClone.find('div').attr('data-upgraded','');
+     newClone.insertAfter(original);
+     componentHandler.upgradeDom();
+     console.log(newClone);
+   });
+</script>
+<script type="text/javascript">
+$('#se_button').click(function() {
+   //$('#add_more').hide();
+   //console.log($(this).text());
+   const label_value = ["SAVE","EDIT"];
+   if($(this).text()==label_value[0]){
+      //console.log(label_value[0],label_value[1]);
+      $("#table").find('input').prop('disabled', true);
+      $("#table").find('button').prop('disabled', true);
+      $('#add_row').hide();
+   	  $(this).text(label_value[1]);
+   }
+   else if($(this).text()==label_value[1]){
+      //console.log(label_value[1],label_value[0]);
+      $("#table").find('input').prop('disabled', false);
+      $("#table").find('button').prop('disabled', false);
+      $('#add_row').show();
+   	  $(this).text(label_value[0]);
+   }
+   });
+</script>
+
+<script src="{% static 'js/d3.min.js'%}"></script>
+<script src="{% static 'js/getmdl-select.min.js'%}"></script>
+<script src="{% static 'js/material.min.js'%}"></script>
+<script src="{% static 'js/nv.d3.min.js'%}"></script>
+<script src="{% static 'js/layout/layout.min.js'%}"></script>
+<script src="{% static 'js/scroll/scroll.min.js'%}"></script>
+
+
+<!--
+<script src="js/.js"></script>
+<script src="js/.js"></script>
+<script src="js/.js"></script>
+-->
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login @Edverity</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'assets/vendor/fonts/circular-std/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/libs/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css' %}">
+    <title>Sujati Samaj</title>
+
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================== -->
+    <!-- login page  -->
+    <!-- ============================================================== -->
+    
+  <div class='splash-container'>
+    <div id='myNav' class='overlay'>
+       <div class='overlay-content'>
+          <h3>Verifying Credentials...</h3>
+       </div>
+    </div>
+     <a class="navbar-brand" href="/"><span><div class="toptext">Sujati Samaj <div style="font-size:11px"> Directory</div></div></span></a>       <div class="bg-light text-center" >
+    <div class='card '>
+       <div class='card-header text-center'><span class='splash-description'><h3>Your Entry has been created!</h3><h5>It will appear in the directory after verification.</h5><strong>You can use the key below to edit your data afterwards</strong><br>Copy and save it somewhere safe</span></div>
+       <div class='card-body'>
+       <span class='splash-description'>
+        <button id="copy" class="btn btn-rounded btn-outline-dark" tooltip="Copy to clipboard">Copy Key</button>
+       
+        <div id='text'> {{key}} </div> 
+        <br>
+        <strong>We've also sent a edit link to your E-mail.</strong>
+       </div>
+        <button id="copy" class="btn btn-outline-dark" onclick="document.location.href='/';" >Go back to Home</button>
+
+    </div>
+ </div>    
+ 
+ 
+ 
+ 
+ 
+  
+    <!-- ============================================================== -->
+    <!-- end login page  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+     <script src="{% static 'js/jquery-2.2.4.min.js'%}"></script>
+  <script src="{% static 'js/bootstrap.min.js'%}"></script>        
+<script>
+                           const textElement = document.getElementById("text");
+                           const copyButton = document.getElementById("copy");
+
+                           const copyText = (e) => {
+                              e.preventDefault();
+                           window.getSelection().selectAllChildren(textElement);
+                           document.execCommand("copy");
+                           e.target.setAttribute("tooltip", "Copied! ✅");
+                            $("#copy").empty()
+                            $("#copy").append('<p> Copied! ✅ </p>');
+                           
+                           };
+
+                           const resetTooltip = (e) => {
+                           e.target.setAttribute("tooltip", "Copy to clipboard");
+                           };
+
+                           copyButton.addEventListener("click", (e) => copyText(e));
+                           copyButton.addEventListener("mouseover", (e) => resetTooltip(e));
+
+
+
+
+                            $('#messcopy').click(function(e) {
+                           e.preventDefault();
+                           window.getSelection().selectAllChildren(document.getElementById("messtext"));
+                           document.execCommand("copy");
+                            $("#messcopy").empty()
+                            $("#messcopy").append('<p> Copied! ✅ </p>');
+                                 
+                            });
+
+
+
+                              $("#clonebttn").click(function(e){
+                                $("#clonestuff").clone().appendTo($("#clones"));
+                                });
+                              var touchtime = 0;
+                              $("#removebttn").on("click", function() {
+                                if (((new Date().getTime()) - touchtime) < 500) {
+                                  $("#clones").children().last().remove();
+                                }
+                                touchtime = new Date().getTime();
+                              });
+                           </script>
+
+
+   
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js'%}"></script>
+</body>
+ 
+</html>

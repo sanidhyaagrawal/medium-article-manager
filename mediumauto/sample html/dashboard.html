@@ -1,0 +1,311 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Sujati Samaj Directory</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+      <link href="{% static 'assets/vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'assets/libs/css/style.css'%}">
+      <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css'%}">
+   </head>
+   <style>
+      .btn-wrap-text {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      }
+      @media (min-width: 5000px) {
+      .modal-xlg {
+      width: 100%; 
+      }
+      }    
+      .center {
+      margin: auto;
+      width: 50%;
+      }
+
+      .toptext {
+  display: flex;
+  align-items: baseline;
+}
+   </style>
+   <body>
+      <!-- ============================================================== -->
+      <!-- main wrapper -->
+      <!-- ============================================================== -->
+      <div class="dashboard-main-wrapper">
+      <!-- ============================================================== -->
+      <!-- navbar -->
+      <!-- ============================================================== -->
+      <div class="dashboard-header">
+         <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand toptext" href="home"><span><div class="toptext">Sujati Samaj<div style="font-size:15px"> Directory</div></div></span></a>
+            </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- end navbar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- left sidebar -->
+      <!-- ============================================================== -->
+      
+      <!-- ============================================================== -->
+      <!-- end left sidebar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- wrapper  -->
+      <!-- ============================================================== -->
+     
+      <div class="container-fluid dashboard-content">
+         <!-- ============================================================== -->
+         <!-- pageheader -->
+         <!-- ============================================================== -->
+                      
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="page-header">
+                  <h2 class="pageheader-title">Directory</h2>
+                  <div class="page-breadcrumb">
+                     <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Sujati Samaj</a></li>
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Directory</a></li>
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Basic View</a></li>
+                           
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+        <button id="copy" class="btn btn-outline-dark" onclick="document.location.href='/Add-New-Record';" >Create New Entry</button>
+
+         <!-- ============================================================== -->
+         <!-- end pageheader -->
+         <!-- ============================================================== -->
+         <!-- ============================================================== -->
+         <!-- accrodions -->
+         <!-- ============================================================== -->
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="section-block">
+                  <h5 class="section-title">This is basic view, Click <strong>Advanced View</strong> button for more filters and control.</h5>
+               </div>
+               
+
+	
+
+
+                                <div class="card">
+                                    <div class="card-header tab-regular">
+                                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="card-tab-1" data-toggle="tab" href="#card-1" role="tab" aria-controls="card-1" aria-selected="true">Personal</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-2" role="tab" aria-controls="card-2" aria-selected="false">Professional</a>
+                                            </li>
+                                           
+                                        </ul>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="card-1" role="tabpanel" aria-labelledby="card-tab-1">
+                                             
+
+        <button id="copy" class="btn btn-outline-dark" onclick="document.location.href='/Personal-Data-Advanced-View';" >Personal Data Advanced View</button>
+
+
+  <br><br>
+                                <div class="table-responsive">
+                                
+                                    <table id="example" class="table table-striped table-bordered second" style="width:100%">
+                                        
+                                        <thead>
+                                            <tr>
+                                              	<th>Fisrt Name</th>
+                                                <th>Last Name</th>
+                                                <th>Gender</th>
+                                                <th>Home City</th>
+                                                <th>Home State</th>
+                                        </thead>
+                                        <tbody>
+                                       {% for orders2 in orders1 %}
+                                       <tr>
+                                          <td>{{orders2.fisrt_name}}</td>
+                                          <td>{{orders2.last_name}}</td>
+                                          <td>{{orders2.gender}}</td>
+                                          <td>{{orders2.residential_city}}</td>
+                                          <td>{{orders2.residential_state}}</td>
+                                       </tr>
+                                       {% endfor %}    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>  
+                                        
+                                            <div class="tab-pane fade" id="card-2" role="tabpanel" aria-labelledby="card-tab-2">
+                                             
+
+                                    <div class="card-header pills-regular">
+                                        <ul class="nav nav-pills card-header-pills" id="myTab2" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="card-pills-1" data-toggle="tab" href="#card-pill-1" role="tab" aria-controls="card-1" aria-selected="true">Business/Startup</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="card-pills-2" data-toggle="tab" href="#card-pill-2" role="tab" aria-controls="card-2" aria-selected="false">Job/Profession</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="card-pills-3" data-toggle="tab" href="#card-pill-3" role="tab" aria-controls="card-3" aria-selected="false">Student</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="myTabContent2">
+                                            <div class="tab-pane fade show active" id="card-pill-1" role="tabpanel" aria-labelledby="card-tab-1">
+                                                
+
+        <button id="copy" class="btn btn-outline-dark" onclick="document.location.href='/Buisness-Data-Advanced-View';" >Business/Startup Data Advanced View</button>
+
+                            
+                                <div class="table-responsive">
+                                    <table id="example" class="table table-striped table-bordered first" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                              	<th>Fisrt Name</th>
+                                                <th>Last Name</th>
+                                                <th>Business Catagory</th>
+                                                <th>Business Type</th>
+                                                <th>Business City</th>
+                                                <th>Business State</th>
+                                        </thead>
+                                        <tbody>
+                                       {% for order1 in orders2 %}
+                                       <tr>
+                                					<td>{{order1.fisrt_name}}</td>
+                                             <td>{{order1.last_name}}</td>
+                                             <td>{{order1.business_catagory}}</td>
+                                             <td>{{order1.business_type}}</td>
+                                             <td>{{order1.residential_city}}</td>
+                                             <td>{{order1.residential_state}}</td>
+                                       </tr>
+                                       {% endfor %}    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> 
+
+
+
+
+                                           
+                                            <div class="tab-pane fade" id="card-pill-2" role="tabpanel" aria-labelledby="card-tab-2">
+                <button id="copy" class="btn btn-outline-dark" onclick="document.location.href='/Job-Data-Advanced-View';" >Job/Profession Data Advanced View</button>
+
+                                             
+                                <div class="table-responsive">
+                                    <table id="example" class="table table-striped table-bordered first" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                              	<th>Fisrt Name</th>
+                                                <th>Last Name</th>
+                                                <th>Job Type</th>
+                                                <th>Job Catagory</th>
+                                                <th>Company</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                        </thead>
+                                        <tbody>
+                                       {% for order1 in orders3 %}
+                                       <tr>
+                                					<td>{{order1.fisrt_name}}</td>
+                                             <td>{{order1.last_name}}</td>
+                                             <td>{{order1.job_type}}</td>
+                                             <td>{{order1.job_catagory}}</td>
+                                             <td>{{order1.job_address}}</td>
+                                             <td>{{order1.job_city}}</td>
+                                             <td>{{order1.job_state}}</td>
+                                       </tr>
+                                       {% endfor %}    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> 
+
+                                            
+                                            <div class="tab-pane fade" id="card-pill-3" role="tabpanel" aria-labelledby="card-tab-3">
+                 <button id="copy" class="btn btn-outline-dark" onclick="document.location.href='/Student-Data-Advanced-View';" >Student Data Advanced View</button>
+
+                                              
+                                <div class="table-responsive">
+                                    <table id="example" class="table table-striped table-bordered first" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                              	<th>Fisrt Name</th>
+                                                <th>Last Name</th>
+                                                <th>Degree Type</th>
+                                                <th>Degree Name</th>
+                                                <th>Year of Complition</th>
+                                        </thead>
+                                        <tbody>
+                                       {% for orders2 in orders4 %}
+                                       <tr>
+                                          <td>{{orders2.fisrt_name}}</td>
+                                          <td>{{orders2.last_name}}</td>
+                                          <td>{{orders2.DegreeType}}</td>
+                                          <td>{{orders2.degree_name}}</td>
+                                          <td>{{orders2.year_of_com}}</td>
+                                       </tr>
+                                       {% endfor %}    
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                         
+
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+               </div>
+         </div>
+               
+   </body>
+</html>
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script>
+    <script src="{% static 'assets/vendor/inputmask/js/jquery.inputmask.bundle.js' %}"></script>
+   
+    <script src="{% static 'assets/vendor/multi-select/js/jquery.multi-select.js' %}"></script>
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'assets/vendor/datatables/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="{% static 'assets/vendor/datatables/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/datatables/js/data-table.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+    

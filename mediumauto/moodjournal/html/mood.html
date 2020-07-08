@@ -1,0 +1,443 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Medium Article Manager</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}">
+      <link href="{% static 'assets/vendor/fonts/circular-std/style.css'%}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'assets/libs/css/style.css'%}">
+      <link rel="stylesheet" href="{% static 'assets/vendor/fonts/fontawesome/css/fontawesome-all.css'%}">
+      <link rel="stylesheet" href="{% static 'tiny/prism.css'%}">
+      
+      <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",  // change this value according to your HTML
+            plugins: "codesample",
+            toolbar: "codesample"
+          });
+    
+</script>
+   </head>
+   <style>
+      .btn-wrap-text {
+      white-space: normal !important;
+      word-wrap: break-word !important;
+      }
+      @media (min-width: 5000px) {
+      .modal-xlg {
+      width: 100%; 
+      }
+      }    
+      .center {
+      margin: auto;
+      width: 50%;
+      }
+
+      .toptext {
+  display: flex;
+  align-items: safe  center;
+}
+.responsive {
+  width: 20%;
+  height: auto;
+}
+
+.responsive2 {
+    width: 90%;
+    height: auto;
+  }
+   </style>
+   <body>
+      <!-- ============================================================== -->
+      <!-- main wrapper -->
+      <!-- ============================================================== -->
+     
+      <!-- ============================================================== -->
+      <!-- navbar -->
+      <!-- ============================================================== -->
+     
+  
+
+      <!-- ============================================================== -->
+      <!-- end navbar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- left sidebar -->
+      <!-- ============================================================== -->
+      
+      <!-- ============================================================== -->
+      <!-- end left sidebar -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- wrapper  -->
+      <!-- ============================================================== -->
+     
+      <div class="container-fluid dashboard-content">
+         <!-- ============================================================== -->
+         <!-- pageheader -->
+         <!-- ============================================================== -->
+                    <a href="/">
+   
+   <img src="{% static 'images/medium.png'%}  " alt="Medium" class="responsive" width="600" height="400">  
+   <div style="font-size:15px; color:black;">
+   Advanced Article Manager
+   
+   </div>
+   
+  </a>   
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="page-header">
+                  <h2 class="pageheader-title"></h2>
+                  <div class="page-breadcrumb">
+                     <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Medium AAM</a></li>
+                           <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Home</a></li>
+                           
+                        </ol>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+        <a href='/newarticle-step1'><button id="copy" class="btn btn-outline-dark" >Start New Article</button></a>
+          <a href='/stats'><button id="stats" class="btn btn-outline-dark active" >Statistics</button></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  
+  
+         <!-- ============================================================== -->
+         <!-- end pageheader -->
+         <!-- ============================================================== -->
+         <!-- ============================================================== -->
+         <!-- accrodions -->
+         <!-- ============================================================== -->
+         <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+               <div class="section-block">
+               
+
+ {% if messages %}
+
+    {% for message in messages %}
+    
+   
+  <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> {{ message }}
+  </div>
+
+    
+    {% endfor %}
+
+{% endif %}
+
+
+
+<div class="card">
+                                <h5 class="card-header">Drafts</h5>
+                                <div class = 'table-responsive'>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Series</th>
+                                                <th scope="col">Episode</th>
+                                                <th scope="col">&emsp; &emsp; &emsp; &emsp; Action</th>
+
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                    {% for i in drafts%}   
+                                            <tr>
+                                                <th scope="row">{{forloop.counter}}</th>
+                                                <td>{{i.series}}</td>
+                                                 <td>{{i.episode}} ({{i.pk}})</td>
+                                                <td>    <a href="complete/{{i.id}}"><button class="btn btn-rounded btn-success active" type="submit">Complete</button></a>
+                                                 <a href="delete/{{i.id}}"> <button class="btn btn-rounded btn-danger active" type="submit">Delete</button></a></td>
+                                                 <td> <h5 id="{{forloop.counter}}"><time>Time Elapsed</time></h5></td>
+                                                 <td> <a href='/tbreak/{{i.pk}}'><button id="copy" class="btn btn-{{i.btnclr}}" >{{i.btn}}</button></a><br></td>
+
+                                            </tr>
+                           
+<script>
+  var h{{forloop.counter}} = document.getElementById('{{forloop.counter}}'),
+    seconds{{forloop.counter}} = {{ i.time.sec }}      , minutes{{forloop.counter}} = {{ i.time.min }}      , hours{{forloop.counter}} = {{ i.time.hour }}      ,
+    t;
+function add{{forloop.counter}}() {
+    seconds{{forloop.counter}}++;
+    if (seconds{{forloop.counter}} >= 60) {
+        seconds{{forloop.counter}} = 0;
+        minutes{{forloop.counter}}++;
+        if (minutes{{forloop.counter}} >= 60) {
+            minutes{{forloop.counter}} = 0;
+            hours{{forloop.counter}}++;
+        }
+    }
+    h{{forloop.counter}}.textContent = (hours{{forloop.counter}} ? (hours{{forloop.counter}} > 9 ? hours{{forloop.counter}} : "0" + hours{{forloop.counter}}) : "00") + ":" + (minutes{{forloop.counter}} ? (minutes{{forloop.counter}} > 9 ? minutes{{forloop.counter}} : "0" + minutes{{forloop.counter}}) : "00") + ":" + (seconds{{forloop.counter}} > 9 ? seconds{{forloop.counter}} : "0" + seconds{{forloop.counter}});
+    timer{{forloop.counter}}();
+}
+function timer{{forloop.counter}}() {
+    t = setTimeout(add{{forloop.counter}}, 1000);
+}
+timer{{forloop.counter}}();
+</script>
+           
+                            {% endfor%}
+
+                                        </tbody>
+                                    </table>
+                                </div>     </div>
+                             
+
+
+
+
+
+
+   <h5 class="section-title">Books</h5>
+
+               <div class="row">
+                <div class="col">
+                    <div class="card card-body">
+                        <div class="table-responsive">
+            
+                        <form method="get">
+                            {{Filter.form}}&nbsp;
+                            &nbsp;
+                           
+
+                        <button class="btn btn-rounded btn-dark active" type="submit">Search</button>
+                      </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                            <div class="row">
+                                {% for i in books%}   
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                            
+                                                <img src="{{i.thumbnail.url}}" alt="" class="img-fluid responsive2"></div>
+                                           
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-check"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">{{i.name}}</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <div>{{i.category}}</div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="{{i.pdf.url}}" target="_blank" class="btn btn-dark">Read</a>
+                                                
+                                                <a href="{{i.pdf.url}}" download class="btn btn-outline-dark"><i class="fas fa-download"></i></a>
+                                              
+       <form action="/update-page/{{i.pk}}/" method="post">
+{% csrf_token %}
+                        <input class="form-control-sm" name="page" id="page" type="number" placeholder="Page Number" autocomplete="off" required>
+                  
+                                    <button class="btn btn-rounded btn-dark active" type="submit">Update</button>
+                                               </form>
+                               <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                               
+                                               
+                                                <th scope="col">&emsp; &emsp; &emsp; &emsp; Date</th>
+                                                <th scope="col">Page Number</th>
+
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                    {% for i in i.datepages%}   
+                                            <tr>
+                                              
+                                                <td>{{i.Date}}  </td>
+                                                 <td>{{i.Pages}} </td>
+                                                
+                                        
+                                            </tr>
+                
+           
+                            {% endfor%}
+
+                                        </tbody>
+                                    </table>
+                                </div> 
+
+                              
+                               
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                            {% endfor%}
+                            
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card">
+                                <h5 class="card-header">Recently Completed</h5>
+                                 <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                               
+                                                <th scope="col">Series</th>
+                                                <th scope="col">Episode</th>
+                                                <th scope="col">&emsp; &emsp; &emsp; &emsp; Title</th>
+                                                <th scope="col">&emsp; &emsp; &emsp; &emsp; View</th>
+
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                    {% for i in completed%}   
+                                            <tr>
+                                               
+                                                <td>{{i.series}}</td>
+                                                 <td>{{i.episode}} ({{i.pk}})</td>
+                                                 <td><stong>{{i.title}}</stong><br> <p>{{i.subtitle}}</p></td>
+                                                 
+                                                <td>    <a href="view/{{i.id}}"><button class="btn btn-rounded btn-dark active" type="submit">Server</button></a>
+                                                 <a href="{{i.link}}"> <button class="btn btn-rounded btn-outline-dark " type="submit">Medium</button></a></td>
+                                                <td>    <a href="/update/{{i.id}}"><button class="btn btn-rounded btn-dark active" type="submit">Update Content</button></a></td>
+                                            </tr>
+                           
+<script>
+  var h{{forloop.counter}} = document.getElementById('{{forloop.counter}}'),
+    seconds{{forloop.counter}} = {{ i.time.sec }}      , minutes{{forloop.counter}} = {{ i.time.min }}      , hours{{forloop.counter}} = {{ i.time.hour }}      ,
+    t;
+function add{{forloop.counter}}() {
+    seconds{{forloop.counter}}++;
+    if (seconds{{forloop.counter}} >= 60) {
+        seconds{{forloop.counter}} = 0;
+        minutes{{forloop.counter}}++;
+        if (minutes{{forloop.counter}} >= 60) {
+            minutes{{forloop.counter}} = 0;
+            hours{{forloop.counter}}++;
+        }
+    }
+    h{{forloop.counter}}.textContent = (hours{{forloop.counter}} ? (hours{{forloop.counter}} > 9 ? hours{{forloop.counter}} : "0" + hours{{forloop.counter}}) : "00") + ":" + (minutes{{forloop.counter}} ? (minutes{{forloop.counter}} > 9 ? minutes{{forloop.counter}} : "0" + minutes{{forloop.counter}}) : "00") + ":" + (seconds{{forloop.counter}} > 9 ? seconds{{forloop.counter}} : "0" + seconds{{forloop.counter}});
+    timer{{forloop.counter}}();
+}
+function timer{{forloop.counter}}() {
+    t = setTimeout(add{{forloop.counter}}, 1000);
+}
+timer{{forloop.counter}}();
+</script>
+           
+                            {% endfor%}
+
+                                        </tbody>
+                                    </table>
+                                </div>  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+                            
+               
+               </div>
+               
+
+
+
+
+	
+
+
+                         
+
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+               </div>
+         </div>
+               
+   </body>
+</html>
+<script src="{% static 'tiny/prism.js' %}"></script>
+
+    <script src="{% static 'assets/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'assets/vendor/slimscroll/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script>
+    <script src="{% static 'assets/vendor/inputmask/js/jquery.inputmask.bundle.js' %}"></script>
+   
+    <script src="{% static 'assets/vendor/multi-select/js/jquery.multi-select.js' %}"></script>
+    <script src="{% static 'assets/libs/js/main-js.js' %}"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'assets/vendor/datatables/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="{% static 'assets/vendor/datatables/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'assets/vendor/datatables/js/data-table.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+    
+
+

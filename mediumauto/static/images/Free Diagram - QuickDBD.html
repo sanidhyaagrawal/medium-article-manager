@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" ng-app="QdbdApp" ng-controller="RootCtrl as RootCtrlVM">
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W5ZHCLQ');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quick Database Diagrams (QuickDBD) is a simple online tool to quickly draw database diagrams by typing.">
+  <meta name="author" content="Dovetail Technologies Ltd">
+
+  <meta name="twitter:card" content="QuickDBD">
+  <meta name="twitter:url" content="https://www.quickdatabasediagrams.com/">
+  <meta name="twitter:title" content="QuickDatabaseDiagrams">
+  <meta name="twitter:description" content="Quick Database Diagrams (QuickDBD) is a simple online tool to quickly draw database diagrams by typing.">
+  <meta name="twitter:image" content="https://www.quickdatabasediagrams.com/assets/images/logo.svg">
+
+  <meta property="og:title" content="QuickDBD">
+  <meta property="og:image" content="https://www.quickdatabasediagrams.com/">
+  <meta property="og:site_name" content="QuickDatabaseDiagrams">
+  <meta property="og:description" content="Quick Database Diagrams (QuickDBD) is a simple online tool to quickly draw database diagrams by typing.">
+
+  <title ng-bind="pageTitle">QuickDBD</title>
+  <base href="/">
+
+  <link href="//cdn.materialdesignicons.com/2.7.94/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" rel="stylesheet" type="text/css"/>
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png">
+
+  <link rel="stylesheet" href="styles/lib-4f3bee1839.css">
+  <link rel="stylesheet" href="styles/app-0ccc5f62cb.css">
+</head>
+
+<body ng-cloak layout="column" flex>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5ZHCLQ" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header ui-view="header"></header>
+  <div ui-view="layout" layout="column" flex></div>
+
+  <script src="js/lib-c295ced81d.js"></script>
+  <script src="js/app-6c22672e7d.js"></script>
+
+  <div id="fb-root"></div><!-- For social sharing -->
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+  <script src="https://js.braintreegateway.com/web/dropin/1.6.1/js/dropin.min.js"></script>
+
+  <script>
+    (function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', intercomSettings); } else { var d = document; var i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; function l() { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/m0fu80bu'; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); } if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })()
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-488159-3"></script>
+<script>
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=1409546785739158";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.GA_TRACKING_ID = 'UA-488159-3';
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+  </script>
+</body>
+</html>
